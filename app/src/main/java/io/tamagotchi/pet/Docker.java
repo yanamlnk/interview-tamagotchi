@@ -6,6 +6,7 @@ public class Docker extends Pet {
         super();
         this.name = "Docky";
         this.imageUrl = "docker.png";
+        this.description = "Gains more XP from games.";
     }
 
     @Override

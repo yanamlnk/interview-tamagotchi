@@ -10,6 +10,7 @@ plugins {
     id 'application'
     id 'java'
     id 'com.github.spotbugs' version '5.1.0'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
 }
 
 repositories {
@@ -28,10 +29,10 @@ dependencies {
     implementation libs.guava
 
     //for JavaFX UI enhancements
-    implementation 'org.openjfx:javafx-controls:20.0.1'
-    implementation 'org.openjfx:javafx-graphics:20.0.1'
-    implementation 'org.openjfx:javafx-base:20.0.1'
-    implementation 'org.openjfx:javafx-fxml:20.0.1'
+    implementation 'org.openjfx:javafx-controls:17'
+    implementation 'org.openjfx:javafx-graphics:17'
+    implementation 'org.openjfx:javafx-base:17'
+    implementation 'org.openjfx:javafx-fxml:17'
 
     //to work with json files
     implementation 'com.google.code.gson:gson:2.8.9'
@@ -54,13 +55,9 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-//add JavaFX to run task
-tasks.named('run') {
-    // Configure JVM arguments for JavaFX
-    jvmArgs = [
-            '--module-path', sourceSets.main.runtimeClasspath.asPath,
-            '--add-modules', 'javafx.controls,javafx.graphics'
-    ]
+javafx {
+    version = "17"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.base' ] // Include modules you're using
 }
 
 // Add static analysis tool (SpotBugs)
@@ -69,3 +66,6 @@ spotbugs {
     effort = 'max' // Set level of effort for analysis (e.g., max, default, min)
     reportLevel = 'high' // Report only high-level issues
 }
+
+sourceSets.main.resources.srcDirs = ['src/main/resources']
+

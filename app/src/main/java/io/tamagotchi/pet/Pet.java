@@ -13,6 +13,7 @@ public abstract class Pet implements Tamagotchi {
 
     protected String name;
     protected String imageUrl;
+    protected String description;
 
     public Pet() {
         this.health = 100;
@@ -44,6 +45,18 @@ public abstract class Pet implements Tamagotchi {
 
     public boolean isDead() {
         return dead;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     @Override
