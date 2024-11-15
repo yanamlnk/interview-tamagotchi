@@ -32,6 +32,9 @@ dependencies {
     implementation 'org.openjfx:javafx-graphics:20.0.1'
     implementation 'org.openjfx:javafx-base:20.0.1'
     implementation 'org.openjfx:javafx-fxml:20.0.1'
+
+    //to work with json files
+    implementation 'com.google.code.gson:gson:2.8.9'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
