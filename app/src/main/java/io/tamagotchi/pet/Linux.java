@@ -4,7 +4,7 @@ public class Linux extends Pet {
     public Linux() {
         super();
         this.name = "Nux";
-        this.imageUrl = "linux.png";
+        this.imageUrl = "linux.gif";
         this.description = "Gets hungry slower.";
     }
 

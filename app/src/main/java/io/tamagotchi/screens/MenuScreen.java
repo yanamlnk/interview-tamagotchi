@@ -102,16 +102,15 @@ public class MenuScreen extends Application {
             }
         });
 
-//        startButton.setOnAction(event -> {
-//            // Pass selectedPet and selectedLanguage to MainScreen
-//            System.out.println("Pet: " + selectedPet.getName() + ", Language: " + selectedLanguage);
-//            MainScreen mainScreen = new MainScreen(selectedPet, selectedLanguage);
-//            try {
-//                mainScreen.start(primaryStage); // Open MainScreen
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        });
+        startButton.setOnAction(event -> {
+            // Pass selectedPet and selectedLanguage to MainScreen
+            MainScreen mainScreen = new MainScreen(selectedPet, selectedLanguage);
+            try {
+                mainScreen.start(primaryStage); // Open MainScreen
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         // Add everything to the root layout
         root.getChildren().addAll(title, petSelection, languageSelection, startButton);
@@ -119,7 +118,7 @@ public class MenuScreen extends Application {
         // Show the stage
         Scene scene = new Scene(root, 1000, 800);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Main Menu");
+        primaryStage.setTitle("PrepPal: Choose Your Pet and Language");
         primaryStage.show();
     }
 
