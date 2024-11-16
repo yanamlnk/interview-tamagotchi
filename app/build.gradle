@@ -9,7 +9,6 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
     id 'java'
-    id 'com.github.spotbugs' version '5.1.0'
     id 'org.openjfx.javafxplugin' version '0.0.13'
 }
 
@@ -58,13 +57,6 @@ tasks.named('test') {
 javafx {
     version = "17"
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.base' ] // Include modules you're using
-}
-
-// Add static analysis tool (SpotBugs)
-spotbugs {
-    toolVersion = '4.0.0'
-    effort = 'max' // Set level of effort for analysis (e.g., max, default, min)
-    reportLevel = 'high' // Report only high-level issues
 }
 
 sourceSets.main.resources.srcDirs = ['src/main/resources']

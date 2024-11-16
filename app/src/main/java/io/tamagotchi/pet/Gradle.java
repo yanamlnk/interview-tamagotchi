@@ -7,7 +7,7 @@ public class Gradle extends Pet{
         super();
         this.name = "Gradly";
         this.imageUrl = "gradle.png";
-        this.description = "Gains more energy from food.";
+        this.description = "Gains more HP from food.";
     }
 
     @Override
