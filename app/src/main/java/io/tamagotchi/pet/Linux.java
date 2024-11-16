@@ -5,6 +5,7 @@ public class Linux extends Pet {
         super();
         this.name = "Nux";
         this.imageUrl = "linux.png";
+        this.description = "Gets hungry slower.";
     }
 
     @Override
