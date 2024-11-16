@@ -26,6 +26,21 @@ public class MenuScreen extends Application {
     private Pet selectedPet = null;
     private String selectedLanguage = null;
     private Font customFont;
+    private String buttonStyle = "-fx-background-color: transparent; " +
+                                    "-fx-border-color: black; " +
+                                    "-fx-border-width: 2px;";
+    private String buttonStyleHover = "-fx-background-color: #C2ECF4; " +
+                                        "-fx-border-color: black; " +
+                                        "-fx-border-width: 2px;";
+    private String buttonStyleSelected = "-fx-background-color: #94CED8; " +
+                                        "-fx-border-color: black; " +
+                                        "-fx-border-width: 2px;";
+    private String startButtonStyleActive = "-fx-background-color: #A0DF95; " +
+                                            "-fx-border-color: black; " +
+                                            "-fx-border-width: 2px;";
+    private String startButtonStyleHover = "-fx-background-color: #8AC380; " +
+                                            "-fx-border-color: black; " +
+                                            "-fx-border-width: 2px;";
 
     @Override
     public void start(Stage primaryStage) {
@@ -40,7 +55,7 @@ public class MenuScreen extends Application {
         Text title = new Text("WELCOME !\nPlease choose your tamagotchi pet and language that you need to prepare for interview:");
         title.setStyle("-fx-font-size: 30;");
         title.setFont(customFont);
-        title.setWrappingWidth(600); // Limit the text width to 300px
+        title.setWrappingWidth(800); // Limit the text width to 300px
         title.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
 
         // Pet selection buttons
@@ -53,19 +68,38 @@ public class MenuScreen extends Application {
 
         // Start button
         Button startButton = new Button("Start".toUpperCase());
-        startButton.setStyle("-fx-font-family: '" + customFont.getFamily() + "';-fx-font-size: 14;");
+        startButton.setStyle("-fx-font-family: '" + customFont.getFamily() + "';-fx-font-size: 30;");
         startButton.setFont(customFont);
-        startButton.setDisable(true); // Disable until selections are made
+        startButton.setDisable(true);
+        startButton.setStyle(buttonStyle);
 
         // Enable the start button only if both selections are made
         petGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            selectedPet = (Pet) ((ToggleButton) newValue).getUserData();
+            if (newValue == null) {
+                petGroup.selectToggle(oldValue);  // Revert back if trying to unselect
+            } else {
+                selectedPet = (Pet) ((ToggleButton) newValue).getUserData();
+            }
             checkSelections(startButton, petGroup, languageGroup);
         });
 
         languageGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            selectedLanguage = (String) ((ToggleButton) newValue).getUserData();
+            if (newValue == null) {
+                languageGroup.selectToggle(oldValue);  // Revert back if trying to unselect
+            } else {
+                selectedLanguage = (String) ((ToggleButton) newValue).getUserData();
+            }
             checkSelections(startButton, petGroup, languageGroup);
+        });
+
+        startButton.hoverProperty().addListener((obs, wasHovered, isHovered) -> {
+            if (isHovered && !startButton.isDisabled()) {
+                startButton.setStyle(startButtonStyleHover);
+            } else if (!startButton.isDisabled()) {
+                startButton.setStyle(startButtonStyleActive);
+            } else {
+                startButton.setStyle(buttonStyle);
+            }
         });
 
 //        startButton.setOnAction(event -> {
@@ -83,7 +117,7 @@ public class MenuScreen extends Application {
         root.getChildren().addAll(title, petSelection, languageSelection, startButton);
 
         // Show the stage
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, 1000, 800);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Main Menu");
         primaryStage.show();
@@ -117,12 +151,12 @@ public class MenuScreen extends Application {
 
         Text name = new Text(pet.getName().toUpperCase() + "\n");
         name.setFont(customFont);
-        name.setStyle("-fx-font-family: '"+ customFont.getFamily() +"'-fx-font-size: 20;");
+        name.setStyle("-fx-font-family: '"+ customFont.getFamily() +"'; -fx-font-size: 25;");
 
         Text description = new Text(pet.getDescription());
         description.setWrappingWidth(180);
         description.setFont(customFont);
-        description.setStyle("-fx-font-family: '"+ customFont.getFamily() +"'-fx-font-size: 14; -fx-text-alignment: center;");
+        description.setStyle("-fx-font-family: '"+ customFont.getFamily() +"'; -fx-font-size: 18; -fx-text-alignment: center;");
 
         VBox combinedText = new VBox(name, description);
         combinedText.setAlignment(Pos.CENTER);
@@ -138,42 +172,22 @@ public class MenuScreen extends Application {
         petButton.setStyle("-fx-font-family: '" + customFont.getFamily() + "'; -fx-font-size: 12;");
         petButton.setFont(customFont);
 
-        petButton.setStyle(
-                "-fx-background-color: transparent; " +
-                        "-fx-border-color: black; " +
-                        "-fx-border-width: 2px;"
-        );
+        petButton.setStyle(buttonStyle);
 
 
         petButton.hoverProperty().addListener((obs, wasHovered, isHovered) -> {
             if (isHovered && !petButton.isSelected()) {
-                petButton.setStyle("-fx-background-color: #C2ECF4; " +
-                        "-fx-border-color: black; " +
-                        "-fx-border-width: 2px;");
+                petButton.setStyle(buttonStyleHover);
             } else {
-                petButton.setStyle(petButton.isSelected() ? "-fx-background-color: #94CED8; " +
-                        "-fx-border-color: black; " +
-                        "-fx-border-width: 2px;"
-                        :
-                        "-fx-background-color: transparent; " +
-                        "-fx-border-color: black; " +
-                        "-fx-border-width: 2px;");
+                petButton.setStyle(petButton.isSelected() ? buttonStyleSelected : buttonStyle);
             }
         });
 
         petButton.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
             if (isSelected) {
-                petButton.setStyle(
-                        "-fx-background-color: #94CED8; " +
-                                "-fx-border-color: black; " +
-                                "-fx-border-width: 2px;"
-                );
+                petButton.setStyle(buttonStyleSelected);
             } else {
-                petButton.setStyle(
-                        "-fx-background-color: transparent; " +
-                                "-fx-border-color: black; " +
-                                "-fx-border-width: 2px;"
-                );
+                petButton.setStyle(buttonStyle);
             }
         });
 
@@ -191,12 +205,33 @@ public class MenuScreen extends Application {
             langButton.setUserData(language);
 
             ImageView imageView = new ImageView(new Image(language.toLowerCase() + ".png"));
-            imageView.setFitWidth(40);
-            imageView.setFitHeight(40);
+            imageView.setFitWidth(100);
+            imageView.setFitHeight(100);
             langButton.setGraphic(imageView);
+            langButton.setContentDisplay(ContentDisplay.TOP);
 
             langButton.setStyle("-fx-font-family: '" + customFont.getFamily() + "';-fx-font-size: 14;");
             langButton.setFont(customFont);
+
+            langButton.setStyle(buttonStyle);
+
+
+            langButton.hoverProperty().addListener((obs, wasHovered, isHovered) -> {
+                if (isHovered && !langButton.isSelected()) {
+                    langButton.setStyle(buttonStyleHover);
+                } else {
+                    langButton.setStyle(langButton.isSelected() ? buttonStyleSelected : buttonStyle);
+                }
+            });
+
+            langButton.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
+                if (isSelected) {
+                    langButton.setStyle(buttonStyleSelected);
+                } else {
+                    langButton.setStyle(buttonStyle);
+                }
+            });
+
             languageSelection.getChildren().add(langButton);
         }
 
@@ -204,7 +239,16 @@ public class MenuScreen extends Application {
     }
 
     private void checkSelections(Button startButton, ToggleGroup petGroup, ToggleGroup languageGroup) {
-        startButton.setDisable(petGroup.getSelectedToggle() == null || languageGroup.getSelectedToggle() == null);
+        boolean isPetSelected = petGroup.getSelectedToggle() != null;
+        boolean isLanguageSelected = languageGroup.getSelectedToggle() != null;
+
+        if (isPetSelected && isLanguageSelected) {
+            startButton.setDisable(false);
+            startButton.setStyle(startButtonStyleActive);
+        } else {
+            startButton.setDisable(true);
+            startButton.setStyle(buttonStyle);
+        }
     }
 
     public static void main(String[] args) {
