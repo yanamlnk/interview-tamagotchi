@@ -1,0 +1,1322 @@
+[
+  {
+    "question": "What is the correct way to declare a list in Python?\n\n\nmy_list = _____\n",
+    "answers": [
+      "list()",
+      "[]",
+      "list[]",
+      "list([])"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How do you append an item to a list in Python?\n\n\nmy_list = [1, 2, 3]\nmy_list._____('4')\n",
+    "answers": [
+      "add",
+      "append",
+      "insert",
+      "extend"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How can you print a string in Python?\n\n\n_____('Hello, world!')\n",
+    "answers": [
+      "System.out.println",
+      "echo",
+      "print",
+      "printf"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "How do you define a function in Python?\n\n\n_____ my_function():\n    pass\n",
+    "answers": [
+      "def",
+      "function",
+      "func",
+      "define"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is used to create a set in Python?\n\n\nmy_set = _____(1, 2, 3)\n",
+    "answers": [
+      "set",
+      "list",
+      "tuple",
+      "dict"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What keyword is used to handle exceptions in Python?\n\n\ntry:\n    pass\n_____ Exception as e:\n    print(e)\n",
+    "answers": [
+      "throw",
+      "catch",
+      "raise",
+      "except"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "How do you declare a variable in Python?\n\n\n_____ x = 5\n",
+    "answers": [
+      "let",
+      "var",
+      "int",
+      "x"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Which function is used to find the length of a list in Python?\n\n\nmy_list = [1, 2, 3]\n_____ my_list\n",
+    "answers": [
+      "len",
+      "length",
+      "size",
+      "count"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you check if a key exists in a Python dictionary?\n\n\nmy_dict = {'a': 1, 'b': 2}\nif _____ in my_dict:\n    print('Found!')\n",
+    "answers": [
+      "'key'",
+      "key",
+      "'a'",
+      "a"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "How do you get the absolute value of a number in Python?\n\n\nabs_value = _____(-10)\n",
+    "answers": [
+      "absolute",
+      "abs",
+      "fabs",
+      "round"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which operator is used for exponentiation in Python?\n\n\nresult = 2 _____ 3\n",
+    "answers": [
+      "^",
+      "**",
+      "*",
+      "//"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How do you open a file in Python for reading?\n\n\nfile = _____('file.txt', 'r')\n",
+    "answers": [
+      "open",
+      "fopen",
+      "fileopen",
+      "readfile"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you convert a string to an integer in Python?\n\n\nnum = _____('123')\n",
+    "answers": [
+      "int",
+      "float",
+      "str",
+      "long"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is a correct list comprehension in Python?\n\n\nmy_list = [x*2 for x in range(5)]\n",
+    "answers": [
+      "[x*2, for x in range(5)]",
+      "[x*2 for x in range()]",
+      "[x*2 if x in range(5)]",
+      "[x*2 for x in range(5)]"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the correct way to import the 'math' module in Python?\n\n\n_____ math\n",
+    "answers": [
+      "import",
+      "include",
+      "use",
+      "from"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the output of the following code?\n\n\nx = 10\nif x > 5:\n    print('Greater')\nelse:\n    print('Smaller')\n",
+    "answers": [
+      "Greater",
+      "Smaller",
+      "Error",
+      "None"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is correct to create a tuple in Python?\n\n\nmy_tuple = _____\n",
+    "answers": [
+      "(1, 2, 3)",
+      "{1, 2, 3}",
+      "[1, 2, 3]",
+      "tuple(1, 2, 3)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to comment in Python?\n\n\n_____ This is a comment\n",
+    "answers": [
+      "#",
+      "//",
+      "/*",
+      "--"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the method to remove an element from a list in Python?\n\n\nmy_list = [1, 2, 3]\nmy_list._____()\n",
+    "answers": [
+      "remove",
+      "delete",
+      "pop",
+      "discard"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "How do you check the type of a variable in Python?\n\n\nx = 5\n_____ x\n",
+    "answers": [
+      "type",
+      "typeof",
+      "check",
+      "isinstance"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you create a class in Python?\n\n\n_____ MyClass:\n    pass\n",
+    "answers": [
+      "class",
+      "def",
+      "object",
+      "type"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What function is used to get user input in Python?\n\n\nuser_input = _____('Enter something: ')\n",
+    "answers": [
+      "input",
+      "raw_input",
+      "scanf",
+      "read"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is used to combine two lists in Python?\n\n\nlist1 = [1, 2]\nlist2 = [3, 4]\nlist3 = list1 _____ list2\n",
+    "answers": [
+      "+",
+      "&",
+      "extend",
+      "join"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you create a dictionary in Python?\n\n\ndict1 = _____\n",
+    "answers": [
+      "{}",
+      "dict()",
+      "[]",
+      "dict[]"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct syntax to check if a number is even in Python?\n\n\nif _____(x % 2 == 0):\n    print('Even')\n",
+    "answers": [
+      "if",
+      "else",
+      "elif",
+      "for"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following methods is used to remove an item from a set in Python?\n\n\nmy_set = {1, 2, 3}\nmy_set._____()\n",
+    "answers": [
+      "remove",
+      "discard",
+      "pop",
+      "clear"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What function do you use to sort a list in Python?\n\n\nmy_list = [3, 1, 2]\nmy_list._____()\n",
+    "answers": [
+      "sort",
+      "order",
+      "arrange",
+      "set"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you check if a number is odd in Python?\n\n\nif _____(x % 2 != 0):\n    print('Odd')\n",
+    "answers": [
+      "if",
+      "else",
+      "elif",
+      "for"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you access a specific character in a string?\n\n\nstr = 'hello'\nchar = str[_____]\n",
+    "answers": [
+      "0",
+      "1",
+      "h",
+      "'hello'"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to convert a string to lowercase in Python?\n\n\nstr = 'HELLO'\nstr = str._____\n",
+    "answers": [
+      "lower",
+      "lowercase",
+      "down",
+      "tolower"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which operator is used to concatenate strings in Python?\n\n\nresult = 'Hello' _____ 'World'\n",
+    "answers": [
+      "+",
+      "&",
+      "/",
+      "%"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you create a set with a single element in Python?\n\n\nmy_set = _____(5)\n",
+    "answers": [
+      "set",
+      "list",
+      "tuple",
+      "dict"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is used to find the index of an element in a list?\n\n\nmy_list = [1, 2, 3]\nindex = my_list._____()\n",
+    "answers": [
+      "find",
+      "index",
+      "get_index",
+      "locate"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which keyword is used to define an infinite loop in Python?\n\n\nwhile _____:\n    print('Infinite loop')\n",
+    "answers": [
+      "True",
+      "1",
+      "infinite",
+      "none"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you break out of a loop in Python?\n\n\nfor i in range(10):\n    if i == 5:\n        _____\n",
+    "answers": [
+      "exit",
+      "continue",
+      "break",
+      "stop"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which of the following is used to convert a string to an integer in Python?\n\n\nnum = _____('123')\n",
+    "answers": [
+      "toInt",
+      "int",
+      "integer",
+      "strToInt"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the default value of a function argument in Python?\n\n\ndef greet(name='Guest'):\n    print('Hello, ' + name)\n",
+    "answers": [
+      "None",
+      "'Guest'",
+      "'Visitor'",
+      "Empty string"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which operator is used to check equality in Python?\n\n\nif a _____ b:\n    print('Equal')\n",
+    "answers": [
+      "=",
+      "==",
+      "!=",
+      "is"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How do you create an empty dictionary in Python?\n\n\ndict1 = _____\n",
+    "answers": [
+      "{}",
+      "dict()",
+      "[]",
+      "empty()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you remove the last item from a list in Python?\n\n\nmy_list = [1, 2, 3]\nmy_list._____()\n",
+    "answers": [
+      "pop",
+      "remove",
+      "del",
+      "clear"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How can you check if a string starts with a specific substring in Python?\n\n\nmy_str = 'Hello'\nif my_str._____('He'):\n    print('Starts with')\n",
+    "answers": [
+      "beginswith",
+      "startswith",
+      "startwith",
+      "begin"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How do you generate a random number in Python?\n\n\nimport random\nrandom_number = random._____()\n",
+    "answers": [
+      "randint",
+      "randomize",
+      "gen",
+      "rand"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following methods is used to join elements of a list into a string in Python?\n\n\nmy_list = ['a', 'b', 'c']\nresult = ''._____(' '.join(my_list))\n",
+    "answers": [
+      "join",
+      "combine",
+      "concat",
+      "merge"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is used to create a lambda function in Python?\n\n\nf = _____ x: x * 2\n",
+    "answers": [
+      "function",
+      "def",
+      "lambda",
+      "deflambda"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "How do you find the maximum value in a list in Python?\n\n\nmy_list = [3, 1, 2]\nmax_value = _____(my_list)\n",
+    "answers": [
+      "max",
+      "highest",
+      "top",
+      "largest"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you remove duplicates from a list in Python?\n\n\nmy_list = [1, 2, 2, 3]\nmy_list = list(_____)\n",
+    "answers": [
+      "set(my_list)",
+      "unique(my_list)",
+      "distinct(my_list)",
+      "list(set(my_list))"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What function is used to round a number to a specific decimal place in Python?\n\n\nrounded = _____(3.14159, 2)\n",
+    "answers": [
+      "round",
+      "floor",
+      "ceil",
+      "int"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you check if a list is empty in Python?\n\n\nmy_list = []\nif _____:\n    print('Empty')\n",
+    "answers": [
+      "not my_list",
+      "my_list == []",
+      "my_list == ''",
+      "empty(my_list)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is used to create a generator in Python?\n\n\nmy_gen = _____ x: x * 2 for x in range(5)\n",
+    "answers": [
+      "function",
+      "lambda",
+      "gen",
+      "generator"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of the following is used to get the last item of a list in Python?\n\n\nmy_list = [1, 2, 3]\nlast_item = my_list[_____]\n",
+    "answers": [
+      "-1",
+      "len(my_list)-1",
+      "1",
+      "0"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to create a virtual environment in Python?\n\n\n_____ -m venv myenv\n",
+    "answers": [
+      "python",
+      "python3",
+      "env",
+      "virtualenv"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you check if a string contains a substring in Python?\n\n\nif 'Hello' in 'Hello, World!':\n    print('Found')\n",
+    "answers": [
+      "in",
+      "contains",
+      "find",
+      "has"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you define an empty tuple in Python?\n\n\nempty_tuple = _____\n",
+    "answers": [
+      "()",
+      "[ ]",
+      "{}",
+      "tuple()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is used to get the current date and time in Python?\n\n\nimport datetime\ndt = datetime._____()\n",
+    "answers": [
+      "now",
+      "today",
+      "current",
+      "datetime"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you get the floor of a number in Python?\n\n\nimport math\nfloor_value = math._____(-3.5)\n",
+    "answers": [
+      "floor",
+      "ceil",
+      "round",
+      "int"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is the correct way to add a key-value pair to a dictionary in Python?\n\n\nmy_dict = {}\nmy_dict['key'] = _____\n",
+    "answers": [
+      "'value'",
+      "value",
+      "'key=value'",
+      "'value;'"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the method used to reverse a list in place in Python?\n\n\nmy_list = [1, 2, 3]\nmy_list._____()\n",
+    "answers": [
+      "reverse",
+      "rev",
+      "invert",
+      "flip"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which operator is used to get the floor division result in Python?\n\n\nresult = 5 _____ 2\n",
+    "answers": [
+      "//",
+      "/",
+      "%",
+      "**"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following methods is used to split a string by a delimiter in Python?\n\n\nmy_str = 'Hello, World'\nresult = my_str._____(',')\n",
+    "answers": [
+      "split",
+      "divide",
+      "break",
+      "splitter"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you access a value in a dictionary by its key?\n\n\nmy_dict = {'a': 1, 'b': 2}\nvalue = my_dict[_____]\n",
+    "answers": [
+      "'a'",
+      "'key'",
+      "'value'",
+      "a"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you check if a list is not empty in Python?\n\n\nmy_list = [1, 2, 3]\nif _____:\n    print('Not Empty')\n",
+    "answers": [
+      "my_list",
+      "len(my_list) > 0",
+      "not my_list == []",
+      "not empty(my_list)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct syntax for defining a class method in Python?\n\n\nclass MyClass:\n    _____ my_method(self):\n        pass\n",
+    "answers": [
+      "def",
+      "method",
+      "function",
+      "class"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you find the length of a string in Python?\n\n\nmy_str = 'Hello'\nlength = _____(my_str)\n",
+    "answers": [
+      "len",
+      "length",
+      "count",
+      "size"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is used to read a file line by line in Python?\n\n\nwith open('file.txt', 'r') as f:\n    for line in f:\n        _____\n",
+    "answers": [
+      "print(line)",
+      "line = f.readline()",
+      "read(line)",
+      "f.readlines()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does the `enumerate()` function do in Python?\n\n\nmy_list = ['a', 'b', 'c']\nfor index, value in _____(my_list):\n    print(index, value)\n",
+    "answers": [
+      "enumerate",
+      "index",
+      "iterate",
+      "pair"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you get the type of a variable in Python?\n\n\nx = 5\ntype_of_x = _____(x)\n",
+    "answers": [
+      "type",
+      "check_type",
+      "var_type",
+      "get_type"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to replace all occurrences of a substring in a string in Python?\n\n\nmy_str = 'hello world'\nresult = my_str.______('world', 'Python')\n",
+    "answers": [
+      "replace",
+      "substitute",
+      "change",
+      "swap"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which operator is used for floor division in Python?\n\n\nresult = 7 _____ 2\n",
+    "answers": [
+      "//",
+      "/",
+      "%",
+      "**"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you define a default parameter in a function in Python?\n\n\ndef greet(name='Guest'):\n    print('Hello, ' + name)\n",
+    "answers": [
+      "name='Guest'",
+      "name: 'Guest'",
+      "name=default",
+      "default(name='Guest')"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you create a shallow copy of a list in Python?\n\n\nmy_list = [1, 2, 3]\nmy_copy = _____(my_list)\n",
+    "answers": [
+      "my_list.copy()",
+      "copy(my_list)",
+      "list(my_list)",
+      "copy_list(my_list)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to convert all characters in a string to uppercase in Python?\n\n\nmy_str = 'hello'\nupper_str = _____(my_str)\n",
+    "answers": [
+      "upper",
+      "uppercase",
+      "capitalize",
+      "toUpperCase"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What keyword is used to define an exception handler in Python?\n\n\ntry:\n    _____\nexcept Exception as e:\n    print('Error occurred')\n",
+    "answers": [
+      "raise",
+      "catch",
+      "throw",
+      "pass"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "How can you check if a string ends with a specific suffix in Python?\n\n\nmy_str = 'hello'\nif my_str._____('lo'):\n    print('Ends with')\n",
+    "answers": [
+      "endswith",
+      "has_suffix",
+      "finishwith",
+      "ends"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What function is used to get the smallest value in a list in Python?\n\n\nmy_list = [3, 1, 2]\nmin_value = _____(my_list)\n",
+    "answers": [
+      "min",
+      "smallest",
+      "lowest",
+      "least"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following methods is used to add an item to the end of a list in Python?\n\n\nmy_list = [1, 2]\nmy_list._____()\n",
+    "answers": [
+      "append",
+      "add",
+      "insert",
+      "push"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What function is used to create an iterator in Python?\n\n\niterable = [1, 2, 3]\nmy_iter = _____(iterable)\n",
+    "answers": [
+      "iter",
+      "iterator",
+      "make_iter",
+      "create_iter"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the output of the following code?\n\n\nx = 10\nx //= 3\nprint(x)\n",
+    "answers": [
+      "3",
+      "2",
+      "1",
+      "10"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you define an instance variable in Python?\n\n\nclass MyClass:\n    def __init__(self, value):\n        self._____ = value\n",
+    "answers": [
+      "variable",
+      "my_variable",
+      "value",
+      "instance_variable"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the output of the following code?\n\n\nx = 5\nprint(x == 5 and x > 3)\n",
+    "answers": [
+      "True",
+      "False",
+      "None",
+      "Error"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you call a method of an object in Python?\n\n\nobj = MyClass()\nobj._____(arg)\n",
+    "answers": [
+      "method",
+      "call",
+      "invoke",
+      "function"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to remove an element from a list by its index in Python?\n\n\nmy_list = [1, 2, 3]\nmy_list._____()\n",
+    "answers": [
+      "remove",
+      "delete",
+      "discard",
+      "pop"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "How do you convert an integer to a string in Python?\n\n\nnum = 10\nstr_num = _____(num)\n",
+    "answers": [
+      "str",
+      "string",
+      "to_string",
+      "convert"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to insert an element at a specific position in a list in Python?\n\n\nmy_list = [1, 2, 3]\nmy_list._____()\n",
+    "answers": [
+      "add_at",
+      "put",
+      "insert",
+      "append_at"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the correct way to import a specific function from a module in Python?\n\n\nfrom math import _____\n",
+    "answers": [
+      "sqrt",
+      "pow",
+      "log",
+      "abs"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you open a file for writing in Python?\n\n\nwith open('file.txt', _____) as f:\n    f.write('Hello, World!')\n",
+    "answers": [
+      "'r'",
+      "'w'",
+      "'wb'",
+      "'a'"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What method is used to convert a list into a string in Python?\n\n\nmy_list = ['a', 'b', 'c']\nresult = ''._____(''.join(my_list))\n",
+    "answers": [
+      "combine",
+      "concatenate",
+      "join",
+      "toString"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "How do you get the current working directory in Python?\n\n\nimport os\ncwd = os._____()\n",
+    "answers": [
+      "getcwd",
+      "current_dir",
+      "get_current_dir",
+      "path"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to remove leading spaces from a string in Python?\n\n\nmy_str = '   Hello'\nresult = my_str._____\n",
+    "answers": [
+      "strip",
+      "rstrip",
+      "remove",
+      "lstrip"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the correct syntax for defining a tuple in Python?\n\n\ntuple = _____\n",
+    "answers": [
+      "(1, 2, 3)",
+      "[1, 2, 3]",
+      "{1, 2, 3}",
+      "<1, 2, 3>"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you define a class method with a decorator in Python?\n\n\nclass MyClass:\n    _____ @classmethod\n    def my_method(cls):\n        pass\n",
+    "answers": [
+      "def",
+      "function",
+      "method",
+      "class"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you remove a key from a dictionary in Python?\n\n\nmy_dict = {'a': 1, 'b': 2}\ndel my_dict[_____]\n",
+    "answers": [
+      "'key'",
+      "'a'",
+      "'value'",
+      "a"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which operator is used to perform exponentiation in Python?\n\n\nresult = 2 _____ 3\n",
+    "answers": [
+      "**",
+      "^",
+      "//",
+      "^^"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does the `abs()` function do in Python?\n\n\nx = -5\nresult = _____(x)\n",
+    "answers": [
+      "abs",
+      "abs_value",
+      "absolute",
+      "positive"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you check if a number is even in Python?\n\n\nif _____(x % 2 == 0):\n    print('Even')\n",
+    "answers": [
+      "else",
+      "elif",
+      "for",
+      "if"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the correct way to create a list comprehension in Python?\n\n\nsquares = [x ** 2 for x in range(5)]\n",
+    "answers": [
+      "list comprehension",
+      "loop",
+      "map",
+      "list"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you create a set from a list in Python?\n\n\nmy_list = [1, 2, 3]\nmy_set = set(_____) \n",
+    "answers": [
+      "my_list",
+      "set(my_list)",
+      "list(my_list)",
+      "set([])"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which method is used to find the index of an element in a list in Python?\n\n\nmy_list = [10, 20, 30]\nindex = my_list._____\n",
+    "answers": [
+      "index",
+      "find",
+      "get_index",
+      "search"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you check if a file exists in Python?\n\n\nimport os\nif os._____('file.txt'):\n    print('File exists')\n",
+    "answers": [
+      "exists",
+      "isfile",
+      "isexist",
+      "file_exists"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the correct way to use a `try-except` block in Python?\n\n\ntry:\n    _____\nexcept Exception as e:\n    print('An error occurred')\n",
+    "answers": [
+      "pass",
+      "raise",
+      "continue",
+      "fail"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following methods is used to sort a list in Python?\n\n\nmy_list = [3, 1, 2]\nmy_list._____()\n",
+    "answers": [
+      "sort",
+      "sorted",
+      "order",
+      "arrange"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you create a range of numbers from 0 to 9 in Python?\n\n\nmy_range = _____(10)\n",
+    "answers": [
+      "number_range",
+      "list_range",
+      "range",
+      "from_range"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "How do you add an item to the beginning of a list in Python?\n\n\nmy_list = [2, 3]\nmy_list._____(1)\n",
+    "answers": [
+      "insert",
+      "append",
+      "prepend",
+      "add"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following methods is used to check if a value exists in a dictionary?\n\n\nmy_dict = {'a': 1, 'b': 2}\nif _____ in my_dict:\n    print('Found')\n",
+    "answers": [
+      "key",
+      "value",
+      "key()",
+      "in"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "How do you raise an exception in Python?\n\n\nraise _____('Something went wrong')\n",
+    "answers": [
+      "Exception",
+      "Error",
+      "RaiseError",
+      "raise"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you convert a string to a list of characters in Python?\n\n\nmy_str = 'hello'\nmy_list = list(_____) \n",
+    "answers": [
+      "my_str",
+      "'hello'",
+      "str(my_str)",
+      "split(my_str)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What method is used to remove all elements from a list in Python?\n\n\nmy_list = [1, 2, 3]\nmy_list._____\n",
+    "answers": [
+      "clear",
+      "remove_all",
+      "reset",
+      "empty"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What method is used to join elements of a tuple into a string in Python?\n\n\nmy_tuple = ('a', 'b', 'c')\nresult = ''._____(''.join(my_tuple))\n",
+    "answers": [
+      "join",
+      "combine",
+      "concatenate",
+      "merge"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct syntax to create a function in Python?\n\n\n_____ greet(name):\n    print(f'Hello, {name}')\n",
+    "answers": [
+      "function",
+      "create",
+      "lambda",
+      "def"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "How do you check the type of a variable in Python?\n\n\nx = 10\ntype_of_x = _____(x)\n",
+    "answers": [
+      "type",
+      "check",
+      "typeof",
+      "var_type"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which function is used to get the sum of elements in a list in Python?\n\n\nmy_list = [1, 2, 3]\ntotal = _____(my_list)\n",
+    "answers": [
+      "total",
+      "sum",
+      "aggregate",
+      "add_all"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How do you check if a number is divisible by 2 in Python?\n\n\nif _____(x % 2 == 0):\n    print('Divisible by 2')\n",
+    "answers": [
+      "elif",
+      "for",
+      "if",
+      "when"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which method is used to remove an item from a list by its value in Python?\n\n\nmy_list = [1, 2, 3]\nmy_list._____()\n",
+    "answers": [
+      "remove",
+      "pop",
+      "delete",
+      "discard"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What operator is used for modulo in Python?\n\n\nresult = 7 _____ 2\n",
+    "answers": [
+      "%",
+      "/",
+      "^",
+      "//"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which function is used to convert a string into an integer in Python?\n\n\nstr_num = '123'\nnum = _____(str_num)\n",
+    "answers": [
+      "integer",
+      "convert",
+      "parse",
+      "int"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Which keyword is used to handle exceptions in Python?\n\n\ntry:\n    _____\nexcept Exception as e:\n    print('Error')\n",
+    "answers": [
+      "except",
+      "catch",
+      "throw",
+      "handle"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you check if a variable is an instance of a class in Python?\n\n\nif isinstance(obj, _____):\n    print('Instance')\n",
+    "answers": [
+      "MyClass",
+      "object",
+      "class",
+      "instance"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you define a constant in Python?\n\n\nCONSTANT_VALUE = _____\n",
+    "answers": [
+      "value",
+      "10",
+      "constant",
+      "5"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What method is used to convert a string to lowercase in Python?\n\n\nmy_str = 'HELLO'\nlower_str = my_str._____\n",
+    "answers": [
+      "lower",
+      "to_lower",
+      "convert_lower",
+      "downcase"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you check if a dictionary contains a specific key in Python?\n\n\nmy_dict = {'a': 1, 'b': 2}\nif _____ in my_dict:\n    print('Key exists')\n",
+    "answers": [
+      "key",
+      "key()",
+      "in",
+      "contains"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What function is used to get the largest value in a list in Python?\n\n\nmy_list = [3, 1, 2]\nlargest_value = _____(my_list)\n",
+    "answers": [
+      "max",
+      "largest",
+      "biggest",
+      "largest_value"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to reverse a list in Python?\n\n\nmy_list = [1, 2, 3]\nmy_list._____()\n",
+    "answers": [
+      "reversed",
+      "flip",
+      "reverse",
+      "invert"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "How do you check the length of a dictionary in Python?\n\n\ndict_data = {'a': 1, 'b': 2}\nlength = _____(dict_data)\n",
+    "answers": [
+      "size",
+      "len",
+      "count",
+      "length"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which function is used to sort a dictionary by key in Python?\n\n\ndict_data = {'b': 2, 'a': 1}\nsorted_dict = _____(dict_data)\n",
+    "answers": [
+      "sorted",
+      "sort",
+      "dict_sort",
+      "order"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you check if a string is empty in Python?\n\n\nmy_str = ''\nif _____(my_str):\n    print('Not Empty')\n",
+    "answers": [
+      "len(my_str) > 0",
+      "not my_str == ''",
+      "is_empty(my_str)",
+      "my_str"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Which method is used to strip leading and trailing whitespaces in Python?\n\n\nmy_str = '  hello  '\nstripped_str = my_str._____\n",
+    "answers": [
+      "remove",
+      "rstrip",
+      "strip",
+      "lstrip"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "How do you get the first element of a list in Python?\n\n\nmy_list = [1, 2, 3]\nfirst_element = my_list[_____]\n",
+    "answers": [
+      "1",
+      "0",
+      "first",
+      "begin"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What method is used to add an item at a specific position in a list in Python?\n\n\nmy_list = [1, 2, 3]\nmy_list._____()\n",
+    "answers": [
+      "insert",
+      "append",
+      "push",
+      "add"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is used to create a generator in Python?\n\n\n_____ x in range(5):\n    yield x\n",
+    "answers": [
+      "loop",
+      "generator",
+      "each",
+      "for"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "How do you convert a list into a tuple in Python?\n\n\nmy_list = [1, 2, 3]\nmy_tuple = _____(my_list)\n",
+    "answers": [
+      "set",
+      "list",
+      "tuple",
+      "convert"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What method is used to count the occurrences of an element in a list in Python?\n\n\nmy_list = [1, 2, 2, 3]\ncount = my_list._____()\n",
+    "answers": [
+      "count",
+      "frequency",
+      "occurances",
+      "check"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you convert a string to a list of words in Python?\n\n\nmy_str = 'Hello world'\nmy_list = my_str._____\n",
+    "answers": [
+      "to_list",
+      "split",
+      "words",
+      "split_words"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How do you check if a list is empty in Python?\n\n\nmy_list = []\nif _____(my_list):\n    print('Not Empty')\n",
+    "answers": [
+      "my_list",
+      "len(my_list) > 0",
+      "not my_list == []",
+      "my_list is not empty"
+    ],
+    "correctAnswer": 0
+  }
+]

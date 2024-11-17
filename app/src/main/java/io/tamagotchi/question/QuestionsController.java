@@ -23,12 +23,26 @@ public class QuestionsController {
         return new Questions(questions);
     }
 
-    public void saveQuestionsToFile(String filePath, Questions questions) {
-        try (FileWriter writer = new FileWriter(filePath)) {
-            Gson gson = new Gson();
-            gson.toJson(questions.getQuestions(), writer);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public String generateFileName(String language, String mode) {
+        return language + "-" + mode + ".json";
     }
+
+//    public void saveQuestionsToFile(String filePath, Questions questions) {
+//        try (FileWriter writer = new FileWriter(filePath)) {
+//            Gson gson = new Gson();
+//            gson.toJson(questions.getQuestions(), writer);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    public void restoreFile(Questions questions, String filePath) {
+//        for (Question question : questions.getQuestions()) {
+//            question.setRepetitions(3);
+//            question.setMastered(false);
+//        }
+//
+//        saveQuestionsToFile(filePath, questions);
+//    }
+
 }
