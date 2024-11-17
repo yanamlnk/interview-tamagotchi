@@ -24,7 +24,7 @@ public class QuestionsController {
     }
 
     public String generateFileName(String language, String mode) {
-        return language + "-" + mode + ".json";
+        return "/questions/" + language.toLowerCase() + "-" + mode + ".json";
     }
 
 //    public void saveQuestionsToFile(String filePath, Questions questions) {
