@@ -24,4 +24,19 @@ public class LevelController {
             return 10;
         }
     }
+
+    static float getXpForThisLevel(int level) {
+        return switch (level) {
+            case 1 -> 30;
+            case 2 -> 70;
+            case 3 -> 120;
+            case 4 -> 180;
+            case 5 -> 250;
+            case 6 -> 340;
+            case 7 -> 440;
+            case 8 -> 550;
+            case 9 -> 670;
+            default -> 0;
+        };
+    }
 }
