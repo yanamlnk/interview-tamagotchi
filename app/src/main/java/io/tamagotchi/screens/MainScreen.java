@@ -112,14 +112,14 @@ public class MainScreen extends Application {
         feedButton.setOnAction(event -> showFeedPopup(primaryStage));
 
         Button playButton = new Button("Play");
-//        playButton.setOnAction(event -> new PlayScreen(pet, language).start(primaryStage));
+        playButton.setOnAction(event -> new QuizScreen(pet, language, "play").start(primaryStage));
 
         HBox actionButtons = new HBox(10, feedButton, playButton);
         actionButtons.setAlignment(Pos.CENTER);
 
         // Go to Work Button
         Button workButton = new Button("Go to Work");
-//        workButton.setOnAction(event -> new WorkScreen(pet, language).start(primaryStage));
+        workButton.setOnAction(event -> new QuizScreen(pet, language, "work").start(primaryStage));
 
         // Add elements to right pane
         rightPane.getChildren().addAll(healthLabel, healthBar, xpLabel, xpBar, levelLabel, moneyRow, actionButtons, workButton);
