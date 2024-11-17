@@ -1,11 +1,15 @@
 package io.tamagotchi.screens;
 
+import io.tamagotchi.TamagotchiException;
+import io.tamagotchi.food.Food;
+import io.tamagotchi.food.FoodFactory;
 import io.tamagotchi.pet.Pet;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -65,8 +69,10 @@ public class MainScreen extends Application {
         animation.setCycleCount(TranslateTransition.INDEFINITE);
         animation.play();
 
+        Label superPower = new Label(pet.getName() + "'s superpower: " + pet.getDescription());
+
         // Add elements to left side
-        leftPane.getChildren().addAll(rulesButton, petImage, petInfo, languageImage);
+        leftPane.getChildren().addAll(rulesButton, petImage, petInfo, languageImage, superPower);
 
         // Right side
         VBox rightPane = new VBox(20);
@@ -173,15 +179,88 @@ public class MainScreen extends Application {
         Label feedLabel = new Label("Feed your pet");
         feedLabel.setFont(Font.font(18));
 
-        Button closeButton = new Button("Close");
+        // Create buttons for each type of food
+        Button burgerButton = createFoodButton("burger");
+        Button fishButton = createFoodButton("fish");
+        Button potatoButton = createFoodButton("potato");
+
+        HBox foods = new HBox(10, burgerButton, fishButton, potatoButton);
+
+        // Close button
+        Button closeButton = new Button("Close Menu");
         closeButton.setOnAction(e -> popup.close());
 
-        layout.getChildren().addAll(feedLabel, closeButton);
+        // Add all buttons to the layout
+        layout.getChildren().addAll(feedLabel, foods, closeButton);
 
-        Scene popupScene = new Scene(layout, 500, 400);
+        Scene popupScene = new Scene(layout, 500, 600);
         popup.setScene(popupScene);
         popup.showAndWait();
     }
+
+    private Button createFoodButton(String foodName) {
+        try {
+            Food food = FoodFactory.create(foodName);
+
+            VBox buttonContent = new VBox(5);
+            buttonContent.setAlignment(Pos.CENTER);
+
+            // Image
+            ImageView foodImage = new ImageView(new Image(food.getImageUrl()));
+            foodImage.setFitWidth(100);
+            foodImage.setPreserveRatio(true);
+
+            TranslateTransition animation = new TranslateTransition(Duration.seconds(1), foodImage);
+            animation.setByY(10);
+            animation.setAutoReverse(true);
+            animation.setCycleCount(TranslateTransition.INDEFINITE);
+            animation.play();
+
+            // Food details
+            Label nameLabel = new Label(foodName.toUpperCase());
+            nameLabel.setFont(Font.font(16));
+
+            Label detailsLabel = new Label("Price: " + food.getPrice() + " | HP: " + food.getHealth());
+
+            // Button
+            Button foodButton = new Button();
+            foodButton.setGraphic(buttonContent);
+
+            // Add elements to the button content
+            buttonContent.getChildren().addAll(foodImage, nameLabel, detailsLabel);
+
+            // Button action
+            foodButton.setOnAction(e -> {
+                try {
+                    pet.spendMoney(food.getPrice());
+                    pet.eat(food);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Success");
+                    alert.setHeaderText(null);
+                    alert.setContentText("You fed your pet with " + foodName + "!");
+                    alert.showAndWait();
+                } catch (TamagotchiException ex) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText(null);
+                    alert.setContentText("You don't have enough money, go to work!");
+                    alert.showAndWait();
+                }
+            });
+
+            return foodButton;
+
+        } catch (TamagotchiException e) {
+            // Handle unknown food exception gracefully
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Failed to create food: " + e.getMessage());
+            alert.showAndWait();
+            return new Button("Error Loading Food");
+        }
+    }
+
 
     private void showGameOverPopup(Stage owner) {
         Stage popup = new Stage();

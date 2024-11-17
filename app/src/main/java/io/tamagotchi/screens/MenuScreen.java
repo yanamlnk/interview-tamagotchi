@@ -126,16 +126,13 @@ public class MenuScreen extends Application {
         HBox petSelection = new HBox(20);
         petSelection.setAlignment(Pos.CENTER);
 
-        List<Pet> pets = new ArrayList<>();
-        try {
-            pets.add(PetFactory.create("gradle"));
-            pets.add(PetFactory.create("docker"));
-            pets.add(PetFactory.create("linux"));
-        } catch (TamagotchiException e) {
-            e.printStackTrace();
-        }
+        List<String> pets = new ArrayList<>();
+        pets.add("gradle");
+        pets.add("docker");
+        pets.add("linux");
 
-        for (Pet pet : pets) {
+
+        for (String pet : pets) {
             ToggleButton petButton = createPetButton(pet, petGroup);
             petSelection.getChildren().add(petButton);
         }
@@ -143,54 +140,61 @@ public class MenuScreen extends Application {
         return petSelection;
     }
 
-    private ToggleButton createPetButton(Pet pet, ToggleGroup petGroup) {
-        ImageView imageView = new ImageView(new Image(pet.getImageUrl()));
-        imageView.setFitWidth(180);
-        imageView.setFitHeight(180);
+    private ToggleButton createPetButton(String tamagotchi, ToggleGroup petGroup) {
+        try {
+            Pet pet = PetFactory.create(tamagotchi);
+            ImageView imageView = new ImageView(new Image(pet.getImageUrl()));
+            imageView.setFitWidth(180);
+            imageView.setFitHeight(180);
 
-        Text name = new Text(pet.getName().toUpperCase() + "\n");
-        name.setFont(customFont);
-        name.setStyle("-fx-font-family: '"+ customFont.getFamily() +"'; -fx-font-size: 25;");
+            Text name = new Text(pet.getName().toUpperCase() + "\n");
+            name.setFont(customFont);
+            name.setStyle("-fx-font-family: '"+ customFont.getFamily() +"'; -fx-font-size: 25;");
 
-        Text description = new Text(pet.getDescription());
-        description.setWrappingWidth(180);
-        description.setFont(customFont);
-        description.setStyle("-fx-font-family: '"+ customFont.getFamily() +"'; -fx-font-size: 18; -fx-text-alignment: center;");
+            Text description = new Text(pet.getDescription());
+            description.setWrappingWidth(180);
+            description.setFont(customFont);
+            description.setStyle("-fx-font-family: '"+ customFont.getFamily() +"'; -fx-font-size: 18; -fx-text-alignment: center;");
 
-        VBox combinedText = new VBox(name, description);
-        combinedText.setAlignment(Pos.CENTER);
+            VBox combinedText = new VBox(name, description);
+            combinedText.setAlignment(Pos.CENTER);
 
-        ToggleButton petButton = new ToggleButton();
-        petButton.setGraphic(new VBox(imageView, combinedText));
-        petButton.setContentDisplay(ContentDisplay.TOP);
+            ToggleButton petButton = new ToggleButton();
+            petButton.setGraphic(new VBox(imageView, combinedText));
+            petButton.setContentDisplay(ContentDisplay.TOP);
 
-        petButton.setToggleGroup(petGroup);
-        petButton.setUserData(pet);
-
-
-        petButton.setStyle("-fx-font-family: '" + customFont.getFamily() + "'; -fx-font-size: 12;");
-        petButton.setFont(customFont);
-
-        petButton.setStyle(buttonStyle);
+            petButton.setToggleGroup(petGroup);
+            petButton.setUserData(pet);
 
 
-        petButton.hoverProperty().addListener((obs, wasHovered, isHovered) -> {
-            if (isHovered && !petButton.isSelected()) {
-                petButton.setStyle(buttonStyleHover);
-            } else {
-                petButton.setStyle(petButton.isSelected() ? buttonStyleSelected : buttonStyle);
-            }
-        });
+            petButton.setStyle("-fx-font-family: '" + customFont.getFamily() + "'; -fx-font-size: 12;");
+            petButton.setFont(customFont);
 
-        petButton.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
-            if (isSelected) {
-                petButton.setStyle(buttonStyleSelected);
-            } else {
-                petButton.setStyle(buttonStyle);
-            }
-        });
+            petButton.setStyle(buttonStyle);
 
-        return petButton;
+
+            petButton.hoverProperty().addListener((obs, wasHovered, isHovered) -> {
+                if (isHovered && !petButton.isSelected()) {
+                    petButton.setStyle(buttonStyleHover);
+                } else {
+                    petButton.setStyle(petButton.isSelected() ? buttonStyleSelected : buttonStyle);
+                }
+            });
+
+            petButton.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
+                if (isSelected) {
+                    petButton.setStyle(buttonStyleSelected);
+                } else {
+                    petButton.setStyle(buttonStyle);
+                }
+            });
+
+            return petButton;
+        } catch (TamagotchiException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     private HBox createLanguageButtons(ToggleGroup languageGroup) {
