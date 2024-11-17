@@ -36,6 +36,7 @@ public abstract class Pet implements Tamagotchi {
     }
 
     public int getLevel() {
+        this.setLevel();
         return level;
     }
 
