@@ -23,4 +23,8 @@ public abstract class Food {
     public int getHealth() {
         return health;
     }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
 }

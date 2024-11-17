@@ -5,7 +5,9 @@ import io.tamagotchi.food.Food;
 
 public abstract class Pet implements Tamagotchi {
     private float health;
-    private float xp;
+    private float totalXp;
+    private float currentXp;
+    private float maxXpForThisLevel;
     private float money;
     private int level;
     private boolean winner;
@@ -17,7 +19,9 @@ public abstract class Pet implements Tamagotchi {
 
     public Pet() {
         this.health = 100;
-        this.xp = 0;
+        this.totalXp = 0;
+        this.currentXp = 0;
+        this.maxXpForThisLevel = LevelController.getXpForThisLevel(1);
         this.money = 0;
         this.level = 1;
         this.winner = false;
@@ -27,8 +31,16 @@ public abstract class Pet implements Tamagotchi {
         return health;
     }
 
-    public float getXp() {
-        return xp;
+    public float getTotalXp() {
+        return totalXp;
+    }
+
+    public float getCurrentXp() {
+        return currentXp;
+    }
+
+    public float getMaxXpForThisLevel() {
+        return maxXpForThisLevel;
     }
 
     public float getMoney() {
@@ -36,6 +48,7 @@ public abstract class Pet implements Tamagotchi {
     }
 
     public int getLevel() {
+        this.setLevel();
         return level;
     }
 
@@ -83,7 +96,7 @@ public abstract class Pet implements Tamagotchi {
 
     @Override
     public void setLevel() {
-        this.level = LevelController.getLevel(this.xp);
+        this.level = LevelController.getLevel(this.totalXp);
         if (this.level == 10) {
             this.winner = true;
         }
@@ -91,7 +104,13 @@ public abstract class Pet implements Tamagotchi {
 
     @Override
     public void gainXp(float xp) {
-        this.xp += xp;
+        this.totalXp += xp;
+        this.currentXp += xp;
+        this.setLevel();
+        maxXpForThisLevel = LevelController.getXpForThisLevel(this.level);
+        if (currentXp >= maxXpForThisLevel) {
+            currentXp = 0;
+        }
     }
 
     @Override

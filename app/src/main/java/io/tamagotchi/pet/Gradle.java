@@ -6,7 +6,7 @@ public class Gradle extends Pet{
     public Gradle() {
         super();
         this.name = "Gradly";
-        this.imageUrl = "gradle.png";
+        this.imageUrl = "gradle.gif";
         this.description = "Gains more HP from food.";
     }
 
