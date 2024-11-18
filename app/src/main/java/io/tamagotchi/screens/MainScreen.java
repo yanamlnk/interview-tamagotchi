@@ -15,7 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -26,6 +28,7 @@ import javafx.util.Duration;
 public class MainScreen extends Application {
     private final Pet pet;
     private final String language;
+    Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
 
     public MainScreen(Pet pet, String language) {
         this.pet = pet;
@@ -39,25 +42,36 @@ public class MainScreen extends Application {
         }
 
         // Root layout divided into left and right
-        HBox root = new HBox(20);
+        HBox root = new HBox(15);
         root.setPadding(new Insets(20));
         root.setStyle("-fx-background-color: #D6EEF2;");
+        root.setAlignment(Pos.CENTER); 
+        HBox.setHgrow(root, Priority.ALWAYS);
 
         // Left side
         VBox leftPane = new VBox(20);
-        leftPane.setAlignment(Pos.TOP_CENTER);
+        leftPane.setAlignment(Pos.CENTER);
         leftPane.setPadding(new Insets(20));
-        leftPane.setPrefWidth(400);
+        leftPane.setMinWidth(300); 
+        leftPane.setMinHeight(700); 
 
         Button rulesButton = new Button("Rules");
+        rulesButton.setFont(font);
+        rulesButton.setStyle("-fx-background-color: #4CAF50; "
+                    + "-fx-text-fill: white; "
+                    + "-fx-padding: 10px 20px; "
+                    + "-fx-background-radius: 5px; "
+                    + "-fx-border-color: #efbf04; "
+                    + "-fx-border-width: 2px; " 
+                    + "-fx-border-radius: 5px;");
         rulesButton.setOnAction(event -> showRulesPopup(primaryStage));
 
         ImageView petImage = new ImageView(new Image(pet.getImageUrl()));
-        petImage.setFitWidth(200);
+        petImage.setFitWidth(300);
         petImage.setPreserveRatio(true);
-
+        
         Label petInfo = new Label(pet.getName() + " learns " + language + ".");
-        petInfo.setFont(Font.font(20));
+        petInfo.setFont(font);
 
         ImageView languageImage = new ImageView(new Image(language.toLowerCase() + ".png"));
         languageImage.setFitWidth(50);
@@ -69,20 +83,23 @@ public class MainScreen extends Application {
         animation.setCycleCount(TranslateTransition.INDEFINITE);
         animation.play();
 
+        // Superpower info
         Label superPower = new Label(pet.getName() + "'s superpower: " + pet.getDescription());
+        superPower.setFont(font);
 
         // Add elements to left side
-        leftPane.getChildren().addAll(rulesButton, petImage, petInfo, languageImage, superPower);
+        leftPane.getChildren().addAll(rulesButton,petImage, petInfo, languageImage, superPower);
 
         // Right side
         VBox rightPane = new VBox(20);
-        rightPane.setAlignment(Pos.TOP_CENTER);
+        rightPane.setAlignment(Pos.CENTER);
         rightPane.setPadding(new Insets(20));
-        rightPane.setPrefWidth(600);
+        rightPane.setMinWidth(300); 
 
         ProgressBar healthBar = new ProgressBar(pet.getHealth() / 100.0);
         healthBar.setPrefWidth(300);
         Label healthLabel = new Label("Health: " + (int) pet.getHealth() + "/100");
+        healthLabel.setFont(font);
 
         if (pet.isDead()) {
             showGameOverPopup(primaryStage);
@@ -91,14 +108,15 @@ public class MainScreen extends Application {
         ProgressBar xpBar = new ProgressBar(pet.getCurrentXp() / pet.getMaxXpForThisLevel());
         xpBar.setPrefWidth(300);
         Label xpLabel = new Label("XP: " + (int) pet.getCurrentXp() + "/" + (int) pet.getMaxXpForThisLevel());
+        xpLabel.setFont(font);
 
         // Level
         Label levelLabel = new Label("Level: " + pet.getLevel());
-        levelLabel.setFont(Font.font(18));
+        levelLabel.setFont(font);
 
         // Money
         Label moneyLabel = new Label("Money: " + (int) pet.getMoney());
-        moneyLabel.setFont(Font.font(18));
+        moneyLabel.setFont(font);
 
         ImageView coinImage = new ImageView(new Image("coin.png"));
         coinImage.setFitWidth(20);
@@ -109,9 +127,26 @@ public class MainScreen extends Application {
 
         // Buttons: Feed and Play
         Button feedButton = new Button("Feed");
+        feedButton.setFont(font);
+        feedButton.setStyle("-fx-background-color: #4CAF50; "
+                    + "-fx-text-fill: white; "
+                    + "-fx-padding: 10px 20px; "
+                    + "-fx-background-radius: 5px; "
+                    + "-fx-border-color: #efbf04; "
+                    + "-fx-border-width: 2px; " 
+                    + "-fx-border-radius: 5px;");
+
         feedButton.setOnAction(event -> showFeedPopup(primaryStage));
 
         Button playButton = new Button("Play");
+        playButton.setFont(font);
+        playButton.setStyle("-fx-background-color: #89CFF0; "
+                    + "-fx-text-fill: white; "
+                    + "-fx-padding: 10px 20px; "
+                    + "-fx-background-radius: 5px; "
+                    + "-fx-border-color: #efbf04; "
+                    + "-fx-border-width: 2px; " 
+                    + "-fx-border-radius: 5px;");
         playButton.setOnAction(event -> new QuizScreen(pet, language, "play").start(primaryStage));
 
         HBox actionButtons = new HBox(10, feedButton, playButton);
@@ -119,6 +154,14 @@ public class MainScreen extends Application {
 
         // Go to Work Button
         Button workButton = new Button("Go to Work");
+        workButton.setFont(font);
+        workButton.setStyle("-fx-background-color: #89CFF0; "
+                    + "-fx-text-fill: white; "
+                    + "-fx-padding: 10px 20px; "
+                    + "-fx-background-radius: 5px; "
+                    + "-fx-border-color: #efbf04; "
+                    + "-fx-border-width: 2px; " 
+                    + "-fx-border-radius: 5px;");
         workButton.setOnAction(event -> new QuizScreen(pet, language, "work").start(primaryStage));
 
         // Add elements to right pane
@@ -128,9 +171,10 @@ public class MainScreen extends Application {
         root.getChildren().addAll(leftPane, rightPane);
 
         // Show the scene
-        Scene scene = new Scene(root, 1000, 800);
+        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("PrepPal");
+        primaryStage.setResizable(true);
         primaryStage.show();
     }
 
@@ -142,21 +186,29 @@ public class MainScreen extends Application {
         VBox layout = new VBox(20);
         layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(20));
-        layout.setStyle("-fx-background-color: #FFFFFF;");
+        layout.setStyle("-fx-background-color: #89CFF0; "
+        + "-fx-text-fill: white; "
+        + "-fx-padding: 10px 20px; "
+        + "-fx-background-radius: 5px; "
+        + "-fx-border-color: #efbf04; "
+        + "-fx-border-width: 2px; " 
+        + "-fx-border-radius: 5px;");
 
         Text rules = new Text("""
-                This is an interview preparation game.
-                You need to keep your pet healthy by feeding it. If your pet looses all health - the game is over.
-                You can earn money by going to work and use it to buy food for your pet.
-                You can also play with your pet to increase its XP.
-                The goal of the game is to reach level 10 of your pet.
-                After each day of work and each play session your pet will loose some health (= gets hungrier).
-                Also, you can't play games if your pet is too hungry.
-                Good luck!""");
-        rules.setFont(Font.font(18));
+            This is an interview preparation game. \nKeep your pet healthy by feeding it. \nIf it loses all health, the game ends. \nEarn money by working to buy food, and play with your pet to gain XP. The goal is to reach level 10.\nWorking or playing makes your pet hungrier, and you can't play if your pet is too hungry. Goodluck!""");
+
+        rules.setFont(font);
         rules.setWrappingWidth(350);
 
         Button closeButton = new Button("Return to Game");
+        closeButton.setFont(font);
+        closeButton.setStyle("-fx-background-color: #4CAF50; "
+        + "-fx-text-fill: white; "
+        + "-fx-padding: 10px 20px; "
+        + "-fx-background-radius: 5px; "
+        + "-fx-border-color: #efbf04; "
+        + "-fx-border-width: 2px; " 
+        + "-fx-border-radius: 5px;");
         closeButton.setOnAction(e -> popup.close());
 
         layout.getChildren().addAll(rules, closeButton);
@@ -174,10 +226,11 @@ public class MainScreen extends Application {
         VBox layout = new VBox(20);
         layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(20));
-        layout.setStyle("-fx-background-color: #FFFFFF;");
+        layout.setStyle("-fx-background-color: #D6EEF2;");
+
 
         Label feedLabel = new Label("Feed your pet");
-        feedLabel.setFont(Font.font(18));
+        feedLabel.setFont(font);
 
         // Create buttons for each type of food
         Button burgerButton = createFoodButton("burger");
@@ -185,15 +238,23 @@ public class MainScreen extends Application {
         Button potatoButton = createFoodButton("potato");
 
         HBox foods = new HBox(10, burgerButton, fishButton, potatoButton);
+        foods.setAlignment(Pos.CENTER);
 
         // Close button
         Button closeButton = new Button("Close Menu");
+        closeButton.setFont(font);
+        closeButton.setStyle("-fx-background-color: #4CAF50; "
+        + "-fx-text-fill: white; "
+        + "-fx-padding: 10px 20px; "
+        + "-fx-background-radius: 5px; "
+        + "-fx-border-color: #efbf04; "
+        + "-fx-border-width: 2px;");
         closeButton.setOnAction(e -> popup.close());
 
         // Add all buttons to the layout
         layout.getChildren().addAll(feedLabel, foods, closeButton);
 
-        Scene popupScene = new Scene(layout, 500, 600);
+        Scene popupScene = new Scene(layout, 700, 600);
         popup.setScene(popupScene);
         popup.showAndWait();
     }
@@ -221,6 +282,7 @@ public class MainScreen extends Application {
             nameLabel.setFont(Font.font(16));
 
             Label detailsLabel = new Label("Price: " + food.getPrice() + " | HP: " + food.getHealth());
+            detailsLabel.setFont(font);
 
             // Button
             Button foodButton = new Button();
@@ -254,7 +316,7 @@ public class MainScreen extends Application {
             // Handle unknown food exception gracefully
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText(null);
+            alert.setHeaderText(null);                    
             alert.setContentText("Failed to create food: " + e.getMessage());
             alert.showAndWait();
             return new Button("Error Loading Food");
@@ -273,7 +335,7 @@ public class MainScreen extends Application {
         layout.setStyle("-fx-background-color: #FFFFFF;");
 
         Label gameOverLabel = new Label("Game Over\nPlease start over and next time don't forget to feed your pet!");
-        gameOverLabel.setFont(Font.font(18));
+        gameOverLabel.setFont(font);
         gameOverLabel.setWrapText(true);
         gameOverLabel.setTextAlignment(TextAlignment.CENTER);
 
@@ -301,7 +363,7 @@ public class MainScreen extends Application {
         layout.setStyle("-fx-background-color: #FFFFFF;");
 
         Label winLabel = new Label("Congratulations!\nYou Win!");
-        winLabel.setFont(Font.font(18));
+        winLabel.setFont(font);
         winLabel.setWrapText(true);
         winLabel.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
 
