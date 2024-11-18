@@ -22,21 +22,10 @@ public class Questions {
 
         while (selectedQuestions.size() < 10 && attempts < 50) {  // Give up after 50 attempts to avoid infinite loops
             Question randomQuestion = questions.get(random.nextInt(questions.size()));
-            if (!randomQuestion.isMastered() && !selectedQuestions.contains(randomQuestion)) {
+            if (!selectedQuestions.contains(randomQuestion)) {
                 selectedQuestions.add(randomQuestion);
             }
             attempts++;
-        }
-
-        if (selectedQuestions.size() < 10) {
-            attempts = 0;
-            while (selectedQuestions.size() < 10 && attempts < 50) {  // Give up after 50 attempts to avoid infinite loops
-                Question randomQuestion = questions.get(random.nextInt(questions.size()));
-                if (!selectedQuestions.contains(randomQuestion)) {
-                    selectedQuestions.add(randomQuestion);
-                }
-                attempts++;
-            }
         }
 
         return selectedQuestions;

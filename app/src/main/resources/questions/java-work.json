@@ -1,0 +1,1112 @@
+[
+  {
+    "question": "What is the time complexity of a binary search algorithm?",
+    "answers": [
+      "O(n)",
+      "O(log n)",
+      "O(n^2)",
+      "O(1)"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which principle does 'Encapsulation' in OOP promote?",
+    "answers": [
+      "Separation of concerns",
+      "Hiding internal details",
+      "Code reusability",
+      "Dynamic method dispatch"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the output of '3 + 2 * 2' in Java?",
+    "answers": [
+      "7",
+      "10",
+      "12",
+      "9"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of these is a NoSQL database?",
+    "answers": [
+      "MySQL",
+      "PostgreSQL",
+      "MongoDB",
+      "OracleDB"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What does 'git merge' do?",
+    "answers": [
+      "Deletes branches",
+      "Combines changes from one branch into another",
+      "Resets the commit history",
+      "Switches branches"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the default value of a boolean in Java?",
+    "answers": [
+      "true",
+      "false",
+      "null",
+      "0"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which data structure uses LIFO?",
+    "answers": [
+      "Queue",
+      "Stack",
+      "Deque",
+      "Heap"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which keyword is used to create a subclass in Java?",
+    "answers": [
+      "extends",
+      "implements",
+      "inherits",
+      "super"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the space complexity of the merge sort algorithm?",
+    "answers": [
+      "O(n)",
+      "O(log n)",
+      "O(n log n)",
+      "O(1)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which HTTP method is idempotent?",
+    "answers": [
+      "GET",
+      "POST",
+      "PATCH",
+      "PUT"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is a lambda expression in Java?",
+    "answers": [
+      "A way to create anonymous methods",
+      "A type of loop",
+      "A reserved keyword",
+      "An interface implementation"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the result of '5 / 2' in Java when both operands are integers?",
+    "answers": [
+      "2.5",
+      "3",
+      "2",
+      "Compilation error"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the purpose of the 'finally' block in Java?",
+    "answers": [
+      "To handle exceptions",
+      "To execute cleanup code",
+      "To define optional code",
+      "To specify preconditions"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which algorithm is used in the 'diff' utility?",
+    "answers": [
+      "Kruskal's algorithm",
+      "Longest Common Subsequence",
+      "Binary search",
+      "Dijkstra's algorithm"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is 'Big-O' notation used for?",
+    "answers": [
+      "Describing algorithm correctness",
+      "Analyzing code readability",
+      "Measuring computational complexity",
+      "Defining programming paradigms"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which protocol is stateless?",
+    "answers": [
+      "TCP",
+      "HTTP",
+      "SMTP",
+      "FTP"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the main difference between HashMap and TreeMap in Java?",
+    "answers": [
+      "HashMap maintains order",
+      "TreeMap is faster",
+      "HashMap uses hashing, TreeMap uses sorting",
+      "TreeMap doesn't allow null keys"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which design pattern uses 'subject' and 'observers'?",
+    "answers": [
+      "Singleton",
+      "Observer",
+      "Factory",
+      "Builder"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of these is a checked exception in Java?",
+    "answers": [
+      "NullPointerException",
+      "ArrayIndexOutOfBoundsException",
+      "IOException",
+      "ArithmeticException"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is a Java 'interface'?",
+    "answers": [
+      "A type of class",
+      "A blueprint for classes",
+      "An implementation of a method",
+      "A reserved keyword"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of these is immutable in Java?",
+    "answers": [
+      "ArrayList",
+      "String",
+      "HashMap",
+      "StringBuilder"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does 'volatile' keyword mean in Java?",
+    "answers": [
+      "Variable is cached",
+      "Variable is non-static",
+      "Variable is thread-safe",
+      "Variable visibility is guaranteed across threads"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is 'polymorphism' in Object-Oriented Programming?",
+    "answers": [
+      "Having multiple constructors",
+      "Same interface, different implementations",
+      "Using final methods",
+      "Code reusability"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which sorting algorithm is unstable?",
+    "answers": [
+      "Merge Sort",
+      "Heap Sort",
+      "Bubble Sort",
+      "Insertion Sort"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does DNS stand for?",
+    "answers": [
+      "Domain Network Server",
+      "Distributed Name Server",
+      "Domain Name System",
+      "Dynamic Network System"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which of these sorting algorithms is 'divide and conquer'?",
+    "answers": [
+      "Selection Sort",
+      "Merge Sort",
+      "Bubble Sort",
+      "Heap Sort"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is 'CI/CD' in software development?",
+    "answers": [
+      "Continuous Integration/Continuous Deployment",
+      "Code Iteration/Code Delivery",
+      "Commit Integration/Code Debugging",
+      "Configuration Input/Continuous Design"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which is a Java Build Automation tool?",
+    "answers": [
+      "Maven",
+      "Eclipse",
+      "JUnit",
+      "Spring"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the main purpose of the 'final' keyword in Java?",
+    "answers": [
+      "To prevent inheritance",
+      "To indicate a constant variable",
+      "To create private methods",
+      "To create abstract classes"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of these data types is not primitive in Java?",
+    "answers": [
+      "int",
+      "char",
+      "String",
+      "boolean"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the use of the 'super' keyword in Java?",
+    "answers": [
+      "To access the parent class constructor",
+      "To define a parent class",
+      "To access private members",
+      "To call static methods"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which design pattern is used to provide a single point of access to a class?",
+    "answers": [
+      "Observer",
+      "Singleton",
+      "Factory",
+      "Proxy"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of the following is the correct way to instantiate a HashMap in Java?",
+    "answers": [
+      "HashMap map = new HashMap();",
+      "Map map = new HashMap();",
+      "HashMap map = new Map();",
+      "Map map = new HashMap<>();"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does 'REST' stand for in web services?",
+    "answers": [
+      "Resource Efficient Service Technology",
+      "Representational State Transfer",
+      "Real-time Environment Service Tool",
+      "Reliable External Service Technology"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of the following is not a valid access modifier in Java?",
+    "answers": [
+      "private",
+      "public",
+      "protected",
+      "hidden"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Which HTTP status code represents 'OK'?",
+    "answers": [
+      "200",
+      "404",
+      "500",
+      "302"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of these is a valid method to read a file in Java?",
+    "answers": [
+      "readFile()",
+      "Scanner.read()",
+      "BufferedReader.read()",
+      "InputStream.read()"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the difference between '==' and 'equals()' in Java?",
+    "answers": [
+      "'==' compares object references, 'equals()' compares object content",
+      "'==' compares object content, 'equals()' compares references",
+      "'==' is used for primitive types only",
+      "'equals()' is for comparing primitive types"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a deadlock in a multi-threaded environment?",
+    "answers": [
+      "When a thread is blocked forever",
+      "When threads are waiting for each other to release resources",
+      "When a thread uses too much CPU",
+      "When a thread runs without interruption"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of these is the correct way to declare a constant in Java?",
+    "answers": [
+      "const int MAX_VALUE = 100;",
+      "public final int MAX_VALUE = 100;",
+      "final public int MAX_VALUE = 100;",
+      "int MAX_VALUE = 100;"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which type of loop is used for iterating over a collection in Java?",
+    "answers": [
+      "while loop",
+      "do-while loop",
+      "for-each loop",
+      "for loop"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What does the 'static' keyword mean in Java?",
+    "answers": [
+      "The variable or method is shared among all instances of a class",
+      "The variable or method is only available in the current instance",
+      "The variable or method is only accessible within the constructor",
+      "The variable or method is temporary"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does the 'synchronized' keyword do in Java?",
+    "answers": [
+      "It locks the entire class",
+      "It prevents access to a method from multiple threads at once",
+      "It allows multiple threads to access the method concurrently",
+      "It prevents the method from being overridden"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of the following is a valid method signature in Java?",
+    "answers": [
+      "void myMethod()",
+      "void myMethod(int a, int b)",
+      "void myMethod(int, int)",
+      "void myMethod(int a = 0)"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of the following is the correct syntax to create an object in Java?",
+    "answers": [
+      "new ClassName()",
+      "ClassName new()",
+      "ClassName obj = new()",
+      "ClassName obj = ClassName.new()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is an 'interface' in Java?",
+    "answers": [
+      "A concrete class",
+      "A type with only abstract methods",
+      "A type with both abstract and concrete methods",
+      "A class that can only implement methods"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does 'SQL JOIN' do?",
+    "answers": [
+      "Combines data from multiple tables into one result set",
+      "Deletes data from a table",
+      "Creates a backup of a table",
+      "Creates a new table"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which data structure is used for breadth-first search?",
+    "answers": [
+      "Stack",
+      "Queue",
+      "Linked List",
+      "Array"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of the following is a feature of Python?",
+    "answers": [
+      "Compiled language",
+      "Interpreted language",
+      "Low-level language",
+      "Statically typed"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the 'finalize()' method in Java used for?",
+    "answers": [
+      "To clean up resources before an object is destroyed",
+      "To indicate an object is no longer used",
+      "To execute code after the program terminates",
+      "To prevent an object from being garbage collected"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is the correct way to define a method in Python?",
+    "answers": [
+      "def myMethod():",
+      "method myMethod():",
+      "public void myMethod():",
+      "create myMethod()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does 'XML' stand for?",
+    "answers": [
+      "Extensible Markup Language",
+      "Extensive Markup Language",
+      "Executable Markup Language",
+      "External Markup Language"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does 'OAuth' stand for?",
+    "answers": [
+      "Open Authentication",
+      "Open Authorization",
+      "Object Authorization",
+      "Object Authentication"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which method is used to start a thread in Java?",
+    "answers": [
+      "start()",
+      "run()",
+      "execute()",
+      "begin()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does the 'this' keyword refer to in Java?",
+    "answers": [
+      "The current instance of the class",
+      "The parent class",
+      "The previous method",
+      "The constructor"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which class is the parent of all classes in Java?",
+    "answers": [
+      "Object",
+      "Base",
+      "Class",
+      "Parent"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which Java collection allows duplicate elements?",
+    "answers": [
+      "Set",
+      "List",
+      "Queue",
+      "Map"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the default size of a Java array?",
+    "answers": [
+      "10",
+      "100",
+      "It depends on the type of the array",
+      "The size must be defined by the user"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is a 'compilation error'?",
+    "answers": [
+      "A mistake found during code execution",
+      "A mistake found while compiling code",
+      "An error in logic",
+      "A runtime exception"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the difference between a 'Class' and an 'Object'?",
+    "answers": [
+      "Class is an instance, Object is a blueprint",
+      "Class is a blueprint, Object is an instance",
+      "Both Class and Object are the same",
+      "Class refers to a method, Object refers to a variable"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the purpose of the 'super' keyword in a constructor?",
+    "answers": [
+      "To invoke the parent class's constructor",
+      "To prevent inheritance",
+      "To create static methods",
+      "To define a constant"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the output of 'System.out.println(1 + 2 + \"Hello\");'?",
+    "answers": [
+      "3Hello",
+      "Hello3",
+      "Error",
+      "1Hello2"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does 'JVM' stand for?",
+    "answers": [
+      "Java Virtual Machine",
+      "Java Value Method",
+      "Java Verification Method",
+      "Java Versatile Machine"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following methods is used to add an element in an ArrayList?",
+    "answers": [
+      "addElement()",
+      "insert()",
+      "add()",
+      "insertAt()"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which of the following is used to handle exceptions in Java?",
+    "answers": [
+      "try-catch block",
+      "throw-throws block",
+      "catch-finally block",
+      "error-handling block"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which data structure is used to implement a LIFO (Last In First Out) principle?",
+    "answers": [
+      "Queue",
+      "Stack",
+      "List",
+      "Array"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the purpose of the 'volatile' keyword in Java?",
+    "answers": [
+      "To indicate that a variable can be modified by multiple threads",
+      "To mark a variable as constant",
+      "To allow methods to be accessed globally",
+      "To prevent inheritance of a class"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does the 'finally' block do in Java exception handling?",
+    "answers": [
+      "It executes whether an exception is thrown or not",
+      "It catches the exception",
+      "It is executed only if an exception occurs",
+      "It terminates the program if an exception occurs"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is an example of a Java wrapper class?",
+    "answers": [
+      "int",
+      "Integer",
+      "boolean",
+      "Bool"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of the following collections allows duplicate elements?",
+    "answers": [
+      "Set",
+      "Map",
+      "List",
+      "Queue"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What does the 'return' keyword do in Java?",
+    "answers": [
+      "Exits the method and optionally returns a value",
+      "Pauses the execution of the program",
+      "Throws an exception",
+      "Interrupts a loop"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of these is used to identify a class method in Java?",
+    "answers": [
+      "Method signature",
+      "Method body",
+      "Method declaration",
+      "Method constructor"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the result of the expression '5 / 2' in Java?",
+    "answers": [
+      "2.5",
+      "2",
+      "3",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which class is used to read a file in Java?",
+    "answers": [
+      "FileReader",
+      "BufferedReader",
+      "FileInputStream",
+      "Scanner"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the main function of a constructor in Java?",
+    "answers": [
+      "To initialize objects",
+      "To define methods",
+      "To declare variables",
+      "To destroy objects"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the purpose of the 'default' keyword in a Java interface?",
+    "answers": [
+      "To provide a default implementation for an interface method",
+      "To specify default access modifier",
+      "To define a default constructor",
+      "To indicate a default return type"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of these is used to iterate over the keys of a Map in Java?",
+    "answers": [
+      "keySet()",
+      "entrySet()",
+      "values()",
+      "keys()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following best describes polymorphism in object-oriented programming?",
+    "answers": [
+      "Multiple classes using the same method name with different behaviors",
+      "Multiple classes inheriting the same method",
+      "A class having multiple constructors",
+      "A class having multiple variables"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the purpose of the 'hashCode()' method in Java?",
+    "answers": [
+      "To compare objects for equality",
+      "To generate a unique identifier for an object",
+      "To clone an object",
+      "To define the size of an object"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which exception is thrown when an array index is out of bounds in Java?",
+    "answers": [
+      "NullPointerException",
+      "ArrayIndexOutOfBoundsException",
+      "ArithmeticException",
+      "IndexOutOfBoundsException"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does 'superclass' refer to in Java?",
+    "answers": [
+      "A class that is inherited by other classes",
+      "A class that does not inherit from any other class",
+      "A class that can only inherit one class",
+      "A class that overrides methods from another class"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is a valid method to parse a string to an integer in Java?",
+    "answers": [
+      "Integer.parseInt()",
+      "String.parseInt()",
+      "Integer.toInt()",
+      "parseInt()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of these is a valid return type for a Java method?",
+    "answers": [
+      "void",
+      "int",
+      "String",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What does the 'continue' keyword do in Java?",
+    "answers": [
+      "Terminates the current loop",
+      "Skips the current iteration of a loop",
+      "Breaks the program execution",
+      "Starts a new loop"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of the following is used to create a thread in Java?",
+    "answers": [
+      "Thread.start()",
+      "Thread.run()",
+      "Thread.execute()",
+      "Thread.create()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does 'JDBC' stand for in Java?",
+    "answers": [
+      "Java Database Connectivity",
+      "Java Development Core",
+      "Java Database Code",
+      "Java Data Communication"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is an immutable class in Java?",
+    "answers": [
+      "String",
+      "StringBuilder",
+      "ArrayList",
+      "HashMap"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the output of 'System.out.println(0.1 + 0.2 == 0.3);' in Java?",
+    "answers": [
+      "true",
+      "false",
+      "Error",
+      "Undefined"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the difference between 'ArrayList' and 'LinkedList' in Java?",
+    "answers": [
+      "ArrayList uses a dynamic array, LinkedList uses a doubly-linked list",
+      "ArrayList is slower than LinkedList",
+      "LinkedList uses an array, ArrayList uses a linked list",
+      "ArrayList can store only objects, LinkedList can store primitives"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to remove an element from a HashMap?",
+    "answers": [
+      "remove()",
+      "delete()",
+      "clear()",
+      "pop()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of these is a Java framework for building web applications?",
+    "answers": [
+      "Spring",
+      "JDBC",
+      "JSP",
+      "Hibernate"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is the correct syntax to declare an array in Java?",
+    "answers": [
+      "int[] arr = new int[5];",
+      "int arr[] = new int[5];",
+      "arr int[] = new int[5];",
+      "int arr[] = int[5];"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the default value of a boolean in Java?",
+    "answers": [
+      "true",
+      "false",
+      "null",
+      "0"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does the 'public' access modifier mean in Java?",
+    "answers": [
+      "The method or variable can be accessed by any class",
+      "The method or variable is restricted to the same package",
+      "The method or variable is only accessible in the same class",
+      "The method or variable can only be accessed by subclasses"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to start a thread in Java?",
+    "answers": [
+      "start()",
+      "run()",
+      "execute()",
+      "begin()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does the 'static' keyword mean in Java?",
+    "answers": [
+      "The method belongs to the class, not the instance",
+      "The method is temporary",
+      "The variable is not modifiable",
+      "The variable or method is shared among all instances"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the difference between 'equals()' and 'hashCode()' in Java?",
+    "answers": [
+      "'equals()' checks for object equality, 'hashCode()' returns a unique identifier for an object",
+      "'equals()' compares object memory locations, 'hashCode()' compares object values",
+      "'equals()' is for comparing primitive types, 'hashCode()' is for objects",
+      "'equals()' compares object classes, 'hashCode()' is used for method resolution"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of these is an example of an exception in Java?",
+    "answers": [
+      "NullPointerException",
+      "ArithmeticError",
+      "ExceptionError",
+      "MemoryLeakError"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the primary purpose of the 'finally' block in Java exception handling?",
+    "answers": [
+      "To execute code regardless of whether an exception is thrown",
+      "To rethrow an exception",
+      "To handle caught exceptions",
+      "To stop execution of the program"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is used to import packages in Java?",
+    "answers": [
+      "import package.name;",
+      "use package.name;",
+      "include package.name;",
+      "import from package.name;"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the difference between 'ArrayList' and 'Vector' in Java?",
+    "answers": [
+      "ArrayList is not synchronized, while Vector is synchronized",
+      "ArrayList is faster than Vector",
+      "Vector is preferred for thread safety",
+      "Both are essentially the same"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does the 'throw' keyword do in Java?",
+    "answers": [
+      "It is used to throw an exception manually",
+      "It is used to declare an exception",
+      "It rethrows an exception",
+      "It catches an exception"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of these keywords is used to prevent a method from being overridden in Java?",
+    "answers": [
+      "final",
+      "static",
+      "abstract",
+      "private"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the return type of the 'main' method in Java?",
+    "answers": [
+      "void",
+      "int",
+      "String",
+      "Object"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of these is a feature of the 'enum' type in Java?",
+    "answers": [
+      "It can be used to define a set of constants",
+      "It is used to store variables",
+      "It is used to store methods",
+      "It is a type of interface"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the default value of an instance variable of type 'int' in Java?",
+    "answers": [
+      "0",
+      "null",
+      "undefined",
+      "1"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following is used for performing database transactions in Java?",
+    "answers": [
+      "JDBC",
+      "JSP",
+      "Spring",
+      "EJB"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which Java keyword is used to inherit a class?",
+    "answers": [
+      "extends",
+      "implements",
+      "inherits",
+      "super"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the result of the expression '5/2' in Java?",
+    "answers": [
+      "2",
+      "2.5",
+      "3",
+      "1.5"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of these is a correct declaration of a thread in Java?",
+    "answers": [
+      "Thread t = new Thread();",
+      "Thread t = Thread();",
+      "Thread t = new Runnable();",
+      "Thread t = Thread.new();"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following interfaces does a class need to implement to be used as a collection in Java?",
+    "answers": [
+      "Collection",
+      "List",
+      "Set",
+      "Iterable"
+    ],
+    "correctAnswer": 0
+  }
+]

@@ -109,7 +109,12 @@ public class MainScreen extends Application {
 
         // Buttons: Feed and Play
         Button feedButton = new Button("Feed");
-        feedButton.setOnAction(event -> showFeedPopup(primaryStage));
+        feedButton.setOnAction(event -> {
+            showFeedPopup(primaryStage);
+            healthLabel.setText("Health: " + (int) pet.getHealth() + "/100");
+            healthBar.setProgress(pet.getHealth() / 100.0);
+            moneyLabel.setText("Money: " + (int) pet.getMoney());
+        });
 
         Button playButton = new Button("Play");
         playButton.setOnAction(event -> new QuizScreen(pet, language, "play").start(primaryStage));
