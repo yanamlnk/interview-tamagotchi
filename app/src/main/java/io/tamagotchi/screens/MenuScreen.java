@@ -1,7 +1,12 @@
 package io.tamagotchi.screens;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import io.tamagotchi.TamagotchiException;
-import io.tamagotchi.pet.*;
+import io.tamagotchi.pet.Pet;
+import io.tamagotchi.pet.PetFactory;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,10 +22,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class MenuScreen extends Application {
     private Pet selectedPet = null;
@@ -57,6 +58,7 @@ public class MenuScreen extends Application {
         title.setFont(customFont);
         title.setWrappingWidth(800); // Limit the text width to 300px
         title.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+
 
         // Pet selection buttons
         ToggleGroup petGroup = new ToggleGroup();

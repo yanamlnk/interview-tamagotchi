@@ -87,6 +87,14 @@ public class MainScreen extends Application {
         Label superPower = new Label(pet.getName() + "'s superpower: " + pet.getDescription());
         superPower.setFont(font);
 
+        VBox card = new VBox(10);  // 10px spacing between elements
+        card.setStyle("-fx-background-color: #FFFFFF; "
+                    + "-fx-padding: 20px; "
+                    + "-fx-background-radius: 10px; " 
+                    + "-fx-border-color: #B0B0B0; " 
+                    + "-fx-border-width: 2px; "
+                    + "-fx-border-radius: 10px;");
+
         // Add elements to left side
         leftPane.getChildren().addAll(rulesButton,petImage, petInfo, languageImage, superPower);
 
