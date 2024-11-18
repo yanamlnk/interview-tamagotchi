@@ -33,14 +33,9 @@ public class QuizScreen extends Application {
     private String buttonStyle;
     private String buttonStyleHover;
     private String buttonStyleSelected;
-
-
-    private String startButtonStyleActive = "-fx-background-color: #A0DF95; " +
-            "-fx-border-color: black; " +
-            "-fx-border-width: 2px;";
-    private String startButtonStyleHover = "-fx-background-color: #8AC380; " +
-            "-fx-border-color: black; " +
-            "-fx-border-width: 2px;";
+    private String submitButtonStyle;
+    private String submitButtonStyleActive;
+    private String submitButtonStyleHover;
 
     public QuizScreen(Pet pet, String language, String mode) {
         this.pet = pet;
@@ -71,6 +66,25 @@ public class QuizScreen extends Application {
                 "-fx-font-family: '" + (mode.equals("play") ? "Courier New" : customFont.getFamily()) + "';" +
                 "-fx-font-size: 20px;"  +
                 "-fx-text-alignment: center;";
+
+        this.submitButtonStyle = "-fx-background-color: transparent; " +
+                "-fx-border-color: black; " +
+                "-fx-border-width: 2px;" +
+                "-fx-font-family: '" + customFont.getFamily() + "';" +
+                "-fx-font-size: 20px;" +
+                "-fx-text-alignment: center;";
+        this.submitButtonStyleActive = "-fx-background-color: #A0DF95; " +
+                "-fx-border-color: black; " +
+                "-fx-border-width: 2px;" +
+                "-fx-font-family: '" +  customFont.getFamily() + "';" +
+                "-fx-font-size: 20px;"  +
+                "-fx-text-alignment: center;";
+        this.submitButtonStyleHover = "-fx-background-color: #8AC380; " +
+                "-fx-border-color: black; " +
+                "-fx-border-width: 2px;" +
+                "-fx-font-family: '" + customFont.getFamily() + "';" +
+                "-fx-font-size: 20px;"  +
+                "-fx-text-alignment: center;";
     }
 
     @Override
@@ -83,6 +97,11 @@ public class QuizScreen extends Application {
             showSummary(primaryStage);
             return;
         }
+
+        Label numberOfQuestion = new Label("Question " + (currentQuestionIndex + 1) + " of " + questions.size() + "\n\n");
+        numberOfQuestion.setFont(customFont);
+        numberOfQuestion.setAlignment(Pos.CENTER);
+        numberOfQuestion.setStyle("-fx-font-family: '"+ customFont.getFamily()+ "'; -fx-font-size: 16px; -fx-text-alignment: center;");
 
         Question currentQuestion = questions.get(currentQuestionIndex);
 
@@ -182,11 +201,26 @@ public class QuizScreen extends Application {
         Button submitButton = new Button("Submit");
         submitButton.setDisable(true);
         submitButton.setFont(customFont);
-        submitButton.setStyle("-fx-font-family: '" + customFont.getFamily() + "'; -fx-font-size: 20px;");
+        submitButton.setStyle(submitButtonStyle);
 
         answerGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 submitButton.setDisable(false);
+                submitButton.setStyle(submitButtonStyleActive);
+            }
+
+            if (newValue == null) {
+                answerGroup.selectToggle(oldValue);
+            }
+        });
+
+        submitButton.hoverProperty().addListener((obs, wasHovered, isHovered) -> {
+            if (isHovered && !submitButton.isDisabled()) {
+                submitButton.setStyle(submitButtonStyleHover);
+            } else if (!submitButton.isDisabled()) {
+                submitButton.setStyle(submitButtonStyleActive);
+            } else {
+                submitButton.setStyle(submitButtonStyle);
             }
         });
 
@@ -225,7 +259,7 @@ public class QuizScreen extends Application {
             });
         });
 
-        root.getChildren().addAll(questionBox, answerGrid, submitButton);
+        root.getChildren().addAll(numberOfQuestion, questionBox, answerGrid, submitButton);
 
         // Scene setup
         Scene scene = new Scene(root, 1000, 800);
@@ -238,23 +272,39 @@ public class QuizScreen extends Application {
         VBox root = new VBox(20);
         root.setPadding(new Insets(20));
         root.setAlignment(Pos.CENTER);
+        root.setStyle("-fx-background-color: #D6EEF2;");
 
+        Label result = new Label();
         // Calculate rewards and penalties
         if (mode.equals("work")) {
             int coinsGained = 3 + (int) (correctAnswers * 0.5);
             pet.gainMoney(coinsGained);
             pet.looseHealth(20);
-            root.getChildren().add(new Label("You earned " + coinsGained + " coins!"));
+            result.setText("You earned " + coinsGained + " coins!");
         } else if (mode.equals("play")) {
             int xpGained = 10 + (2 * correctAnswers);
             pet.gainXp(xpGained);
             pet.looseHealth(30);
-            root.getChildren().add(new Label("You gained " + xpGained + " XP!"));
+            result.setText("You gained " + xpGained + " XP!");
         }
+        result.setFont(customFont);
+        result.setStyle("-fx-font-family: '"+ customFont.getFamily()+ "'; -fx-font-size: 30px; -fx-text-alignment: center;");
+
+        root.getChildren().add(result);
 
         // Return to Main Screen button
         Button returnButton = new Button("Return to Main Screen");
         returnButton.setOnAction(event -> new MainScreen(pet, language).start(primaryStage));
+
+        returnButton.setStyle(submitButtonStyleActive);
+
+        returnButton.hoverProperty().addListener((obs, wasHovered, isHovered) -> {
+            if (isHovered) {
+                returnButton.setStyle(submitButtonStyleHover);
+            } else {
+                returnButton.setStyle(submitButtonStyleActive);
+            }
+        });
 
         root.getChildren().add(returnButton);
 
