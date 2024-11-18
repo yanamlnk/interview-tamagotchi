@@ -197,6 +197,8 @@ public class QuizScreen extends Application {
             answerGrid.add(answerButton, col, row);
         }
 
+        answerButtons.forEach(button -> button.setPrefHeight(100));
+
         // Submit button
         Button submitButton = new Button("Submit");
         submitButton.setDisable(true);
@@ -239,14 +241,16 @@ public class QuizScreen extends Application {
                             "-fx-border-color: black; " +
                             "-fx-border-width: 2px;" +
                             "-fx-font-family: '" + (mode.equals("play") ? "Courier New" : customFont.getFamily()) + "';" +
-                            "-fx-font-size: 20px;");
+                            "-fx-font-size: 20px;" +
+                            "-fx-text-alignment: center;");
                 } else {
                     answerButtons.get(i).setStyle("-fx-background-color: #fa5252; " +
                             "-fx-text-fill: black;" +
                             "-fx-border-color: black; " +
                             "-fx-border-width: 2px;" +
                             "-fx-font-family: '" + (mode.equals("play") ? "Courier New" : customFont.getFamily()) + "';" +
-                            "-fx-font-size: 20px;");
+                            "-fx-font-size: 20px;"+
+                            "-fx-text-alignment: center;");
                 }
                 answerButtons.get(i).setDisable(true);
             }
