@@ -8,67 +8,181 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuizScreen extends Application {
     private final Pet pet;
     private final String language;
     private final String mode;
-    private List<Question> questions;
+    private final List<Question> questions;
     private int currentQuestionIndex = 0;
     private int correctAnswers = 0;
-    private Button submitButton;
-    private ToggleGroup answerGroup;
-    private VBox questionBox;
+    private Font customFont;
+
+    private String buttonStyle;
+    private String buttonStyleHover;
+    private String buttonStyleSelected;
+
+
+    private String startButtonStyleActive = "-fx-background-color: #A0DF95; " +
+            "-fx-border-color: black; " +
+            "-fx-border-width: 2px;";
+    private String startButtonStyleHover = "-fx-background-color: #8AC380; " +
+            "-fx-border-color: black; " +
+            "-fx-border-width: 2px;";
 
     public QuizScreen(Pet pet, String language, String mode) {
         this.pet = pet;
         this.language = language;
         this.mode = mode;
+
+        QuestionsController controller = new QuestionsController();
+        String filePath = controller.generateFileName(language, mode);
+        Questions loadedQuestions = controller.loadQuestionsFromFile(getClass().getResource(filePath).getPath());
+        this.questions = loadedQuestions.getRandomQuestions();
+        this.customFont = Font.loadFont(getClass().getResource("/fonts/upheavtt.ttf").toExternalForm(), 12);
+
+        this.buttonStyle = "-fx-background-color: transparent; " +
+                "-fx-border-color: black; " +
+                "-fx-border-width: 2px;" +
+                "-fx-font-family: '" + (mode.equals("play") ? "Courier New" : customFont.getFamily()) + "';" +
+                "-fx-font-size: 20px;" +
+                "-fx-text-alignment: center;";
+        this.buttonStyleHover = "-fx-background-color: #C2ECF4; " +
+                "-fx-border-color: black; " +
+                "-fx-border-width: 2px;" +
+                "-fx-font-family: '" + (mode.equals("play") ? "Courier New" : customFont.getFamily()) + "';" +
+                "-fx-font-size: 20px;"  +
+                "-fx-text-alignment: center;";
+        this.buttonStyleSelected = "-fx-background-color: #94CED8; " +
+                "-fx-border-color: black; " +
+                "-fx-border-width: 2px;" +
+                "-fx-font-family: '" + (mode.equals("play") ? "Courier New" : customFont.getFamily()) + "';" +
+                "-fx-font-size: 20px;"  +
+                "-fx-text-alignment: center;";
     }
 
     @Override
     public void start(Stage primaryStage) {
-        QuestionsController questionsController = new QuestionsController();
-        String filePath = getClass().getResource("/questions/" + language.toLowerCase() + "-" + mode + ".json").getPath();
-        questions = questionsController.loadQuestionsFromFile(filePath).getRandomQuestions();
-
-        questionBox = new VBox(20);
-        questionBox.setPadding(new Insets(20));
-        questionBox.setAlignment(Pos.CENTER);
-
-        submitButton = new Button("Submit");
-        submitButton.setDisable(true);
-        submitButton.setOnAction(event -> handleSubmit(primaryStage));
-
-        showQuestion();
-
-        VBox root = new VBox(20, questionBox, submitButton);
-        root.setPadding(new Insets(20));
-        root.setAlignment(Pos.CENTER);
-
-        Scene scene = new Scene(root, 800, 600);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Quiz");
-        primaryStage.show();
+        showNextQuestion(primaryStage);
     }
 
-    private void showQuestion() {
-        Question question = questions.get(currentQuestionIndex);
-        Label questionLabel = new Label(question.getQuestion());
-        answerGroup = new ToggleGroup();
+    private void showNextQuestion(Stage primaryStage) {
+        if (currentQuestionIndex >= questions.size()) {
+            showSummary(primaryStage);
+            return;
+        }
 
-        VBox answersBox = new VBox(10);
-        for (int i = 0; i < question.getAnswers().size(); i++) {
-            RadioButton answerButton = new RadioButton(question.getAnswers().get(i));
+        Question currentQuestion = questions.get(currentQuestionIndex);
+
+        // Layout for the quiz screen
+        VBox root = new VBox(20);
+        root.setPadding(new Insets(20));
+        root.setAlignment(Pos.CENTER);
+        root.setStyle("-fx-background-color: #D6EEF2;");
+
+        // Display question
+        Label questionLabel;
+        VBox questionBox = new VBox();
+        questionBox.setAlignment(Pos.CENTER);
+
+        if (mode.equals("play")) {
+            String[] parts = currentQuestion.getQuestion().split("\n\n\n", 2);
+            questionLabel = new Label(parts[0] + "\n\n");
+            Label codeLabel = new Label(parts[1] + "\n\n");
+
+            codeLabel.setWrapText(true);
+            codeLabel.setStyle("-fx-font-family: 'Courier New'; -fx-font-size: 25px;");
+
+            questionBox.getChildren().addAll(questionLabel, codeLabel);
+        } else {
+            questionLabel = new Label(currentQuestion.getQuestion() + "\n\n");
+            questionBox.getChildren().add(questionLabel);
+        }
+
+        questionLabel.setWrapText(true);
+        questionLabel.setFont(customFont);
+        questionLabel.setStyle("-fx-font-family: '"+ customFont.getFamily()+ "'; -fx-font-size: 30px; -fx-text-alignment: center;");
+
+        // Display answers as toggle buttons
+        ToggleGroup answerGroup = new ToggleGroup();
+        List<ToggleButton> answerButtons = new ArrayList<>();
+        for (int i = 0; i < currentQuestion.getAnswers().size(); i++) {
+            String answerText = currentQuestion.getAnswers().get(i);
+            ToggleButton answerButton = new ToggleButton(answerText);
             answerButton.setToggleGroup(answerGroup);
             answerButton.setUserData(i);
-            answersBox.getChildren().add(answerButton);
+            answerButton.setMaxWidth(Double.MAX_VALUE);
+            answerButton.setAlignment(Pos.CENTER);
+            answerButton.setFont(customFont);
+            answerButton.setWrapText(true);
+            answerButtons.add(answerButton);
+
+            answerButton.setStyle(buttonStyle);
+
+
+            answerButton.hoverProperty().addListener((obs, wasHovered, isHovered) -> {
+                if (isHovered && !answerButton.isSelected()) {
+                    answerButton.setStyle(buttonStyleHover);
+                } else {
+                    answerButton.setStyle(answerButton.isSelected() ? buttonStyleSelected : buttonStyle);
+                }
+            });
+
+            answerButton.selectedProperty().addListener((obs, wasSelected, isSelected) -> {
+                if (isSelected) {
+                    answerButton.setStyle(buttonStyleSelected);
+                } else {
+                    answerButton.setStyle(buttonStyle);
+                }
+            });
         }
+
+        GridPane answerGrid = new GridPane();
+        answerGrid.setHgap(10);
+        answerGrid.setVgap(10);
+        answerGrid.setAlignment(Pos.CENTER);
+//        answerGrid.add(answerButtons.get(0), 0, 0);
+//        answerGrid.add(answerButtons.get(1), 1, 0);
+//        answerGrid.add(answerButtons.get(2), 0, 1);
+//        answerGrid.add(answerButtons.get(3), 1, 1);
+
+        answerGrid.setPrefWidth(Double.MAX_VALUE); // Make grid fill the parent
+
+// Add column constraints for equal division
+        ColumnConstraints col1 = new ColumnConstraints();
+        ColumnConstraints col2 = new ColumnConstraints();
+        col1.setPercentWidth(50);
+        col2.setPercentWidth(50);
+        answerGrid.getColumnConstraints().addAll(col1, col2);
+
+// Add buttons
+        for (int i = 0; i < answerButtons.size(); i++) {
+            ToggleButton answerButton = answerButtons.get(i);
+            answerButton.setMaxWidth(Double.MAX_VALUE); // Button fills cell width
+            GridPane.setFillWidth(answerButton, true);
+
+            int col = i % 2; // 0 for first column, 1 for second
+            int row = i / 2; // Increment row every 2 buttons
+            answerGrid.add(answerButton, col, row);
+        }
+
+        // Submit button
+        Button submitButton = new Button("Submit");
+        submitButton.setDisable(true);
+        submitButton.setFont(customFont);
+        submitButton.setStyle("-fx-font-family: '" + customFont.getFamily() + "'; -fx-font-size: 20px;");
 
         answerGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -76,47 +190,77 @@ public class QuizScreen extends Application {
             }
         });
 
-        questionBox.getChildren().setAll(questionLabel, answersBox);
-    }
+        submitButton.setOnAction(event -> {
+            int selectedAnswer = (int) answerGroup.getSelectedToggle().getUserData();
+            boolean isCorrect = selectedAnswer == currentQuestion.getCorrectAnswer();
+            if (isCorrect) {
+                correctAnswers++;
+            }
 
-    private void handleSubmit(Stage primaryStage) {
-        int selectedAnswer = (int) answerGroup.getSelectedToggle().getUserData();
-        Question question = questions.get(currentQuestionIndex);
+            // Show correct/incorrect answers
+            for (int i = 0; i < answerButtons.size(); i++) {
+                if (i == currentQuestion.getCorrectAnswer()) {
+                    answerButtons.get(i).setStyle("-fx-background-color: #A0DF95; " +
+                            "-fx-text-fill: black;" +
+                            "-fx-border-color: black; " +
+                            "-fx-border-width: 2px;" +
+                            "-fx-font-family: '" + (mode.equals("play") ? "Courier New" : customFont.getFamily()) + "';" +
+                            "-fx-font-size: 20px;");
+                } else {
+                    answerButtons.get(i).setStyle("-fx-background-color: #fa5252; " +
+                            "-fx-text-fill: black;" +
+                            "-fx-border-color: black; " +
+                            "-fx-border-width: 2px;" +
+                            "-fx-font-family: '" + (mode.equals("play") ? "Courier New" : customFont.getFamily()) + "';" +
+                            "-fx-font-size: 20px;");
+                }
+                answerButtons.get(i).setDisable(true);
+            }
 
-        if (selectedAnswer == question.getCorrectAnswer()) {
-            correctAnswers++;
-        }
+            // Next button
+            submitButton.setText("Next");
+            submitButton.setOnAction(e -> {
+                currentQuestionIndex++;
+                showNextQuestion(primaryStage);
+            });
+        });
 
-        if (currentQuestionIndex < questions.size() - 1) {
-            currentQuestionIndex++;
-            showQuestion();
-            submitButton.setDisable(true);
-        } else {
-            showSummary(primaryStage);
-        }
+        root.getChildren().addAll(questionBox, answerGrid, submitButton);
+
+        // Scene setup
+        Scene scene = new Scene(root, 1000, 800);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle(mode.equals("work") ? "Interview Preparation" : "Coding Game");
+        primaryStage.show();
     }
 
     private void showSummary(Stage primaryStage) {
-        int reward = 0;
+        VBox root = new VBox(20);
+        root.setPadding(new Insets(20));
+        root.setAlignment(Pos.CENTER);
+
+        // Calculate rewards and penalties
         if (mode.equals("work")) {
-            reward = 3 + (int) (correctAnswers * 0.5);
-            pet.gainMoney(reward);
+            int coinsGained = 3 + (int) (correctAnswers * 0.5);
+            pet.gainMoney(coinsGained);
             pet.looseHealth(20);
+            root.getChildren().add(new Label("You earned " + coinsGained + " coins!"));
         } else if (mode.equals("play")) {
-            reward = 10 + (correctAnswers * 2);
-            pet.gainXp(reward);
+            int xpGained = 10 + (2 * correctAnswers);
+            pet.gainXp(xpGained);
             pet.looseHealth(30);
+            root.getChildren().add(new Label("You gained " + xpGained + " XP!"));
         }
 
-        Label summaryLabel = new Label("You gained " + reward + (mode.equals("work") ? " coins." : " XP."));
+        // Return to Main Screen button
         Button returnButton = new Button("Return to Main Screen");
         returnButton.setOnAction(event -> new MainScreen(pet, language).start(primaryStage));
 
-        VBox summaryBox = new VBox(20, summaryLabel, returnButton);
-        summaryBox.setPadding(new Insets(20));
-        summaryBox.setAlignment(Pos.CENTER);
+        root.getChildren().add(returnButton);
 
-        Scene summaryScene = new Scene(summaryBox, 800, 600);
-        primaryStage.setScene(summaryScene);
+        Scene scene = new Scene(root, 1000, 800);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Quiz Summary");
+        primaryStage.show();
     }
 }
