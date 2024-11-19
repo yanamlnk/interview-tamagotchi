@@ -13,4 +13,9 @@ public class Docker extends Pet {
     public void gainXp(float xp) {
         super.gainXp(xp + 10);
     }
+
+    @Override
+    public String sayHello() {
+        return "Let’s containerize your skills and deploy success!";
+    }
 }

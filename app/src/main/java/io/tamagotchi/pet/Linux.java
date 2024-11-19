@@ -12,4 +12,9 @@ public class Linux extends Pet {
     public void looseHealth(float health) {
         super.looseHealth(health - 10);
     }
+
+    @Override
+    public String sayHello() {
+        return "Permission granted to execute your potential! Ready to learn?";
+    }
 }
