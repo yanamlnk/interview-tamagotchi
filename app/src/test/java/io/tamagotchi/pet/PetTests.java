@@ -5,6 +5,7 @@ import io.tamagotchi.food.Burger;
 import io.tamagotchi.food.Fish;
 import io.tamagotchi.food.Food;
 import io.tamagotchi.food.Potato;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PetTests {
 
     @Test
+    @DisplayName("Tests for health management using looseHealth() and eat(float hp) Pet methods and isDead() method with nuances for different superpowers of Pets.")
     void testHealthManagement() {
         Pet linux = new Linux();
         Pet docker = new Docker();
@@ -46,6 +48,7 @@ public class PetTests {
     }
 
     @Test
+    @DisplayName("Tests for eat method with Food instances as an argument with nuances for different superpowers of Pets.")
     void testEatFood() {
         Pet linux = new Linux();
         Pet docker = new Docker();
@@ -86,6 +89,7 @@ public class PetTests {
     }
 
     @Test
+    @DisplayName("Tests for gainXp() method with nuances for different superpowers of Pets.")
     void testXpGain() {
         Pet docker = new Docker();
         Pet linux = new Linux();
@@ -101,6 +105,7 @@ public class PetTests {
     }
 
     @Test
+    @DisplayName("Tests for money managements (for gaining and spending money).")
     void testMoneyManagement() {
         Pet pet = new Gradle();
         pet.gainMoney(100);
@@ -116,6 +121,7 @@ public class PetTests {
     }
 
     @Test
+    @DisplayName("Tests to check for the differences between children of Pet class.")
     void testChildClassBehaviors() {
         Pet linux = new Linux();
         assertEquals("Permission granted to execute your potential! Ready to learn?", linux.sayHello());
@@ -132,6 +138,7 @@ public class PetTests {
     }
 
     @Test
+    @DisplayName("Tests for the availability of resources (image URLs and descriptions).")
     void testAvailabilityOfResources() {
         Pet linux = new Linux();
         Pet gradle = new Gradle();
@@ -151,6 +158,7 @@ public class PetTests {
     }
 
     @Test
+    @DisplayName("Tests for level and XP management along with winner status when reaching level 10.")
     void testLevelAndXpManagement() {
         Pet linux = new Linux();
         assertEquals(1, linux.getLevel(), "Initial level should be 1");

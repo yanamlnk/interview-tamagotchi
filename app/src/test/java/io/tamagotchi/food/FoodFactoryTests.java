@@ -1,12 +1,14 @@
 package io.tamagotchi.food;
 
 import io.tamagotchi.TamagotchiException;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FoodFactoryTests {
     @Test
+    @DisplayName("Tests for creating Food instances using FoodFactory.")
     void testCreateValidFood() throws TamagotchiException {
         Food burger = FoodFactory.create("burger");
         assertInstanceOf(Burger.class, burger, "Burger instance should be created.");
@@ -19,6 +21,7 @@ public class FoodFactoryTests {
     }
 
     @Test
+    @DisplayName("Test for a case in FoodFactory when food name is unavailable or incorrect.")
     void testCreateInvalidFood() {
         assertThrows(TamagotchiException.class, () -> FoodFactory.create("unknown"), "Should throw exception for unknown food.");
         try {

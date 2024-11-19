@@ -1,11 +1,13 @@
 package io.tamagotchi.food;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FoodTests {
     @Test
+    @DisplayName("Tests for verifying Fish class and its fields.")
     void testFish() {
         Food fish = new Fish();
         assertEquals(3, fish.getPrice());
@@ -15,6 +17,7 @@ public class FoodTests {
     }
 
     @Test
+    @DisplayName("Tests for verifying Potato class and its fields.")
     void testPotato() {
         Food potato = new Potato();
         assertEquals(1, potato.getPrice());
@@ -24,6 +27,7 @@ public class FoodTests {
     }
 
     @Test
+    @DisplayName("Tests for verifying Burger class and its fields.")
     void testBurger() {
         Food burger = new Burger();
         assertEquals(5, burger.getPrice());
@@ -33,6 +37,7 @@ public class FoodTests {
     }
 
     @Test
+    @DisplayName("Tests for verifying image resources.")
     void testImageResources() {
         Food burger = new Burger();
         Food fish = new Fish();

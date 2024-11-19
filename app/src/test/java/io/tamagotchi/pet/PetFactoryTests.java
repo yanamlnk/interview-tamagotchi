@@ -1,12 +1,14 @@
 package io.tamagotchi.pet;
 
 import io.tamagotchi.TamagotchiException;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PetFactoryTests {
     @Test
+    @DisplayName("Tests for creating Pet instances using PetFactory.")
     void testCreateValidPets() throws TamagotchiException {
         Pet gradle = PetFactory.create("gradle");
         assertInstanceOf(Gradle.class, gradle, "Gradle instance should be created.");
@@ -22,6 +24,7 @@ public class PetFactoryTests {
     }
 
     @Test
+    @DisplayName("Test for a case in PetFactory when pet name is unavailable or incorrect.")
     void testCreateInvalidPet() {
         assertThrows(TamagotchiException.class, () -> PetFactory.create("unknown"), "Should throw exception for unknown pet.");
         try {
