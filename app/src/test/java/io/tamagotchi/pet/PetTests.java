@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PetTest {
+public class PetTests {
 
     @Test
     void testHealthManagement() {
@@ -104,5 +104,39 @@ public class PetTest {
         assertNotNull(linux.getDescription(), "Linux should have a description.");
         assertNotNull(gradle.getDescription(), "Gradle should have a description.");
         assertNotNull(docker.getDescription(), "Docker should have a description.");
+    }
+
+    @Test
+    void testLevelAndXpManagement() {
+        Pet linux = new Linux();
+        assertEquals(1, linux.getLevel(), "Initial level should be 1");
+        assertFalse(linux.isWinner(), "Pet should not be a winner at level 1.");
+
+        linux.gainXp(29);
+        assertEquals(1, linux.getLevel(), "Level should still be 1 after gaining 29 XP.");
+        assertEquals(29, linux.getTotalXp(), "Total XP should be 29 after gaining 29 XP.");
+        assertEquals(29, linux.getCurrentXp(), "Current XP should be 29 after gaining 29 XP.");
+        assertEquals(30, linux.getMaxXpForThisLevel(), "Maximum XP for level 1 should be 30.");
+
+        linux.gainXp(1);
+        assertEquals(2, linux.getLevel(), "Level should be 2 with total of 30 XP.");
+        assertEquals(30, linux.getTotalXp(), "Total XP should be 30 after gaining 1 XP in plus to 29 XP.");
+        assertEquals(0, linux.getCurrentXp(), "Current XP should be 0 just after leveling up.");
+        assertEquals(40, linux.getMaxXpForThisLevel(), "Maximum XP for level 2 should be 40.");
+        assertTrue(linux.getCurrentXp() < linux.getMaxXpForThisLevel(), "Current XP should reset correctly when leveling up.");
+
+        linux.gainXp(50);
+        assertEquals(3, linux.getLevel(), "Level should be 3 with total of 80 XP.");
+        assertEquals(80, linux.getTotalXp(), "Total XP should be 80 after gaining 50 XP in plus to 30 XP.");
+        assertEquals(10, linux.getCurrentXp(), "Current XP should be 10 after leveling up.");
+        assertEquals(50, linux.getMaxXpForThisLevel(), "Maximum XP for level 3 should be 50.");
+        assertTrue(linux.getCurrentXp() < linux.getMaxXpForThisLevel(), "Current XP should reset correctly when leveling up.");
+
+        linux.gainXp(800);
+        assertTrue(linux.isWinner(), "Pet should be a winner after reaching level 10.");
+        assertEquals(10, linux.getLevel(), "Level should be 10 with total of 880 XP.");
+        assertEquals(880, linux.getTotalXp(), "Total XP should be 880 after gaining 800 XP in plus to 80 XP.");
+        assertEquals(0, linux.getCurrentXp(), "Current XP should be 0 just after leveling up.");
+        assertEquals(0, linux.getMaxXpForThisLevel(), "Maximum XP for level 10 should be 0.");
     }
 }
