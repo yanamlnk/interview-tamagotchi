@@ -1,5 +1,7 @@
 package io.tamagotchi.screens;
 
+import java.net.URL;
+
 import io.tamagotchi.TamagotchiException;
 import io.tamagotchi.food.Food;
 import io.tamagotchi.food.FoodFactory;
@@ -13,11 +15,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -26,8 +34,11 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MainScreen extends Application {
+    private MediaPlayer backgroundMusic;
     private final Pet pet;
     private final String language;
+    private HBox root;
+
     Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
 
     public MainScreen(Pet pet, String language) {
@@ -35,25 +46,38 @@ public class MainScreen extends Application {
         this.language = language;
     }
 
+    private void playBackgroundMusic() {
+        try {
+            URL musicURL = getClass().getResource("/music/Music.mp3");
+            if (musicURL == null) {
+                System.out.println("Music file not found!");
+                return;
+            }
+            String musicFile = musicURL.toExternalForm();
+            System.out.println("Music file loaded from: " + musicFile); // Debugging output
+            
+            Media sound = new Media(musicFile);
+            backgroundMusic = new MediaPlayer(sound);
+            backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
+            backgroundMusic.play();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void start(Stage primaryStage) {
+        playBackgroundMusic();
         if (pet.isWinner()) {
             showWinPopup(primaryStage);
         }
 
-        // Root layout divided into left and right
-        HBox root = new HBox(15);
-        root.setPadding(new Insets(20));
-        root.setStyle("-fx-background-color: #D6EEF2;");
-        root.setAlignment(Pos.CENTER); 
-        HBox.setHgrow(root, Priority.ALWAYS);
-
-        // Left side
-        VBox leftPane = new VBox(20);
-        leftPane.setAlignment(Pos.CENTER);
-        leftPane.setPadding(new Insets(20));
-        leftPane.setMinWidth(300); 
-        leftPane.setMinHeight(700); 
+        //Top Bar
+        HBox navBar = new HBox(10);
+        navBar.setAlignment(Pos.CENTER);
+        navBar.setMinWidth(600);
+        navBar.setPadding(new Insets(10));
+        navBar.setStyle("-fx-background-color: #D6EEF2;");
 
         Button rulesButton = new Button("Rules");
         rulesButton.setFont(font);
@@ -66,13 +90,54 @@ public class MainScreen extends Application {
                     + "-fx-border-radius: 5px;");
         rulesButton.setOnAction(event -> showRulesPopup(primaryStage));
 
+        Button customizeButton = new Button("Customize");
+        customizeButton.setFont(font);
+        customizeButton.setStyle("-fx-background-color: #FFC0CB;" 
+                    +"-fx-text-fill: white; " 
+                    +"-fx-padding: 10px 20px; " 
+                    +"-fx-background-radius: 5px; " 
+                    +"-fx-border-color: #efbf04; " 
+                    +"-fx-border-width: 2px; " 
+                    +"-fx-border-radius: 5px;");
+        customizeButton.setOnAction(event -> showCustomizePopup(primaryStage));
+
+        navBar.getChildren().addAll(rulesButton, customizeButton);
+
+        // Root layout divided into left and right
+        root = new HBox(1);
+        root.setPadding(new Insets(20));
+        root.setStyle("-fx-background-color: #D6EEF2;");
+        root.setAlignment(Pos.CENTER); 
+        HBox.setHgrow(root, Priority.ALWAYS);
+
+        // Left side
+        VBox leftPane = new VBox(10);
+        leftPane.setAlignment(Pos.CENTER);
+        leftPane.setPadding(new Insets(10));
+        leftPane.setMinWidth(300); 
+        leftPane.setMinHeight(700); 
+
         ImageView petImage = new ImageView(new Image(pet.getImageUrl()));
         petImage.setFitWidth(300);
         petImage.setPreserveRatio(true);
+
+        //Speech bubble
+        VBox speechBubble = createSpeechBubble("Permission granted to execute your potential! Ready to learn?");
+
+        StackPane petWithSpeechBubble = new StackPane();
+petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
+        StackPane.setAlignment(speechBubble, Pos.TOP_CENTER);
+        StackPane.setMargin(speechBubble, new Insets(-100, 50, 0, 50));
         
-        Label petInfo = new Label(pet.getName() + " learns " + language + ".");
+        Label petInfo = new Label("Name:  "+ pet.getName());
         petInfo.setFont(font);
 
+        // Superpower info
+        Label superPower = new Label("Superpower:  " + pet.getDescription());
+        superPower.setFont(font);
+
+        Label languageText = new Label("Let's review " + language + "!");
+        languageText.setFont(font);
         ImageView languageImage = new ImageView(new Image(language.toLowerCase() + ".png"));
         languageImage.setFitWidth(50);
         languageImage.setPreserveRatio(true);
@@ -83,20 +148,8 @@ public class MainScreen extends Application {
         animation.setCycleCount(TranslateTransition.INDEFINITE);
         animation.play();
 
-        // Superpower info
-        Label superPower = new Label(pet.getName() + "'s superpower: " + pet.getDescription());
-        superPower.setFont(font);
-
-        VBox card = new VBox(10);  // 10px spacing between elements
-        card.setStyle("-fx-background-color: #FFFFFF; "
-                    + "-fx-padding: 20px; "
-                    + "-fx-background-radius: 10px; " 
-                    + "-fx-border-color: #B0B0B0; " 
-                    + "-fx-border-width: 2px; "
-                    + "-fx-border-radius: 10px;");
-
         // Add elements to left side
-        leftPane.getChildren().addAll(rulesButton,petImage, petInfo, languageImage, superPower);
+leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageText,languageImage);
 
         // Right side
         VBox rightPane = new VBox(20);
@@ -178,13 +231,18 @@ public class MainScreen extends Application {
         // Add panes to root layout
         root.getChildren().addAll(leftPane, rightPane);
 
+        VBox mainLayout = new VBox();
+    mainLayout.setStyle("-fx-background-color: #D6EEF2;");
+    mainLayout.getChildren().addAll(navBar, root);
+
         // Show the scene
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(mainLayout,1000,800);
         primaryStage.setScene(scene);
         primaryStage.setTitle("PrepPal");
-        primaryStage.setResizable(true);
         primaryStage.show();
     }
+
+    
 
     private void showRulesPopup(Stage owner) {
         Stage popup = new Stage();
@@ -224,6 +282,120 @@ public class MainScreen extends Application {
         Scene popupScene = new Scene(layout, 500, 400);
         popup.setScene(popupScene);
         popup.showAndWait();
+    }
+
+    private void showCustomizePopup(Stage owner) {
+    Stage popup = new Stage();
+    popup.initModality(Modality.APPLICATION_MODAL);
+    popup.initOwner(owner);
+
+    VBox layout = new VBox(20);
+    layout.setAlignment(Pos.TOP_LEFT);
+    layout.setPadding(new Insets(20));
+    layout.setStyle("-fx-background-color: #FFC0CB;");
+
+    // Background color selection
+    Text backgroundText = new Text("Choose your background:");
+    backgroundText.setFont(font);
+
+    HBox colorCircles = new HBox(20);
+    colorCircles.setAlignment(Pos.CENTER);
+
+    String[] colors = {"#D6EEF2", "#FFC0CB", "#89CFF0"};
+    for (String color : colors) {
+        Circle circle = new Circle(30);
+        circle.setFill(Color.web(color));
+        circle.setStroke(Color.BLACK);
+        circle.setOnMouseClicked(e -> {
+            root.setStyle("-fx-background-color: " + color + ";");
+            popup.close();
+        });
+        colorCircles.getChildren().add(circle);
+    }
+
+    // Volume control
+    Text volumeText = new Text("Sound:");
+    volumeText.setFont(font);
+
+    Slider volumeSlider = new Slider(0, 100, 50);
+    volumeSlider.setShowTickLabels(true);
+    volumeSlider.setShowTickMarks(true);
+    volumeSlider.setMajorTickUnit(50);
+    volumeSlider.setMinorTickCount(5);
+
+    if (backgroundMusic != null) {
+        volumeSlider.setValue(backgroundMusic.getVolume() * 100);
+    }
+
+    volumeSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+        if (backgroundMusic != null) {
+            backgroundMusic.setVolume(newValue.doubleValue() / 100);
+        }
+    });
+
+    // Brightness control
+    Text brightnessText = new Text("Brightness:");
+    brightnessText.setFont(font);
+
+    Slider brightnessSlider = new Slider(0.5, 1.0, 1.0);
+    brightnessSlider.setShowTickLabels(true);
+    brightnessSlider.setShowTickMarks(true);
+    brightnessSlider.setMajorTickUnit(0.25);
+    brightnessSlider.setMinorTickCount(5);
+
+    brightnessSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+        root.setOpacity(newValue.doubleValue());
+    });
+
+    Button closeButton = new Button("Close");
+    closeButton.setFont(font);
+    closeButton.setStyle("-fx-background-color: #4CAF50; " +
+                         "-fx-text-fill: white; " +
+                         "-fx-padding: 10px 20px; " +
+                         "-fx-background-radius: 5px; " +
+                         "-fx-border-color: #efbf04; " +
+                         "-fx-border-width: 2px; " +
+                         "-fx-border-radius: 5px;");
+    closeButton.setOnAction(e -> popup.close());
+
+    layout.getChildren().addAll(
+        backgroundText, colorCircles, closeButton,volumeText, volumeSlider, brightnessText, brightnessSlider
+    );
+
+    Scene popupScene = new Scene(layout, 500, 400);
+    popup.setScene(popupScene);
+    popup.showAndWait();
+}
+
+    private VBox createSpeechBubble(String text) {
+        // Create the text first to determine its size
+        Text bubbleText = new Text(text);
+        bubbleText.setFont(font);
+        bubbleText.setTextAlignment(TextAlignment.CENTER);
+        bubbleText.setWrappingWidth(200);
+    
+        // Calculate the bubble size based on the text
+        double textWidth = bubbleText.getLayoutBounds().getWidth();
+        double textHeight = bubbleText.getLayoutBounds().getHeight();
+        double bubbleWidth = Math.max(200, textWidth + 20);
+        double bubbleHeight = textHeight + 20;
+    
+        // Create the bubble shape
+        javafx.scene.shape.Rectangle bubble = new javafx.scene.shape.Rectangle(bubbleWidth, bubbleHeight);        bubble.setFill(javafx.scene.paint.Color.web("#eff7fa"));
+        bubble.setStroke(javafx.scene.paint.Color.BLACK);
+        bubble.setStrokeWidth(2);
+        bubble.setArcWidth(5);
+        bubble.setArcHeight(5);
+        bubble.getStrokeDashArray().addAll(10.0, 5.0);
+    
+        // Combine bubble, pointer, and text
+        StackPane stackPane = new StackPane(bubble, bubbleText);
+    
+        VBox speechBubble = new VBox(stackPane);
+        speechBubble.setAlignment(Pos.TOP_RIGHT);
+        speechBubble.setPadding(new Insets(0, 0, 100, 0));
+    
+        return speechBubble;
     }
 
     private void showFeedPopup(Stage owner) {
