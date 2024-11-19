@@ -1,6 +1,10 @@
 package io.tamagotchi.pet;
 
 import io.tamagotchi.TamagotchiException;
+import io.tamagotchi.food.Burger;
+import io.tamagotchi.food.Fish;
+import io.tamagotchi.food.Food;
+import io.tamagotchi.food.Potato;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,6 +43,46 @@ public class PetTests {
         docker.looseHealth(500);
         assertTrue(docker.isDead(), "Pet should be dead after health reaches 0.");
         assertEquals(0, docker.getHealth(), "Health should not go below 0.");
+    }
+
+    @Test
+    void testEatFood() {
+        Pet linux = new Linux();
+        Pet docker = new Docker();
+        Pet gradle = new Gradle();
+
+        Food burger = new Burger();
+        Food fish = new Fish();
+        Food potato = new Potato();
+
+        linux.looseHealth(80);
+        assertEquals(30, linux.getHealth(), "Health should be 30 after loosing 80 health with Linux superpower.");
+        linux.eat(burger);
+        assertEquals(65, linux.getHealth(), "Health should increase by 35 after eating burger.");
+        linux.eat(fish);
+        assertEquals(88, linux.getHealth(), "Health should increase by 23 after eating fish.");
+        linux.eat(potato);
+        assertEquals(98, linux.getHealth(), "Health should increase by 10 after eating potato.");
+
+        docker.looseHealth(80);
+        assertEquals(20, docker.getHealth(), "Health should be 20 after loosing 80 health.");
+        docker.eat(burger);
+        assertEquals(55, docker.getHealth(), "Health should increase by 35 after eating burger.");
+        docker.eat(fish);
+        assertEquals(78, docker.getHealth(), "Health should increase by 23 after eating fish.");
+        docker.eat(potato);
+        assertEquals(88, docker.getHealth(), "Health should increase by 10 after eating potato.");
+
+        gradle.looseHealth(90);
+        assertEquals(10, gradle.getHealth(), "Health should be 10 after loosing 90 health.");
+        gradle.eat(burger);
+        assertEquals(55, gradle.getHealth(), "Health should increase by 45 after eating burger (with Gradle superpower).");
+        gradle.eat(fish);
+        assertEquals(88, gradle.getHealth(), "Health should increase by 33 after eating fish (with Gradle superpower).");
+        gradle.looseHealth(10);
+        assertEquals(78, gradle.getHealth(), "Health should decrease by 10 after loosing 10 health.");
+        gradle.eat(potato);
+        assertEquals(98, gradle.getHealth(), "Health should increase by 20 after eating potato (with Gradle superpower).");
     }
 
     @Test

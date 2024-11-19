@@ -59,5 +59,13 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.base' ] // Include modules you're using
 }
 
+test {
+    testLogging {
+        events "PASSED", "SKIPPED", "FAILED"
+        exceptionFormat "full"
+        showStandardStreams = true
+    }
+}
+
 sourceSets.main.resources.srcDirs = ['src/main/resources']
 

@@ -5,4 +5,9 @@ public class Fish extends Food{
         super(3, 23);
         this.imageUrl = "fish.png";
     }
+
+    @Override
+    String message() {
+        return "Healthy and tasty - yum!";
+    }
 }

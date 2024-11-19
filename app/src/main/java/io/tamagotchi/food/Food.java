@@ -16,6 +16,8 @@ public abstract class Food {
         this.health = health;
     }
 
+    abstract String message();
+
     public int getPrice() {
         return price;
     }
