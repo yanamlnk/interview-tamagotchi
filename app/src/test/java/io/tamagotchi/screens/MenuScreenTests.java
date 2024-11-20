@@ -1,35 +1,35 @@
-//package io.tamagotchi.screens;
-//
-//import javafx.scene.control.Button;
-//import javafx.scene.control.ToggleButton;
-//import javafx.stage.Stage;
-//import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.Test;
-//import org.testfx.api.FxRobot;
-//import org.testfx.framework.junit5.ApplicationTest;
-//import static org.junit.jupiter.api.Assertions.*;
-//
-//public class MenuScreenTests extends ApplicationTest {
-//    @Override
-//    public void start(Stage stage) throws Exception {
-//        // Start the MenuScreen application
-//        new MenuScreen().start(stage);
-//    }
-//
-//    @BeforeEach
-//    void setUp() {
-//        // Optional setup if required
-//    }
-//
-//    @Test
-//    void testInitialState() {
-//        FxRobot robot = new FxRobot();
-//
-//        // Verify "Start" button is initially disabled
-//        Button startButton = robot.lookup(".button").queryAs(Button.class);
-//        assertNotNull(startButton, "Start button should exist.");
-//        assertTrue(startButton.isDisabled(), "Start button should initially be disabled.");
-//    }
+package io.tamagotchi.screens;
+
+import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
+import javafx.stage.Stage;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.testfx.api.FxRobot;
+import org.testfx.framework.junit5.ApplicationTest;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MenuScreenTests extends ApplicationTest {
+    @Override
+    public void start(Stage stage) throws Exception {
+        // Start the MenuScreen application
+        new MenuScreen().start(stage);
+    }
+
+    @BeforeEach
+    void setUp() {
+        // Optional setup if required
+    }
+
+    @Test
+    void testInitialState() {
+        FxRobot robot = new FxRobot();
+
+        // Verify "Start" button is initially disabled
+        Button startButton = robot.lookup(".button").queryAs(Button.class);
+        assertNotNull(startButton, "Start button should exist.");
+        assertTrue(startButton.isDisabled(), "Start button should initially be disabled.");
+    }
 //
 //    @Test
 //    void testPetSelection(FxRobot robot) {
@@ -103,4 +103,4 @@
 //        robot.moveTo(startButton);
 //        // Hover style test (replace with a suitable assertion to verify style if needed)
 //    }
-//}
+}

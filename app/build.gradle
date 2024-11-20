@@ -82,4 +82,3 @@ jacocoTestReport {
 }
 
 sourceSets.main.resources.srcDirs = ['src/main/resources']
-
