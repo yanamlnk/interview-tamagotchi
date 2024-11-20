@@ -10,6 +10,7 @@ plugins {
     id 'application'
     id 'java'
     id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'jacoco'
 }
 
 repositories {
@@ -49,22 +50,24 @@ application {
     mainClass = 'io.tamagotchi.App'
 }
 
-tasks.named('test') {
-    // Use JUnit Platform for unit tests.
-    useJUnitPlatform()
-}
-
 javafx {
     version = "17"
     modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.base' ] // Include modules you're using
 }
 
 test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+
     testLogging {
         events "PASSED", "SKIPPED", "FAILED"
         exceptionFormat "full"
         showStandardStreams = true
     }
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
 }
 
 sourceSets.main.resources.srcDirs = ['src/main/resources']
