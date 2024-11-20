@@ -8,6 +8,7 @@ import io.tamagotchi.food.FoodFactory;
 import io.tamagotchi.pet.Pet;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
+import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
@@ -17,9 +18,11 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -152,7 +155,7 @@ Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
         VBox speechBubble = createSpeechBubble("Permission granted to execute your potential! Ready to learn?");
 
         StackPane petWithSpeechBubble = new StackPane();
-        petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
+petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         StackPane.setAlignment(speechBubble, Pos.TOP_CENTER);
         StackPane.setMargin(speechBubble, new Insets(-100, 50, 0, 50));
         
@@ -400,7 +403,6 @@ Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
     }
 
     Region spacer = new Region();
-    VBox.setVgrow(spacer, Priority.ALWAYS);
 
     // Volume control
     Text volumeText = new Text("Sound:");
@@ -471,13 +473,22 @@ Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
         double bubbleHeight = textHeight + 20;
     
         // Create the bubble shape
-        javafx.scene.shape.Rectangle bubble = new javafx.scene.shape.Rectangle(bubbleWidth, bubbleHeight);     
+        javafx.scene.shape.Rectangle bubble = new javafx.scene.shape.Rectangle(bubbleWidth, bubbleHeight);
         bubble.setFill(javafx.scene.paint.Color.web("#eff7fa"));
         bubble.setStroke(javafx.scene.paint.Color.BLACK);
         bubble.setStrokeWidth(2);
         bubble.setArcWidth(5);
         bubble.setArcHeight(5);
-        bubble.getStrokeDashArray().addAll(10.0, 5.0);
+
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setColor(Color.GRAY); // Set shadow color
+        dropShadow.setOffsetX(5); // Horizontal shadow offset
+        dropShadow.setOffsetY(5); // Vertical shadow offset
+        dropShadow.setRadius(10); // Shadow blur radius
+
+    // Apply the shadow effect to the bubble
+        bubble.setEffect(dropShadow);
+
     
         // Combine bubble, pointer, and text
         StackPane stackPane = new StackPane(bubble, bubbleText);
@@ -499,7 +510,7 @@ Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
         VBox layout = new VBox(20);
         layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(20));
-        layout.setStyle("-fx-background-color: linear-gradient(to top, #FCDC5A, #FDEBA3);");
+        layout.setStyle("-fx-background-color: #f3fcd2;");
 
         Label feedLabel = new Label("Feed your pet");
         feedLabel.setFont(font);
@@ -533,70 +544,121 @@ Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
     }
 
     private Button createFoodButton(String foodName) {
-        try {
-            Food food = FoodFactory.create(foodName);
+    try {
+        Food food = FoodFactory.create(foodName);
+        VBox buttonContent = new VBox(5);
+        buttonContent.setAlignment(Pos.CENTER);
 
-            VBox buttonContent = new VBox(5);
-            buttonContent.setAlignment(Pos.CENTER);
+        ImageView foodImage = new ImageView(new Image(food.getImageUrl()));
+        foodImage.setFitWidth(100);
+        foodImage.setPreserveRatio(true);
+        
+        TranslateTransition animation = new TranslateTransition(Duration.seconds(1), foodImage);
+        animation.setByY(10); 
+        animation.setAutoReverse(true); 
+        animation.setCycleCount(TranslateTransition.INDEFINITE);
+        animation.play();
 
-            // Image
-            ImageView foodImage = new ImageView(new Image(food.getImageUrl()));
-            foodImage.setFitWidth(100);
-            foodImage.setPreserveRatio(true);
+        // Food details
+        Label nameLabel = new Label(foodName.toUpperCase());
+        nameLabel.setFont(Font.font(16));
+        Label detailsLabel = new Label("Price: " + food.getPrice() + " | HP: " + food.getHealth());
+        detailsLabel.setFont(font);
 
-            TranslateTransition animation = new TranslateTransition(Duration.seconds(1), foodImage);
-            animation.setByY(10);
-            animation.setAutoReverse(true);
-            animation.setCycleCount(TranslateTransition.INDEFINITE);
-            animation.play();
+        // Button
+        Button foodButton = new Button();
+        foodButton.setGraphic(buttonContent);
 
-            // Food details
-            Label nameLabel = new Label(foodName.toUpperCase());
-            nameLabel.setFont(Font.font(16));
+        // Add elements to the button content
+        buttonContent.getChildren().addAll(foodImage, nameLabel, detailsLabel);
 
-            Label detailsLabel = new Label("Price: " + food.getPrice() + " | HP: " + food.getHealth());
-            detailsLabel.setFont(font);
+        //default button style
+        foodButton.setStyle("-fx-background-color: #c1f092; " +  
+                            "-fx-text-fill: white; " +
+                            "-fx-padding: 10px; " +
+                            "-fx-background-radius: 5px; " +
+                            "-fx-border-color: #edd145; " +
+                            "-fx-border-width: 2px; " +
+                            "-fx-border-radius: 5px;");
 
-            // Button
-            Button foodButton = new Button();
-            foodButton.setGraphic(buttonContent);
+        // Hover effect with gradient gold color
+        foodButton.setOnMouseEntered(e -> {
+            foodButton.setStyle("-fx-background-color: linear-gradient(to right, #FFD700, #FFEA00);");  // Gradient gold on hover
+            ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200), foodButton);
+            scaleTransition.setToX(1.05);
+            scaleTransition.setToY(1.05);
+            scaleTransition.play();
+        });
 
-            // Add elements to the button content
-            buttonContent.getChildren().addAll(foodImage, nameLabel, detailsLabel);
+        foodButton.setOnMouseExited(e -> {
+            foodButton.setStyle("-fx-background-color: #c1f092; " +  
+                            "-fx-text-fill: white; " +
+                            "-fx-padding: 10px; " +
+                            "-fx-background-radius: 5px; " +
+                            "-fx-border-color: #edd145; " +
+                            "-fx-border-width: 2px; " +
+                            "-fx-border-radius: 5px;");
+            ScaleTransition scaleTransition = new 
+            ScaleTransition(Duration.millis(200), foodButton);
+            scaleTransition.setToX(1.0);
+            scaleTransition.setToY(1.0);
+            scaleTransition.play();
+        });
 
-            // Button action
-            foodButton.setOnAction(e -> {
-                try {
-                    pet.spendMoney(food.getPrice());
-                    pet.eat(food);
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Success");
-                    alert.setHeaderText(null);
-                    alert.setContentText("You fed your pet with " + foodName + "!");
-                    alert.showAndWait();
-                } catch (TamagotchiException ex) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error");
-                    alert.setHeaderText(null);
-                    alert.setContentText("You don't have enough money, go to work!");
-                    alert.showAndWait();
-                }
-            });
+        // Button action
+        foodButton.setOnAction(e -> {
+            try {
+                pet.spendMoney(food.getPrice());
+                pet.eat(food);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Success");
+                alert.setHeaderText(null);
+                alert.setContentText("You fed your pet with " + foodName + "!");
+                 DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.setStyle("-fx-background-color: #d4f1c5; " +
+                            "-fx-border-color: #4CAF50; " + 
+                            "-fx-border-width: 2px;");
+        dialogPane.lookup(".content.label").setStyle("-fx-font-size: 14px; -fx-text-fill: #333;"); // Font customization
 
-            return foodButton;
+        
+        alert.showAndWait();
+    } catch (TamagotchiException ex) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("You don't have enough money, answer some interview questions!");
 
-        } catch (TamagotchiException e) {
-            // Handle unknown food exception gracefully
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);                    
-            alert.setContentText("Failed to create food: " + e.getMessage());
-            alert.showAndWait();
-            return new Button("Error Loading Food");
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 16);
+        if (customFont == null) {
+            System.out.println("Failed to load font!");
         }
+
+        // Access and style the DialogPane
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.setStyle("-fx-background-color: #fdecea; -fx-border-color: #ff4d4d; -fx-border-width: 2px;");
+        
+        // Set custom font for the content label
+        Label contentLabel = (Label) dialogPane.lookup(".content.label");
+        if (contentLabel != null) {
+            contentLabel.setFont(customFont); // Apply the custom font
+        }
+
+        alert.showAndWait();
     }
+        });
 
+        return foodButton;
 
+    } catch (TamagotchiException e) {
+        // Handle unknown food exception gracefully
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText("Failed to create food: " + e.getMessage());
+        alert.showAndWait();
+        return new Button("Error Loading Food");
+    }
+}
     private void showGameOverPopup(Stage owner) {
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
