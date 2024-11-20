@@ -6,8 +6,12 @@ import io.tamagotchi.TamagotchiException;
 import io.tamagotchi.food.Food;
 import io.tamagotchi.food.FoodFactory;
 import io.tamagotchi.pet.Pet;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -20,6 +24,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -38,8 +43,10 @@ public class MainScreen extends Application {
     private final Pet pet;
     private final String language;
     private HBox root;
+    private HBox navBar;
 
-    Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
+    Font font =     
+Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
 
     public MainScreen(Pet pet, String language) {
         this.pet = pet;
@@ -72,8 +79,10 @@ public class MainScreen extends Application {
             showWinPopup(primaryStage);
         }
 
+        primaryStage.getIcons().add(new Image("logo.gif"));
+
         //Top Bar
-        HBox navBar = new HBox(10);
+        navBar = new HBox(10);
         navBar.setAlignment(Pos.CENTER);
         navBar.setMinWidth(600);
         navBar.setPadding(new Insets(10));
@@ -87,7 +96,16 @@ public class MainScreen extends Application {
                     + "-fx-background-radius: 5px; "
                     + "-fx-border-color: #efbf04; "
                     + "-fx-border-width: 2px; " 
-                    + "-fx-border-radius: 5px;");
+                    + "-fx-border-radius: 5px;"
+                    +"-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);");
+        rulesButton.setOnMousePressed(e -> 
+        rulesButton.setScaleX(0.90));
+        rulesButton.setOnMousePressed(e -> 
+        rulesButton.setScaleY(0.90));
+        rulesButton.setOnMouseReleased(e -> 
+        rulesButton.setScaleX(1.0));
+        rulesButton.setOnMouseReleased(e -> 
+        rulesButton.setScaleY(1.0));
         rulesButton.setOnAction(event -> showRulesPopup(primaryStage));
 
         Button customizeButton = new Button("Customize");
@@ -98,8 +116,17 @@ public class MainScreen extends Application {
                     +"-fx-background-radius: 5px; " 
                     +"-fx-border-color: #efbf04; " 
                     +"-fx-border-width: 2px; " 
-                    +"-fx-border-radius: 5px;");
-        customizeButton.setOnAction(event -> showCustomizePopup(primaryStage));
+                    +"-fx-border-radius: 5px;"
+                    +"-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);");
+        customizeButton.setOnMousePressed(e -> 
+        customizeButton.setScaleX(0.90));
+        customizeButton.setOnMousePressed(e -> 
+        customizeButton.setScaleY(0.90));
+        customizeButton.setOnMouseReleased(e -> 
+        customizeButton.setScaleX(1.0));
+        customizeButton.setOnMouseReleased(e -> 
+        customizeButton.setScaleY(1.0));
+        customizeButton.setOnAction(event -> showCustomizePopup(primaryStage,root,navBar));
 
         navBar.getChildren().addAll(rulesButton, customizeButton);
 
@@ -125,7 +152,7 @@ public class MainScreen extends Application {
         VBox speechBubble = createSpeechBubble("Permission granted to execute your potential! Ready to learn?");
 
         StackPane petWithSpeechBubble = new StackPane();
-petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
+        petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         StackPane.setAlignment(speechBubble, Pos.TOP_CENTER);
         StackPane.setMargin(speechBubble, new Insets(-100, 50, 0, 50));
         
@@ -149,7 +176,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         animation.play();
 
         // Add elements to left side
-leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageText,languageImage);
+        leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageText,languageImage);
 
         // Right side
         VBox rightPane = new VBox(20);
@@ -159,16 +186,48 @@ leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageTe
 
         ProgressBar healthBar = new ProgressBar(pet.getHealth() / 100.0);
         healthBar.setPrefWidth(300);
-        Label healthLabel = new Label("Health: " + (int) pet.getHealth() + "/100");
+        healthBar.setPrefHeight(30);
+
+
+        double oldHealthValue = healthBar.getProgress();
+        double newHealthValue = pet.getHealth() / 100.0;
+        Timeline timeline = new Timeline(
+        new KeyFrame(Duration.ZERO, new
+        KeyValue(healthBar.progressProperty(), oldHealthValue)),
+        new KeyFrame(Duration.seconds(0.5), new
+        KeyValue(healthBar.progressProperty(), newHealthValue))
+        );
+        timeline.play();
+
+
+        Label healthLabel = new Label("Health: " + (int)
+        pet.getHealth() + "/100");
         healthLabel.setFont(font);
 
         if (pet.isDead()) {
             showGameOverPopup(primaryStage);
         }
 
-        ProgressBar xpBar = new ProgressBar(pet.getCurrentXp() / pet.getMaxXpForThisLevel());
+        ProgressBar xpBar = new ProgressBar(pet.getCurrentXp() /
+        pet.getMaxXpForThisLevel());
         xpBar.setPrefWidth(300);
-        Label xpLabel = new Label("XP: " + (int) pet.getCurrentXp() + "/" + (int) pet.getMaxXpForThisLevel());
+        xpBar.setPrefHeight(30);
+        xpBar.setStyle("-fx-accent: #4CAF50;");
+
+        double oldXpValue = xpBar.getProgress();
+        double newXpValue = pet.getCurrentXp()/
+        pet.getMaxXpForThisLevel();
+        Timeline xpTimeline = new Timeline(
+        new KeyFrame(Duration.ZERO, new
+        KeyValue(xpBar.progressProperty(), oldXpValue)),
+        new KeyFrame(Duration.seconds(0.5), new
+        KeyValue(xpBar.progressProperty(), newXpValue))
+        );
+        xpTimeline.play();
+
+        Label xpLabel = new Label("XP: " 
+        + (int)pet.getCurrentXp() + "/" 
+        + (int)pet.getMaxXpForThisLevel());
         xpLabel.setFont(font);
 
         // Level
@@ -179,7 +238,7 @@ leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageTe
         Label moneyLabel = new Label("Money: " + (int) pet.getMoney());
         moneyLabel.setFont(font);
 
-        ImageView coinImage = new ImageView(new Image("coin.png"));
+        ImageView coinImage = new ImageView(new Image("coin.gif"));
         coinImage.setFitWidth(20);
         coinImage.setPreserveRatio(true);
 
@@ -189,17 +248,26 @@ leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageTe
         // Buttons: Feed and Play
         Button feedButton = new Button("Feed");
         feedButton.setFont(font);
-        feedButton.setStyle("-fx-background-color: #4CAF50; "
+        feedButton.setStyle("-fx-background-color: linear-gradient(to right,#FFC107, #FFD700, #FFC107);"
                     + "-fx-text-fill: white; "
                     + "-fx-padding: 10px 20px; "
                     + "-fx-background-radius: 5px; "
                     + "-fx-border-color: #efbf04; "
                     + "-fx-border-width: 2px; " 
-                    + "-fx-border-radius: 5px;");
+                    + "-fx-border-radius: 5px;"
+                    +"-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);");
+        feedButton.setOnMousePressed(e -> 
+        feedButton.setScaleX(0.90));
+        feedButton.setOnMousePressed(e -> 
+        feedButton.setScaleY(0.90));
+        feedButton.setOnMouseReleased(e -> 
+        feedButton.setScaleX(1.0));
+        feedButton.setOnMouseReleased(e -> 
+        feedButton.setScaleY(1.0));
 
         feedButton.setOnAction(event -> showFeedPopup(primaryStage));
 
-        Button playButton = new Button("Play");
+        Button playButton = new Button("Coding Game");
         playButton.setFont(font);
         playButton.setStyle("-fx-background-color: #89CFF0; "
                     + "-fx-text-fill: white; "
@@ -207,14 +275,24 @@ leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageTe
                     + "-fx-background-radius: 5px; "
                     + "-fx-border-color: #efbf04; "
                     + "-fx-border-width: 2px; " 
-                    + "-fx-border-radius: 5px;");
+                    + "-fx-border-radius: 5px;"
+                    +"-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);");
+
+        playButton.setOnMousePressed(e -> 
+        playButton.setScaleX(0.90));
+        playButton.setOnMousePressed(e -> 
+        playButton.setScaleY(0.90));
+        playButton.setOnMouseReleased(e -> 
+        playButton.setScaleX(1.0));
+        playButton.setOnMouseReleased(e -> 
+        playButton.setScaleY(1.0));
         playButton.setOnAction(event -> new QuizScreen(pet, language, "play").start(primaryStage));
 
         HBox actionButtons = new HBox(10, feedButton, playButton);
         actionButtons.setAlignment(Pos.CENTER);
 
         // Go to Work Button
-        Button workButton = new Button("Go to Work");
+        Button workButton = new Button("Interview Questions");
         workButton.setFont(font);
         workButton.setStyle("-fx-background-color: #89CFF0; "
                     + "-fx-text-fill: white; "
@@ -222,7 +300,16 @@ leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageTe
                     + "-fx-background-radius: 5px; "
                     + "-fx-border-color: #efbf04; "
                     + "-fx-border-width: 2px; " 
-                    + "-fx-border-radius: 5px;");
+                    + "-fx-border-radius: 5px;"
+                    +"-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);");
+        workButton.setOnMousePressed(e -> 
+        workButton.setScaleX(0.90));
+        workButton.setOnMousePressed(e -> 
+        workButton.setScaleY(0.90));
+        workButton.setOnMouseReleased(e -> 
+        workButton.setScaleX(1.0));
+        workButton.setOnMouseReleased(e -> 
+        workButton.setScaleY(1.0));
         workButton.setOnAction(event -> new QuizScreen(pet, language, "work").start(primaryStage));
 
         // Add elements to right pane
@@ -232,8 +319,8 @@ leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageTe
         root.getChildren().addAll(leftPane, rightPane);
 
         VBox mainLayout = new VBox();
-    mainLayout.setStyle("-fx-background-color: #D6EEF2;");
-    mainLayout.getChildren().addAll(navBar, root);
+        mainLayout.setStyle("-fx-background-color: #D6EEF2;");
+        mainLayout.getChildren().addAll(navBar, root);
 
         // Show the scene
         Scene scene = new Scene(mainLayout,1000,800);
@@ -248,11 +335,13 @@ leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageTe
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.initOwner(owner);
+        popup.setTitle("Rules");
+        popup.getIcons().add(new Image(getClass().getResourceAsStream("/logo.gif")));
 
         VBox layout = new VBox(20);
         layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(20));
-        layout.setStyle("-fx-background-color: #89CFF0; "
+        layout.setStyle("-fx-background-color: #a0ebb4; "
         + "-fx-text-fill: white; "
         + "-fx-padding: 10px 20px; "
         + "-fx-background-radius: 5px; "
@@ -261,38 +350,34 @@ leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageTe
         + "-fx-border-radius: 5px;");
 
         Text rules = new Text("""
-            This is an interview preparation game. \nKeep your pet healthy by feeding it. \nIf it loses all health, the game ends. \nEarn money by working to buy food, and play with your pet to gain XP. The goal is to reach level 10.\nWorking or playing makes your pet hungrier, and you can't play if your pet is too hungry. Goodluck!""");
+            Let's prepare for your interview! \n\n1. Make sure to keep your pet healthy by feeding it. \n\n2. Answer interview questions to earn money and 
+            buy food. \n\n4. Answer coding questions with your pet to gain XP and reach Level 10 for full preparation!\n\n5. Remember that you can't play 
+            if your pet is too hungry.\n\nGoodluck!""");
 
         rules.setFont(font);
-        rules.setWrappingWidth(350);
+        rules.setWrappingWidth(400);
 
-        Button closeButton = new Button("Return to Game");
-        closeButton.setFont(font);
-        closeButton.setStyle("-fx-background-color: #4CAF50; "
-        + "-fx-text-fill: white; "
-        + "-fx-padding: 10px 20px; "
-        + "-fx-background-radius: 5px; "
-        + "-fx-border-color: #efbf04; "
-        + "-fx-border-width: 2px; " 
-        + "-fx-border-radius: 5px;");
-        closeButton.setOnAction(e -> popup.close());
-
-        layout.getChildren().addAll(rules, closeButton);
+        layout.getChildren().addAll(rules);
 
         Scene popupScene = new Scene(layout, 500, 400);
         popup.setScene(popupScene);
         popup.showAndWait();
     }
 
-    private void showCustomizePopup(Stage owner) {
+    private void showCustomizePopup(Stage owner,HBox root, HBox navBar) {
     Stage popup = new Stage();
     popup.initModality(Modality.APPLICATION_MODAL);
     popup.initOwner(owner);
+    popup.setTitle("Settings");
+    popup.getIcons().add(new Image(getClass().getResourceAsStream("/logo.gif")));
 
     VBox layout = new VBox(20);
-    layout.setAlignment(Pos.TOP_LEFT);
-    layout.setPadding(new Insets(20));
-    layout.setStyle("-fx-background-color: #FFC0CB;");
+    layout.setAlignment(Pos.CENTER);
+    layout.setPadding(new Insets(50));
+    layout.setStyle("-fx-background-color: #FFC0CB;"
+    + "-fx-border-color: #efbf04; "
+    + "-fx-border-width: 2px; " 
+    + "-fx-border-radius: 5px;");
 
     // Background color selection
     Text backgroundText = new Text("Choose your background:");
@@ -301,17 +386,21 @@ leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageTe
     HBox colorCircles = new HBox(20);
     colorCircles.setAlignment(Pos.CENTER);
 
-    String[] colors = {"#D6EEF2", "#FFC0CB", "#89CFF0"};
+    String[] colors = {"#f8e8d3", "#a8d5ba", "#D6EEF2"};
     for (String color : colors) {
         Circle circle = new Circle(30);
         circle.setFill(Color.web(color));
         circle.setStroke(Color.BLACK);
         circle.setOnMouseClicked(e -> {
             root.setStyle("-fx-background-color: " + color + ";");
+            navBar.setStyle("-fx-background-color: " + color + ";");
             popup.close();
         });
         colorCircles.getChildren().add(circle);
     }
+
+    Region spacer = new Region();
+    VBox.setVgrow(spacer, Priority.ALWAYS);
 
     // Volume control
     Text volumeText = new Text("Sound:");
@@ -322,7 +411,33 @@ leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageTe
     volumeSlider.setShowTickMarks(true);
     volumeSlider.setMajorTickUnit(50);
     volumeSlider.setMinorTickCount(5);
+    volumeSlider.setStyle(
+        "-fx-background-color: transparent;" +
+        "-fx-pref-height: 40px;" +
+        "-fx-pref-width: 300px;"
+    );
 
+    Platform.runLater(() -> {
+        volumeSlider.lookup(".thumb").setStyle(
+            "-fx-background-color: linear-gradient(to bottom, #FF69B4, #FF1493);" +
+            "-fx-background-radius: 20px;" +
+            "-fx-pref-height: 30px;" +
+            "-fx-pref-width: 30px;" +
+            "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);"
+        );
+
+        volumeSlider.lookup(".track").setStyle(
+            "-fx-background-color: linear-gradient(to right, #FFC0CB, #FF69B4);" +
+            "-fx-background-radius: 15px;" +
+            "-fx-pref-height: 20px;"
+        );
+
+        volumeSlider.lookup(".track-background").setStyle(
+            "-fx-background-color: #FFE4E1;" +
+            "-fx-background-radius: 15px;" +
+            "-fx-pref-height: 10px;"
+        );
+    });
     if (backgroundMusic != null) {
         volumeSlider.setValue(backgroundMusic.getVolume() * 100);
     }
@@ -333,33 +448,8 @@ leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageTe
         }
     });
 
-    // Brightness control
-    Text brightnessText = new Text("Brightness:");
-    brightnessText.setFont(font);
-
-    Slider brightnessSlider = new Slider(0.5, 1.0, 1.0);
-    brightnessSlider.setShowTickLabels(true);
-    brightnessSlider.setShowTickMarks(true);
-    brightnessSlider.setMajorTickUnit(0.25);
-    brightnessSlider.setMinorTickCount(5);
-
-    brightnessSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-        root.setOpacity(newValue.doubleValue());
-    });
-
-    Button closeButton = new Button("Close");
-    closeButton.setFont(font);
-    closeButton.setStyle("-fx-background-color: #4CAF50; " +
-                         "-fx-text-fill: white; " +
-                         "-fx-padding: 10px 20px; " +
-                         "-fx-background-radius: 5px; " +
-                         "-fx-border-color: #efbf04; " +
-                         "-fx-border-width: 2px; " +
-                         "-fx-border-radius: 5px;");
-    closeButton.setOnAction(e -> popup.close());
-
     layout.getChildren().addAll(
-        backgroundText, colorCircles, closeButton,volumeText, volumeSlider, brightnessText, brightnessSlider
+        backgroundText, colorCircles,spacer,volumeText, volumeSlider
     );
 
     Scene popupScene = new Scene(layout, 500, 400);
@@ -381,7 +471,8 @@ leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageTe
         double bubbleHeight = textHeight + 20;
     
         // Create the bubble shape
-        javafx.scene.shape.Rectangle bubble = new javafx.scene.shape.Rectangle(bubbleWidth, bubbleHeight);        bubble.setFill(javafx.scene.paint.Color.web("#eff7fa"));
+        javafx.scene.shape.Rectangle bubble = new javafx.scene.shape.Rectangle(bubbleWidth, bubbleHeight);     
+        bubble.setFill(javafx.scene.paint.Color.web("#eff7fa"));
         bubble.setStroke(javafx.scene.paint.Color.BLACK);
         bubble.setStrokeWidth(2);
         bubble.setArcWidth(5);
@@ -402,12 +493,13 @@ leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageTe
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.initOwner(owner);
+        popup.setTitle("Menu");
+        popup.getIcons().add(new Image(getClass().getResourceAsStream("/burger.png")));
 
         VBox layout = new VBox(20);
         layout.setAlignment(Pos.CENTER);
         layout.setPadding(new Insets(20));
-        layout.setStyle("-fx-background-color: #D6EEF2;");
-
+        layout.setStyle("-fx-background-color: linear-gradient(to top, #FCDC5A, #FDEBA3);");
 
         Label feedLabel = new Label("Feed your pet");
         feedLabel.setFont(font);
@@ -434,8 +526,9 @@ leftPane.getChildren().addAll(petWithSpeechBubble,petInfo, superPower,languageTe
         // Add all buttons to the layout
         layout.getChildren().addAll(feedLabel, foods, closeButton);
 
-        Scene popupScene = new Scene(layout, 700, 600);
+        Scene popupScene = new Scene(layout, 650,500);
         popup.setScene(popupScene);
+        popup.setTitle("Menu");
         popup.showAndWait();
     }
 
