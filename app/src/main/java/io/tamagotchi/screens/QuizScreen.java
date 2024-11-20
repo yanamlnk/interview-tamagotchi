@@ -37,7 +37,7 @@ public class QuizScreen extends Application {
     private String submitButtonStyleActive;
     private String submitButtonStyleHover;
 
-    public QuizScreen(Pet pet, String language, String mode) {
+    public QuizScreen(Pet pet, String language, String mode, Font font) {
         this.pet = pet;
         this.language = language;
         this.mode = mode;
@@ -46,7 +46,7 @@ public class QuizScreen extends Application {
         String filePath = controller.generateFileName(language, mode);
         Questions loadedQuestions = controller.loadQuestionsFromFile(getClass().getResource(filePath).getPath());
         this.questions = loadedQuestions.getRandomQuestions();
-        this.customFont = Font.loadFont(getClass().getResource("/fonts/upheavtt.ttf").toExternalForm(), 12);
+        this.customFont = font;
 
         this.buttonStyle = "-fx-background-color: transparent; " +
                 "-fx-border-color: black; " +

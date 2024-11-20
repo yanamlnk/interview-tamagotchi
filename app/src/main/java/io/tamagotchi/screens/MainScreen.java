@@ -64,7 +64,6 @@ Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
                 return;
             }
             String musicFile = musicURL.toExternalForm();
-            System.out.println("Music file loaded from: " + musicFile); // Debugging output
             
             Media sound = new Media(musicFile);
             backgroundMusic = new MediaPlayer(sound);
@@ -289,7 +288,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         playButton.setScaleX(1.0));
         playButton.setOnMouseReleased(e -> 
         playButton.setScaleY(1.0));
-        playButton.setOnAction(event -> new QuizScreen(pet, language, "play").start(primaryStage));
+        playButton.setOnAction(event -> new QuizScreen(pet, language, "play", font).start(primaryStage));
 
         HBox actionButtons = new HBox(10, feedButton, playButton);
         actionButtons.setAlignment(Pos.CENTER);
@@ -313,7 +312,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         workButton.setScaleX(1.0));
         workButton.setOnMouseReleased(e -> 
         workButton.setScaleY(1.0));
-        workButton.setOnAction(event -> new QuizScreen(pet, language, "work").start(primaryStage));
+        workButton.setOnAction(event -> new QuizScreen(pet, language, "work", font).start(primaryStage));
 
         // Add elements to right pane
         rightPane.getChildren().addAll(healthLabel, healthBar, xpLabel, xpBar, levelLabel, moneyRow, actionButtons, workButton);
