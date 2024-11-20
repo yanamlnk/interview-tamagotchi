@@ -1,0 +1,1302 @@
+[
+  {
+    "question": "What is the correct way to declare and initialize an array in Java?\n\n\nint[] arr = _____;\n",
+    "answers": [
+      "new int[5];",
+      "int[5] new arr;",
+      "new int[5];",
+      "int arr[] = new int(5);"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which option correctly prints all elements of an array in Java?\n\n\nint[] arr = {1, 2, 3};\nfor (int i = 0; i < arr.length; _____) {\n    System.out.println(arr[i]);\n}\n",
+    "answers": [
+      "i++",
+      "++i",
+      "i+=2",
+      "i = i + 1"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which code correctly initializes a String variable in Java?\n\n`\nString s = _____;\n",
+    "answers": [
+      "\"Hello, World!\"",
+      "'Hello, World!'",
+      "'\"Hello, World!\"'",
+      "\"\"Hello, World!\"\""
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method correctly converts a string to an integer?\n\n\nString number = \"42\";\nint result = _____;\n",
+    "answers": [
+      "Integer.parseInt(number);",
+      "parseInt(number);",
+      "Integer.numberParse(number);",
+      "number.parseInt();"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which option correctly declares a method that takes an integer and returns a string?\n\n\npublic _____ method(int num) {\n    return String.valueOf(num);\n}\n",
+    "answers": [
+      "String",
+      "void",
+      "int",
+      "Object"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct syntax to instantiate a `HashMap` in Java?\n\n\nHashMap<String, Integer> map = _____;\n",
+    "answers": [
+      "new HashMap<>();",
+      "HashMap<> map = new HashMap<String, Integer>();",
+      "new HashMap<String, Integer>();",
+      "new HashMap()<>;"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which option is the correct way to create a loop that prints numbers from 1 to 5?\n\n\nfor (int i = 1; i _____ 5; i++) {\n    System.out.println(i);\n}\n",
+    "answers": [
+      "i <=",
+      "i >",
+      "i <",
+      "i >="
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which statement correctly handles a potential exception in Java?\n\n\ntry {\n    int result = 10 / 0;\n} _____ {\n    System.out.println(\"Error occurred\");\n}\n",
+    "answers": [
+      "catch",
+      "throws",
+      "finally",
+      "throw"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which option is the correct syntax for a class constructor?\n\n\npublic class Example {\n    _____ Example() {\n        // Constructor body\n    }\n}\n",
+    "answers": [
+      "public",
+      "private",
+      "void",
+      "protected"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which code correctly prints the size of an array?\n\n\nint[] arr = {1, 2, 3};\nSystem.out.println(_____);\n",
+    "answers": [
+      "arr.length",
+      "arr.size()",
+      "arr.length()",
+      "arr.getSize()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to instantiate an ArrayList in Java?\n\n\nArrayList<String> list = _____;\n",
+    "answers": [
+      "new ArrayList();",
+      "new ArrayList<String>();",
+      "ArrayList();",
+      "ArrayList<String> list = new ArrayList();"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which line of code adds an element to an ArrayList in Java?\n\n\nArrayList<Integer> list = new ArrayList<>();\n_____;\n",
+    "answers": [
+      "list.add(10);",
+      "list.addElement(10);",
+      "list.insert(10);",
+      "list.push(10);"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which keyword is used to inherit a class in Java?\n\n\npublic class Dog _____ Animal {\n    // Class body\n}\n",
+    "answers": [
+      "extends",
+      "inherits",
+      "implements",
+      "super"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to convert an object to a string in Java?\n\n\nObject obj = new Object();\nString str = obj._____;\n",
+    "answers": [
+      "toString()",
+      "convertToString()",
+      "getString()",
+      "asString()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which option correctly handles multiple exceptions in one block?\n\n\ntry {\n    // code\n} _____ {\n    System.out.println(\"Error occurred\");\n}\n",
+    "answers": [
+      "catch (Exception | IOException e)",
+      "catch (Exception e, IOException e2)",
+      "catch (Exception e)",
+      "catch (IOException, Exception)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to declare a constant in Java?\n\n\n_____ final double PI = 3.14;",
+    "answers": [
+      "public",
+      "private",
+      "static",
+      "final"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Which method is used to remove an element from an ArrayList in Java?\n\n\nArrayList<String> list = new ArrayList<>();\nlist._____(\"element\");\n",
+    "answers": [
+      "remove",
+      "delete",
+      "pop",
+      "discard"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which statement correctly checks if an object is an instance of a class?\n\n\nObject obj = new Dog();\nif (obj _____ Dog) {\n    System.out.println(\"It's a Dog!\");\n}\n",
+    "answers": [
+      "instanceof",
+      "is",
+      "isInstanceOf",
+      "typeOf"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which statement correctly declares an abstract class?\n\n\n_____ abstract class Animal {\n    abstract void makeSound();\n}\n",
+    "answers": [
+      "public",
+      "private",
+      "abstract",
+      "protected"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which option correctly starts a switch-case statement?\n\n\nswitch (x) {\n    _____\n}\n",
+    "answers": [
+      "case 1:",
+      "default:",
+      "if",
+      "when"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct syntax for a while loop?\n\n\nwhile (_____ ) {\n    System.out.println(\"Looping...\");\n}\n",
+    "answers": [
+      "condition",
+      "i < 10",
+      "x > 0",
+      "true"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct syntax for defining a method in Java?\n\n\npublic _____ greet() {\n    System.out.println(\"Hello\");\n}\n",
+    "answers": [
+      "void",
+      "int",
+      "String",
+      "char"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to check if a string contains a substring?\n\n\nString str = \"Hello, World!\";\nboolean result = str._____(\"World\");\n",
+    "answers": [
+      "contains",
+      "includes",
+      "hasSubstring",
+      "find"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to declare a class in Java?\n\n\n_____ MyClass {\n    // Class body\n}\n",
+    "answers": [
+      "class",
+      "public class",
+      "private class",
+      "protected class"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which keyword is used to define an interface in Java?\n\n\n_____ MyInterface {\n    void doSomething();\n}\n",
+    "answers": [
+      "interface",
+      "implements",
+      "public",
+      "class"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which keyword is used to inherit a class in Java?\n\n\npublic class Dog _____ Animal {\n    // Class body\n}\n",
+    "answers": [
+      "extends",
+      "implements",
+      "inherits",
+      "super"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to get the length of an array in Java?\n\n\nint[] arr = {1, 2, 3};\nint len = arr._____;\n",
+    "answers": [
+      "size()",
+      "getLength()",
+      "len()",
+      "length"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the correct way to convert a string to an integer?\n\n\nString num = \"123\";\nint result = Integer._____(num);\n",
+    "answers": [
+      "parseInt",
+      "convertToInt",
+      "parseInteger",
+      "getInt"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which option correctly declares a constant in Java?\n\n\n_____ final double PI = 3.14159;\n",
+    "answers": [
+      "public",
+      "private",
+      "static",
+      "final"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Which statement correctly adds an element to a `HashSet` in Java?\n\n\nHashSet<String> set = new HashSet<>();\nset._____(\"element\");\n",
+    "answers": [
+      "insert",
+      "add",
+      "push",
+      "put"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which statement is used to handle exceptions in Java?\n\n\ntry {\n    // code\n} _____ {\n    System.out.println(\"Error\");\n}\n",
+    "answers": [
+      "catch",
+      "throw",
+      "throws",
+      "finally"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which statement correctly creates a `StringBuilder` in Java?\n\n\n_____ sb = new StringBuilder();\n",
+    "answers": [
+      "StringBuilder",
+      "new StringBuilder()",
+      "StringBuffer",
+      "StringBuilder sb"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to append a string to a `StringBuilder` object?\n\n\nStringBuilder sb = new StringBuilder();\nsb._____(\"Hello\");\n",
+    "answers": [
+      "concat",
+      "append",
+      "add",
+      "insert"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the correct syntax for creating a `for` loop in Java?\n\n\nfor (int i = 0; i _____ 5; i++) {\n    System.out.println(i);\n}\n",
+    "answers": [
+      "i <",
+      "i >",
+      "i <=",
+      "i >="
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which code creates an instance of the `ArrayList` class?\n\n\n_____ list = new ArrayList<>();\n",
+    "answers": [
+      "ArrayList<String>",
+      "List<String>",
+      "ArrayList",
+      "List"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to declare an abstract class in Java?\n\n\n_____ abstract class Animal {\n    abstract void sound();\n}\n",
+    "answers": [
+      "abstract",
+      "class",
+      "public",
+      "private"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which keyword is used to define a class that cannot be subclassed?\n\n\n_____ class FinalClass {\n    // Class body\n}\n",
+    "answers": [
+      "final",
+      "abstract",
+      "private",
+      "static"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to remove an element from an `ArrayList` in Java?\n\n\nArrayList<String> list = new ArrayList<>();\nlist._____(\"element\");\n",
+    "answers": [
+      "remove",
+      "delete",
+      "pop",
+      "discard"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which option correctly checks if a string is empty in Java?\n\n\nString str = \"\";\nif (str._____) {\n    System.out.println(\"Empty string\");\n}\n",
+    "answers": [
+      "isEmpty()",
+      "length() == 0",
+      "equals(\"\")",
+      "checkEmpty()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to check if a list contains a specific element in Java?\n\n\nArrayList<String> list = new ArrayList<>();\nif (list._____(\"element\")) {\n    System.out.println(\"Found\");\n}\n",
+    "answers": [
+      "contains",
+      "has",
+      "search",
+      "find"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to compare two strings in Java?\n\n\nString str1 = \"Hello\";\nString str2 = \"Hello\";\nboolean result = str1._____(str2);\n",
+    "answers": [
+      "equals",
+      "compareTo",
+      "compare",
+      "isEqual"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to declare a `HashMap` in Java?\n\n\n_____ map = new HashMap<>();\n",
+    "answers": [
+      "Map<String, Integer>",
+      "HashMap<String, Integer>",
+      "Map",
+      "HashMap"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to put a key-value pair into a `HashMap`?\n\n\nmap._____(\"key\", 10);\n",
+    "answers": [
+      "put",
+      "add",
+      "insert",
+      "store"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to iterate through elements in a `HashMap` in Java?\n\n\nfor (Map.Entry<String, Integer> entry : map._____) {\n    System.out.println(entry.getKey() + \" : \" + entry.getValue());\n}\n",
+    "answers": [
+      "entrySet()",
+      "keySet()",
+      "values()",
+      "iterator()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to declare a constructor in Java?\n\n\n_____ MyClass() {\n    // Constructor body\n}\n ",
+    "answers": [
+      "public",
+      "private",
+      "constructor",
+      "void"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct syntax for creating a `HashSet` in Java?\n\n\n_____ set = new HashSet<>();\n",
+    "answers": [
+      "HashSet<String>",
+      "Set<String>",
+      "HashSet",
+      "Set"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to remove an element from a `HashMap` in Java?\n\n\nmap._____(\"key\");\n",
+    "answers": [
+      "remove",
+      "delete",
+      "clear",
+      "erase"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to get the value associated with a key in a `HashMap`?\n\n\nInteger value = map._____(\"key\");\n",
+    "answers": [
+      "get",
+      "find",
+      "retrieve",
+      "fetch"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to declare a method that returns a value in Java?\n\n\n_____ int add(int a, int b) {\n    return a + b;\n}\n",
+    "answers": [
+      "public",
+      "private",
+      "void",
+      "static"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct syntax to call a method in Java?\n\n\n_____ myMethod();\n",
+    "answers": [
+      "myMethod()",
+      "call myMethod()",
+      "invoke myMethod()",
+      "execute myMethod()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to get the character at a specific index in a string?\n\n\nString str = \"Hello\";\nchar ch = str._____(2);\n",
+    "answers": [
+      "charAt",
+      "getCharAt",
+      "charAtIndex",
+      "indexOf"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to declare a constructor with parameters?\n\n\n_____ MyClass(int a, String b) {\n    // Constructor body\n}\n",
+    "answers": [
+      "public",
+      "private",
+      "static",
+      "protected"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to start a `switch` statement in Java?\n\n\nswitch(_____ ) {\n    case 1:\n        System.out.println(\"One\");\n        break;\n}\n",
+    "answers": [
+      "expression",
+      "value",
+      "switchValue",
+      "condition"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct syntax for a `for-each` loop in Java?\n\n\nfor (String s : list) {\n    System.out.println(s);\n}\n",
+    "answers": [
+      "for (type variable : collection)",
+      "foreach (type variable : collection)",
+      "for (variable in collection)",
+      "for (variable : collection)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to convert an integer to a string in Java?\n\n\nint num = 10;\nString str = String._____(num);\n",
+    "answers": [
+      "valueOf",
+      "toString",
+      "convert",
+      "intToString"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to sort a list in Java?\n\n\nList<Integer> list = new ArrayList<>();\nCollections._____(list);\n",
+    "answers": [
+      "sort",
+      "order",
+      "arrange",
+      "organize"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to define a `try-catch` block in Java?\n\n\ntry {\n    // code\n} _____ {\n    // handle exception\n}\n",
+    "answers": [
+      "catch",
+      "finally",
+      "throw",
+      "handle"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to check if an array contains a specific element?\n\n\nint[] arr = {1, 2, 3};\nboolean result = Arrays._____(arr, 2);\n",
+    "answers": [
+      "contains",
+      "includes",
+      "hasElement",
+      "search"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which class is used to represent a file in Java?\n\n\n_____ file = new File(\"path/to/file\");\n",
+    "answers": [
+      "File",
+      "Path",
+      "FilePath",
+      "FileObject"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to define an abstract method?\n\n\nabstract _____ myMethod();\n",
+    "answers": [
+      "public",
+      "private",
+      "abstract",
+      "void"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the correct way to create a thread in Java?\n\n\nThread t = new Thread(_____);\n",
+    "answers": [
+      "Runnable",
+      "RunnableTask",
+      "ThreadTask",
+      "TaskRunnable"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to start a thread in Java?\n\n\nThread t = new Thread();\nt._____;\n",
+    "answers": [
+      "start",
+      "run",
+      "execute",
+      "launch"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to synchronize a method in Java?\n\n\n_____ synchronized void myMethod() {\n    // method body\n}\n",
+    "answers": [
+      "public",
+      "private",
+      "synchronized",
+      "static"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which class is used to work with dates in Java?\n\n\n_____ date = new Date();\n",
+    "answers": [
+      "Calendar",
+      "Date",
+      "LocalDate",
+      "DateTime"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the correct way to get the current time in Java?\n\n\nlong currentTime = System._____;  // current time in milliseconds\n",
+    "answers": [
+      "currentTimeMillis",
+      "now",
+      "time",
+      "getTime"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to check if a number is even in Java?\n\n\nint num = 4;\nif (num._____(2) == 0) {\n    System.out.println(\"Even\");\n}\n",
+    "answers": [
+      "modulo",
+      "remainder",
+      "dividedBy",
+      "isEven"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to declare a `List` in Java?\n\n\n_____ list = new ArrayList<>();\n",
+    "answers": [
+      "List<Integer>",
+      "ArrayList<Integer>",
+      "List",
+      "ArrayList"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What method is used to add an element to a `List` in Java?\n\n\nlist._____(5);\n",
+    "answers": [
+      "insert",
+      "put",
+      "add",
+      "append"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which method is used to remove an element from a `List` in Java?\n\n\nlist._____(3);\n",
+    "answers": [
+      "remove",
+      "delete",
+      "clear",
+      "pop"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to define a `for` loop in Java?\n\n\nfor (int i = 0; i < 10; i++) {\n    System.out.println(i);\n}\n",
+    "answers": [
+      "for (initialization; condition; increment)",
+      "for (int i = 0, i < 10, i++)",
+      "for (i = 0; i < 10; i++)",
+      "for (int i: 0 to 10)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to check if a `List` contains a specific element?\n\n\nboolean exists = list._____(5);\n",
+    "answers": [
+      "contains",
+      "has",
+      "includes",
+      "find"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to define an interface in Java?\n\n\n_____ MyInterface {\n    void myMethod();\n}\n",
+    "answers": [
+      "interface",
+      "public interface",
+      "abstract interface",
+      "class"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to check if a string is empty in Java?\n\n\nString str = \"\";\nboolean isEmpty = str._____();\n",
+    "answers": [
+      "length",
+      "empty",
+      "isBlank",
+      "isEmpty"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the correct syntax for creating a `Thread` using `Runnable`?\n\n\nThread t = new Thread(_____);\n",
+    "answers": [
+      "Runnable",
+      "RunnableTask",
+      "Thread",
+      "Task"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to get the size of a `List` in Java?\n\n\nint size = list._____();\n",
+    "answers": [
+      "size",
+      "length",
+      "count",
+      "getSize"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to declare a `Set` in Java?\n\n\n_____ set = new HashSet<>();\n",
+    "answers": [
+      "Set<String>",
+      "HashSet<String>",
+      "Set",
+      "HashSet"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to declare a constant in Java?\n\n\n_____ final int MAX_VALUE = 100;\n",
+    "answers": [
+      "public",
+      "private",
+      "static",
+      "final"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Which method is used to compare two strings in Java?\n\n\nString str1 = \"hello\";\nString str2 = \"world\";\nboolean areEqual = str1._____(str2);\n",
+    "answers": [
+      "equals",
+      "compare",
+      "isEqualTo",
+      "sameAs"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to call a static method in Java?\n\n\n_____ MyClass.myMethod();\n",
+    "answers": [
+      "MyClass",
+      "this",
+      "super",
+      "class"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to convert a string to lowercase in Java?\n\n\nString lower = str._____(str);\n",
+    "answers": [
+      "toLower",
+      "lowercase",
+      "toLowerCase",
+      "convertToLowerCase"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which method is used to close a stream in Java?\n\n\nstream._____();\n",
+    "answers": [
+      "close",
+      "shutdown",
+      "finish",
+      "stop"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to create a new `ArrayList` in Java?\n\n\n_____ list = new ArrayList<>();\n",
+    "answers": [
+      "List<String>",
+      "ArrayList<String>",
+      "List",
+      "ArrayList"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to check if a list is empty?\n\n\nboolean isEmpty = list._____();\n",
+    "answers": [
+      "isEmpty",
+      "length",
+      "empty",
+      "isBlank"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to catch multiple exceptions in Java?\n\n\ntry {\n    // code\n} _____ (IOException | SQLException e) {\n    e.printStackTrace();\n}\n",
+    "answers": [
+      "handle",
+      "catch",
+      "throw",
+      "throws"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which method is used to add a new element at the beginning of a `List` in Java?\n\n\nlist._____(0, 5);\n",
+    "answers": [
+      "add",
+      "insert",
+      "prepend",
+      "push"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to check if a list contains a specific element in Java?\n\n\nboolean contains = list._____(\"element\");\n",
+    "answers": [
+      "contains",
+      "find",
+      "has",
+      "check"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to import a package in Java?\n\n\n_____ package java.util;\n",
+    "answers": [
+      "import",
+      "use",
+      "include",
+      "require"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to check if a `List` contains a specific element?\n\n\nboolean exists = list._____(\"element\");\n",
+    "answers": [
+      "add",
+      "remove",
+      "contains",
+      "indexOf"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the correct way to define an interface in Java?\n\n\n_____ MyInterface {\n    void myMethod();\n}\n",
+    "answers": [
+      "abstract interface",
+      "public interface",
+      "interface",
+      "class"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which method is used to get the index of a specific element in a `List`?\n\n\nint index = list._____(\"element\");\n",
+    "answers": [
+      "findIndex",
+      "indexOf",
+      "getIndex",
+      "search"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the correct way to create a new `ArrayList` in Java?\n\n\n_____ list = new ArrayList<>();\n",
+    "answers": [
+      "List<String>",
+      "ArrayList<String>",
+      "ArrayList",
+      "List"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the correct way to define a static method in Java?\n\n\n_____ static void myMethod() {\n    // method body\n}\n",
+    "answers": [
+      "public",
+      "private",
+      "static",
+      "protected"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which method is used to split a string in Java?\n\n\nString[] parts = str._____(\",\");\n",
+    "answers": [
+      "split",
+      "separate",
+      "divide",
+      "break"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct syntax for an `if-else` condition?\n\n\nif (condition) {\n    // code\n} _____ {\n    // code\n}\n",
+    "answers": [
+      "else if",
+      "else",
+      "elseif",
+      "endif"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the correct way to check if a string is empty in Java?\n\n\nString str = \"\";\nboolean isEmpty = str._____( );\n",
+    "answers": [
+      "isEmpty",
+      "isNull",
+      "length",
+      "isBlank"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Which method is used to find the length of a string in Java?\n\n\nString str = \"Hello\";\nint length = str._____( );\n",
+    "answers": [
+      "length",
+      "size",
+      "count",
+      "charCount"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to start a `switch` statement in Java?\n\n\nswitch(_____ ) {\n    case 1:\n        // code\n}\n",
+    "answers": [
+      "value",
+      "condition",
+      "expression",
+      "caseValue"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the correct way to throw an exception in Java?\n\n\nthrow new _____(\"Exception message\");\n",
+    "answers": [
+      "Exception",
+      "RuntimeException",
+      "Error",
+      "Throwable"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the correct way to handle an exception in Java?\n\n\ntry {\n    // code\n} _____ (Exception e) {\n    // handle exception\n}\n",
+    "answers": [
+      "catch",
+      "throw",
+      "handle",
+      "throws"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to add an element to a `HashSet` in Java?\n\n\nset._____(5);\n",
+    "answers": [
+      "add",
+      "insert",
+      "push",
+      "put"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to remove all elements from a collection in Java?\n\n\ncollection._____( );\n",
+    "answers": [
+      "clear",
+      "removeAll",
+      "deleteAll",
+      "reset"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to return a value from a method in Java?\n\n\nreturn _____;\n",
+    "answers": [
+      "value",
+      "null",
+      "void",
+      "result"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to declare a constant in Java?\n\n\n_____ final int MAX_VALUE = 100;\n",
+    "answers": [
+      "static",
+      "public",
+      "private",
+      "final"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the correct way to call a static method in Java?\n\n\n_____ MyClass.myMethod();\n",
+    "answers": [
+      "this",
+      "super",
+      "MyClass",
+      "class"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which method is used to convert a string to lowercase in Java?\n\n\nString lower = str._____( );\n",
+    "answers": [
+      "toLowerCase",
+      "lowerCase",
+      "convertToLower",
+      "toLower"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to check if a list is empty in Java?\n\n\nboolean isEmpty = list._____( );\n",
+    "answers": [
+      "empty",
+      "isNull",
+      "length",
+      "isEmpty"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Which method is used to find the maximum element in a list in Java?\n\n\nint max = Collections._____(list);\n",
+    "answers": [
+      "max",
+      "maximum",
+      "findMax",
+      "getMax"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to join two strings in Java?\n\n\nString result = str1._____(str2);\n",
+    "answers": [
+      "concat",
+      "combine",
+      "append",
+      "merge"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to define a `for-each` loop in Java?\n\n\nfor (String item : list) {\n    System.out.println(item);\n}\n",
+    "answers": [
+      "for (variable : collection)",
+      "foreach (variable : collection)",
+      "for each (variable in collection)",
+      "for (variable in collection)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to check if a `String` contains a substring in Java?\n\n\nboolean contains = str._____(\"sub\");\n",
+    "answers": [
+      "contains",
+      "hasSubstring",
+      "includes",
+      "find"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to start a `for` loop in Java?\n\n\nfor (int i = 0; i < 10; i++) {\n    System.out.println(i);\n}\n",
+    "answers": [
+      "for (int i = 0; i < 10; i++)",
+      "for (i = 0; i < 10; i++)",
+      "for (int i = 0, i < 10, i++)",
+      "for (int i: 0 to 10)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to create an instance of a `HashMap`?\n\n\n_____ map = new HashMap<>();\n",
+    "answers": [
+      "Map<String, Integer>",
+      "HashMap<String, Integer>",
+      "HashMap",
+      "Map"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which method is used to find if a `List` contains a specific element?\n\n\nboolean exists = list._____(\"element\");\n",
+    "answers": [
+      "find",
+      "has",
+      "contains",
+      "check"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the correct way to get the first element of a `List`?\n\n\nString first = list._____(0);\n",
+    "answers": [
+      "get",
+      "first",
+      "getFirst",
+      "elementAt"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to create a thread in Java?\n\n\n_____ myThread = new Thread(new Runnable() {\n    public void run() {\n        System.out.println(\"Running\");\n    }\n});\n",
+    "answers": [
+      "Thread",
+      "Runnable",
+      "ExecutorService",
+      "Task"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct method to check if a string is empty in Java?\n\n\nString str = \"\";\nboolean empty = str._____( );\n",
+    "answers": [
+      "isNull",
+      "length",
+      "isEmpty",
+      "isBlank"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which method is used to remove an element from a `List` in Java?\n\n\nlist._____(3);\n",
+    "answers": [
+      "delete",
+      "remove",
+      "clear",
+      "pop"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the correct way to define a `for-each` loop in Java?\n\n\nfor (String item : list) {\n    System.out.println(item);\n}\n",
+    "answers": [
+      "for (variable : collection)",
+      "foreach (variable : collection)",
+      "for each (variable in collection)",
+      "for (variable in collection)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to create a `Map` in Java?\n\n\n_____ map = new HashMap<>();\n",
+    "answers": [
+      "HashMap<String, Integer>",
+      "Map<String, Integer>",
+      "Hashtable<String, Integer>",
+      "Dictionary<String, Integer>"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the correct way to get the length of an array in Java?\n\n\nint length = arr._____( );\n",
+    "answers": [
+      "size",
+      "length",
+      "getLength",
+      "count"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which method is used to convert a string to an integer in Java?\n\n\nint number = Integer._____(\"123\");\n",
+    "answers": [
+      "parseInt",
+      "parse",
+      "toInt",
+      "convert"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to compare two strings lexicographically in Java?\n\n\nint comparison = str1._____(str2);\n",
+    "answers": [
+      "equals",
+      "compareTo",
+      "compare",
+      "isEqualTo"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which method is used to check if a `Set` contains a specific element in Java?\n\n\nboolean exists = set._____(\"element\");\n",
+    "answers": [
+      "find",
+      "contains",
+      "has",
+      "check"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the correct way to declare a constant in Java?\n\n\n_____ final int MAX_VALUE = 100;\n",
+    "answers": [
+      "public",
+      "static",
+      "private",
+      "final"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Which method is used to add an element to a `Set` in Java?\n\n\nset._____(\"element\");\n",
+    "answers": [
+      "add",
+      "insert",
+      "push",
+      "put"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to remove all elements from a `List` in Java?\n\n\nlist._____( );\n",
+    "answers": [
+      "deleteAll",
+      "clear",
+      "removeAll",
+      "reset"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the correct way to call a method in Java?\n\n\n_____ myObject.myMethod();\n",
+    "answers": [
+      "this",
+      "super",
+      "myClass",
+      "myObject"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the correct way to declare a `Map` in Java?\n\n\n_____ map = new HashMap<>();\n",
+    "answers": [
+      "Map<String, Integer>",
+      "HashMap<String, Integer>",
+      "Map",
+      "Hashtable<String, Integer>"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to sort a `List` in Java?\n\n\nCollections._____(list);\n",
+    "answers": [
+      "sort",
+      "order",
+      "arrange",
+      "rank"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the correct way to define a `while` loop in Java?\n\n\nwhile (condition) {\n    // code\n}\n",
+    "answers": [
+      "while (condition)",
+      "while condition",
+      "do-while condition",
+      "while (condition) { }"
+    ],
+    "correctAnswer": 0
+  }
+]

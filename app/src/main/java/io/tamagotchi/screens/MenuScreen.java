@@ -53,7 +53,7 @@ public class MenuScreen extends Application {
         root.setStyle("-fx-background-color: #D6EEF2;");
 
         // Title
-        Text title = new Text("WELCOME !\nPlease choose your tamagotchi pet and language that you need to prepare for interview:");
+        Text title = new Text("WELCOME to PrepPal - tamagotchi that will help you to prepare for technical interview!\n\nPlease choose your tamagotchi pet:");
         title.setStyle("-fx-font-size: 30;");
         title.setFont(customFont);
         title.setWrappingWidth(800); // Limit the text width to 300px
@@ -63,6 +63,12 @@ public class MenuScreen extends Application {
         // Pet selection buttons
         ToggleGroup petGroup = new ToggleGroup();
         HBox petSelection = createPetButtons(petGroup);
+
+        Text petTitle = new Text("Please select the language that you need to prepare for interview:");
+        petTitle.setStyle("-fx-font-size: 30;");
+        petTitle.setFont(customFont);
+        petTitle.setWrappingWidth(800); // Limit the text width to 300px
+        petTitle.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
 
         // Language selection buttons
         ToggleGroup languageGroup = new ToggleGroup();
@@ -115,7 +121,7 @@ public class MenuScreen extends Application {
         });
 
         // Add everything to the root layout
-        root.getChildren().addAll(title, petSelection, languageSelection, startButton);
+        root.getChildren().addAll(title, petSelection, petTitle, languageSelection, startButton);
 
         // Show the stage
         Scene scene = new Scene(root, 1000, 800);

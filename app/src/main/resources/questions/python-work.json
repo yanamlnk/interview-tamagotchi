@@ -1,0 +1,1162 @@
+[
+  {
+    "question": "What is the correct syntax to print 'Hello, World!' in Python?",
+    "answers": [
+      "echo 'Hello, World!'",
+      "print('Hello, World!')",
+      "printf('Hello, World!')",
+      "console.log('Hello, World!')"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of these data types is immutable in Python?",
+    "answers": [
+      "List",
+      "Set",
+      "Dictionary",
+      "Tuple"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the output of `len([1, 2, 3, 4])`?",
+    "answers": [
+      "3",
+      "4",
+      "5",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How do you create a virtual environment in Python?",
+    "answers": [
+      "python -m venv env",
+      "pip install virtualenv",
+      "python create-env",
+      "virtualenv install env"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which keyword is used to define a function in Python?",
+    "answers": [
+      "def",
+      "function",
+      "lambda",
+      "func"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the purpose of the `pass` statement in Python?",
+    "answers": [
+      "It is used to exit a loop",
+      "It is used to define an empty block of code",
+      "It is used to raise an exception",
+      "It is used to skip an iteration"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of the following is a valid Python variable name?",
+    "answers": [
+      "2variable",
+      "variable-name",
+      "_variable",
+      "variable#"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the result of `2 ** 3` in Python?",
+    "answers": [
+      "6",
+      "8",
+      "9",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which module in Python is used for regular expressions?",
+    "answers": [
+      "regex",
+      "re",
+      "regexp",
+      "match"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does the `is` keyword compare?",
+    "answers": [
+      "Value equality",
+      "Reference equality",
+      "Both value and reference equality",
+      "None of the above"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How do you open a file in read mode in Python?",
+    "answers": [
+      "open('file.txt')",
+      "open('file.txt', 'read')",
+      "open('file.txt', 'r')",
+      "read('file.txt')"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the output of `print(bool(0))`?",
+    "answers": [
+      "True",
+      "False",
+      "Error",
+      "None"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of the following is NOT a Python keyword?",
+    "answers": [
+      "assert",
+      "class",
+      "then",
+      "lambda"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the difference between a list and a tuple?",
+    "answers": [
+      "Lists are immutable; tuples are mutable",
+      "Lists are mutable; tuples are immutable",
+      "Lists are faster than tuples",
+      "Tuples can only contain integers"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does the `dir()` function do in Python?",
+    "answers": [
+      "Lists available attributes of an object",
+      "Returns the directory path",
+      "Deletes an object",
+      "Creates a directory"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you handle exceptions in Python?",
+    "answers": [
+      "try/catch",
+      "try/except",
+      "try/finally",
+      "catch/finally"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the result of `'Hello' + 'World'`?",
+    "answers": [
+      "'Hello World'",
+      "'HelloWorld'",
+      "'Hello, World'",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of the following methods adds an item to a list?",
+    "answers": [
+      "append()",
+      "add()",
+      "insert()",
+      "extend()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the purpose of the `with` statement in Python?",
+    "answers": [
+      "To handle exceptions",
+      "To create loops",
+      "To manage resources like file handling",
+      "To import modules"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "How do you create a dictionary in Python?",
+    "answers": [
+      "{}",
+      "[]",
+      "dict()",
+      "{} or dict()"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the output of `[1, 2, 3] * 2`?",
+    "answers": [
+      "[2, 4, 6]",
+      "[1, 2, 3, 1, 2, 3]",
+      "[1, 1, 2, 2, 3, 3]",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does the `map()` function do in Python?",
+    "answers": [
+      "Applies a function to all items in an iterable",
+      "Maps keys to values in a dictionary",
+      "Filters items in a list",
+      "Creates a dictionary"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a lambda function in Python?",
+    "answers": [
+      "A function with no parameters",
+      "A function with no return value",
+      "An anonymous function",
+      "A recursive function"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "How do you find the type of an object in Python?",
+    "answers": [
+      "type(obj)",
+      "obj.type()",
+      "typeof(obj)",
+      "getType(obj)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the result of `'5' + 5` in Python?",
+    "answers": [
+      "'55'",
+      "10",
+      "Error",
+      "None"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which of these is a mutable data type in Python?",
+    "answers": [
+      "List",
+      "Tuple",
+      "String",
+      "Integer"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the purpose of `__init__` in Python?",
+    "answers": [
+      "It is a destructor",
+      "It is the constructor method",
+      "It defines a private variable",
+      "It initializes modules"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of the following is a Python package manager?",
+    "answers": [
+      "npm",
+      "pip",
+      "composer",
+      "brew"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the default encoding for strings in Python 3?",
+    "answers": [
+      "ASCII",
+      "UTF-16",
+      "UTF-8",
+      "ISO-8859-1"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the output of `print(type([]))`?",
+    "answers": [
+      "<class 'list'>",
+      "<type 'list'>",
+      "<class 'array'>",
+      "Error"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How can you generate a random number in Python?",
+    "answers": [
+      "random(1, 10)",
+      "random.randint(1, 10)",
+      "random.int(1, 10)",
+      "rand.randint(1, 10)"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of the following is used to install a package in Python?",
+    "answers": [
+      "python install <package_name>",
+      "pip install <package_name>",
+      "install-python <package_name>",
+      "python -m install <package_name>"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does the `zip()` function do in Python?",
+    "answers": [
+      "Compresses files",
+      "Combines iterables element-wise into tuples",
+      "Sorts two lists",
+      "Creates dictionaries"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the purpose of Python's `super()` function?",
+    "answers": [
+      "To call a parent class method",
+      "To create a subclass",
+      "To find the superclass of a class",
+      "To override methods"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does the `id()` function in Python return?",
+    "answers": [
+      "The type of an object",
+      "The memory address of an object",
+      "The length of an object",
+      "The name of an object"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a Python decorator?",
+    "answers": [
+      "A function that modifies another function",
+      "A type of data structure",
+      "A method to create private variables",
+      "A tool to handle errors"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does the `pop()` method do in a Python list?",
+    "answers": [
+      "Adds an element to the end",
+      "Removes the last element and returns it",
+      "Deletes all elements in the list",
+      "Removes an element by value"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How can you remove duplicate elements from a list in Python?",
+    "answers": [
+      "Use a set",
+      "Use list.remove_duplicates()",
+      "Use list.filter_duplicates()",
+      "Use a dictionary"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the difference between `is` and `==` in Python?",
+    "answers": [
+      "`is` compares values; `==` compares identity",
+      "`is` compares identity; `==` compares values",
+      "`is` checks type equality; `==` checks value equality",
+      "`is` checks object existence; `==` checks equality"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which Python module is used for serialization and deserialization?",
+    "answers": [
+      "pickle",
+      "json",
+      "marshal",
+      "serialize"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you create a set in Python?",
+    "answers": [
+      "{}",
+      "set()",
+      "{,}",
+      "{} or set()"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Which of the following is NOT a valid Python file extension?",
+    "answers": [
+      ".py",
+      ".pyc",
+      ".pyo",
+      ".pyth"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the purpose of Python's `range()` function?",
+    "answers": [
+      "To generate a sequence of numbers",
+      "To create an iterator",
+      "To sort a list",
+      "To filter a sequence"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a Python generator?",
+    "answers": [
+      "A function that returns an iterator",
+      "A built-in class for creating objects",
+      "A type of list",
+      "A decorator for asynchronous functions"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which Python statement is used to exit a loop?",
+    "answers": [
+      "exit",
+      "stop",
+      "break",
+      "continue"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "How do you import only the `sqrt` function from the `math` module?",
+    "answers": [
+      "import math.sqrt",
+      "from math import sqrt",
+      "from math import *",
+      "import sqrt from math"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the output of `type(None)`?",
+    "answers": [
+      "<class 'NoneType'>",
+      "<class 'None'>",
+      "<type 'NoneType'>",
+      "Error"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which Python keyword is used to define a class?",
+    "answers": [
+      "class",
+      "define",
+      "object",
+      "new"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the purpose of `global` in Python?",
+    "answers": [
+      "To define global variables",
+      "To modify global variables inside a function",
+      "To import global modules",
+      "To create global constants"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the output of `3 * 'AB'` in Python?",
+    "answers": [
+      "'ABABAB'",
+      "[3, 'AB']",
+      "Error",
+      "None"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which operator is used to unpack iterables in Python?",
+    "answers": [
+      "*",
+      "**",
+      "&",
+      "@"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does `re.match()` return if the pattern does not match the string?",
+    "answers": [
+      "An empty string",
+      "None",
+      "False",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the output of `bool([])`?",
+    "answers": [
+      "True",
+      "False",
+      "Error",
+      "None"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How do you round a number to 2 decimal places in Python?",
+    "answers": [
+      "round(number, 2)",
+      "round(2, number)",
+      "ceil(number, 2)",
+      "floor(number, 2)"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which keyword is used to check if an object exists in a list?",
+    "answers": [
+      "contains",
+      "in",
+      "exists",
+      "has"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does the `open()` function return?",
+    "answers": [
+      "A file object",
+      "The file name",
+      "The file size",
+      "None"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which keyword is used to check a condition in Python?",
+    "answers": [
+      "if",
+      "check",
+      "case",
+      "when"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the difference between deep copy and shallow copy in Python?",
+    "answers": [
+      "Shallow copy copies the entire object; deep copy does not",
+      "Deep copy copies nested objects; shallow copy does not",
+      "Shallow copy is faster than deep copy",
+      "Deep copy is a default copy method"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What will `list(range(5))` produce?",
+    "answers": [
+      "[0, 1, 2, 3, 4]",
+      "[1, 2, 3, 4, 5]",
+      "[0, 1, 2, 3, 4, 5]",
+      "[1, 2, 3, 4]"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which method is used to remove whitespace from the start and end of a string?",
+    "answers": [
+      "strip()",
+      "trim()",
+      "remove()",
+      "clean()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the purpose of Python’s `__name__` variable?",
+    "answers": [
+      "It stores the name of the module",
+      "It is used to set the class name",
+      "It is a special variable to identify execution context",
+      "It holds the name of the function"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What does `str.find('Python', 'Py')` return?",
+    "answers": [
+      "0",
+      "1",
+      "-1",
+      "Error"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does the `filter()` function return?",
+    "answers": [
+      "A list of filtered elements",
+      "An iterator of filtered elements",
+      "A tuple of filtered elements",
+      "None"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which statement is true about Python functions?",
+    "answers": [
+      "They can return multiple values",
+      "They cannot take variable arguments",
+      "They cannot have default parameters",
+      "They cannot be nested"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you convert a string to lowercase in Python?",
+    "answers": [
+      "str.toLower()",
+      "str.lower()",
+      "str.lowercase()",
+      "str.to_lower()"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the purpose of the `assert` statement in Python?",
+    "answers": [
+      "To perform debugging",
+      "To handle errors",
+      "To define exceptions",
+      "To validate conditions"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Which method is used to add an element at a specific index in a list?",
+    "answers": [
+      "append()",
+      "add()",
+      "insert()",
+      "extend()"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the output of `sorted([3, 1, 2])`?",
+    "answers": [
+      "[3, 2, 1]",
+      "[1, 2, 3]",
+      "None",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the result of `'Python'.startswith('Py')`?",
+    "answers": [
+      "True",
+      "False",
+      "None",
+      "Error"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does the `eval()` function do?",
+    "answers": [
+      "Executes a string as Python code",
+      "Converts a string to an integer",
+      "Evaluates logical expressions",
+      "Returns the type of an expression"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which of the following will convert a string `\"123\"` to an integer?",
+    "answers": [
+      "int(\"123\")",
+      "str(\"123\")",
+      "float(\"123\")",
+      "convert(\"123\")"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the purpose of the `itertools` module?",
+    "answers": [
+      "To provide advanced iteration tools",
+      "To perform mathematical operations",
+      "To handle files",
+      "To debug programs"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the output of `len('Python')`?",
+    "answers": [
+      "5",
+      "6",
+      "7",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What will `list.extend([4, 5])` do?",
+    "answers": [
+      "Add [4, 5] as a single element",
+      "Append each element to the list",
+      "Replace the list with [4, 5]",
+      "Throw an error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of these is a Python numeric type?",
+    "answers": [
+      "str",
+      "list",
+      "int",
+      "tuple"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which method is used to replace parts of a string?",
+    "answers": [
+      "replace()",
+      "update()",
+      "substitute()",
+      "change()"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the result of `round(2.5)`?",
+    "answers": [
+      "2",
+      "3",
+      "2.5",
+      "None"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which Python library is used for numerical computations?",
+    "answers": [
+      "numpy",
+      "pandas",
+      "requests",
+      "matplotlib"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the output of `bool('False')`?",
+    "answers": [
+      "False",
+      "True",
+      "Error",
+      "None"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the purpose of the `yield` keyword in Python?",
+    "answers": [
+      "To create a generator",
+      "To exit a function",
+      "To pause a program",
+      "To declare a variable"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What does `os.getcwd()` return?",
+    "answers": [
+      "The current working directory",
+      "The user's home directory",
+      "The Python installation path",
+      "The root directory"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you check for type compatibility in Python?",
+    "answers": [
+      "Using `type()`",
+      "Using `isinstance()`",
+      "Using `compatible()`",
+      "Using `check_type()`"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which keyword is used to skip the current iteration of a loop?",
+    "answers": [
+      "skip",
+      "break",
+      "continue",
+      "pass"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the output of `[1, 2, 3] + [4, 5]`?",
+    "answers": [
+      "[1, 2, 3, 4, 5]",
+      "[1, 2, 3] + [4, 5]",
+      "[[1, 2, 3], [4, 5]]",
+      "Error"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the purpose of `try...except` in Python?",
+    "answers": [
+      "To debug code",
+      "To define classes",
+      "To handle exceptions",
+      "To terminate programs"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What does `isalpha()` do in Python?",
+    "answers": [
+      "Checks if a string contains only alphabets",
+      "Checks if a string is alphanumeric",
+      "Checks if a string starts with an alphabet",
+      "Checks if a string is empty"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the output of `type([])`?",
+    "answers": [
+      "<class 'list'>",
+      "<class 'tuple'>",
+      "<class 'set'>",
+      "<class 'dict'>"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which keyword is used to define a function in Python?",
+    "answers": [
+      "function",
+      "def",
+      "lambda",
+      "fun"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does `len({1, 2, 3})` return?",
+    "answers": [
+      "2",
+      "3",
+      "4",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the purpose of the `with` statement?",
+    "answers": [
+      "To simplify exception handling",
+      "To open and close resources automatically",
+      "To define a function",
+      "To loop through collections"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which library is used for machine learning in Python?",
+    "answers": [
+      "matplotlib",
+      "pandas",
+      "scikit-learn",
+      "os"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the result of `' '.join(['a', 'b', 'c'])`?",
+    "answers": [
+      "['a', 'b', 'c']",
+      "'abc'",
+      "'a b c'",
+      "'a, b, c'"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the output of `2 ** 3` in Python?",
+    "answers": [
+      "5",
+      "6",
+      "8",
+      "9"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which of the following is mutable?",
+    "answers": [
+      "tuple",
+      "list",
+      "string",
+      "int"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does `enumerate()` do?",
+    "answers": [
+      "Adds an index to an iterable",
+      "Sorts an iterable",
+      "Filters an iterable",
+      "Counts the elements in an iterable"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What will `{'a': 1, 'b': 2}.get('c', 0)` return?",
+    "answers": [
+      "1",
+      "2",
+      "None",
+      "0"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the result of `bool([])`?",
+    "answers": [
+      "True",
+      "False",
+      "None",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which method removes the last element from a list?",
+    "answers": [
+      "remove()",
+      "pop()",
+      "del()",
+      "discard()"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does the `zip()` function do?",
+    "answers": [
+      "Creates a compressed file",
+      "Iterates over two or more iterables in parallel",
+      "Converts an iterable to a list",
+      "Duplicates elements in an iterable"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which Python keyword is used to inherit from a parent class?",
+    "answers": [
+      "extends",
+      "inherits",
+      "super",
+      "class"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What will be the output of `'Hello'.upper()`?",
+    "answers": [
+      "'hello'",
+      "'HELLO'",
+      "'Hello'",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How do you write a comment in Python?",
+    "answers": [
+      "/* comment */",
+      "// comment",
+      "# comment",
+      "<!-- comment -->"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the output of `bool(0)`?",
+    "answers": [
+      "True",
+      "False",
+      "None",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of these is a correct way to open a file for reading?",
+    "answers": [
+      "open('file.txt')",
+      "open('file.txt', 'read')",
+      "open('file.txt', 'r')",
+      "open('file.txt', 'rb')"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What does the `max()` function do?",
+    "answers": [
+      "Returns the maximum element of an iterable",
+      "Calculates the sum of an iterable",
+      "Finds the maximum of two numbers",
+      "Both A and C"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Which of these is NOT a Python data type?",
+    "answers": [
+      "int",
+      "float",
+      "char",
+      "dict"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What will be the output of `print(5 // 2)`?",
+    "answers": [
+      "2.5",
+      "2",
+      "3",
+      "Error"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does the `is` keyword compare in Python?",
+    "answers": [
+      "The value of two objects",
+      "The type of two objects",
+      "The identity of two objects",
+      "The length of two objects"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which exception is raised when dividing by zero in Python?",
+    "answers": [
+      "ArithmeticError",
+      "ZeroDivisionError",
+      "ValueError",
+      "TypeError"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How can you create an empty set in Python?",
+    "answers": [
+      "set = {}",
+      "set()",
+      "empty_set()",
+      "{}"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the purpose of the `repr()` function?",
+    "answers": [
+      "To convert an object to its string representation",
+      "To create a human-readable string of an object",
+      "To return a debug-friendly string representation of an object",
+      "To print the value of an object"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the difference between `is` and `==` in Python?",
+    "answers": [
+      "`is` checks value; `==` checks identity",
+      "`is` checks identity; `==` checks value",
+      "Both check identity",
+      "Both check value"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which of these methods adds an element to a set?",
+    "answers": [
+      "append()",
+      "add()",
+      "insert()",
+      "update()"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does the `del` statement do?",
+    "answers": [
+      "Deletes a variable",
+      "Removes an element from a list",
+      "Clears the contents of a dictionary",
+      "Removes duplicates from a set"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "How do you create a dictionary in Python?",
+    "answers": [
+      "dict = []",
+      "dict = ()",
+      "dict = {}",
+      "dict = set()"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Which method is used to return the keys of a dictionary?",
+    "answers": [
+      "items()",
+      "keys()",
+      "values()",
+      "get()"
+    ],
+    "correctAnswer": 1
+  }
+]
