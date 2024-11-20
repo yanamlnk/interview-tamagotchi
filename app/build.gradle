@@ -25,6 +25,12 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+    // TestFX Core for headless and UI interaction testing
+    testImplementation 'org.testfx:testfx-core:4.0.16-alpha'
+    testImplementation 'org.testfx:testfx-junit5:4.0.16-alpha'
+    testImplementation 'org.openjfx:javafx-controls:17'
+    testImplementation 'org.openjfx:javafx-fxml:17'
+
     // This dependency is used by the application.
     implementation libs.guava
 
@@ -64,6 +70,11 @@ test {
         exceptionFormat "full"
         showStandardStreams = true
     }
+
+    jvmArgs = [
+            '--module-path', classpath.asPath, // Ensure modules are found
+            '--add-modules', 'javafx.controls,javafx.fxml,javafx.base'
+    ]
 }
 
 jacocoTestReport {
