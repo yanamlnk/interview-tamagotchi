@@ -32,6 +32,7 @@ dependencies {
     implementation 'org.openjfx:javafx-graphics:17'
     implementation 'org.openjfx:javafx-base:17'
     implementation 'org.openjfx:javafx-fxml:17'
+    implementation 'org.openjfx:javafx-media:17'
 
     //to work with json files
     implementation 'com.google.code.gson:gson:2.8.9'
@@ -56,7 +57,7 @@ tasks.named('test') {
 
 javafx {
     version = "17"
-    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.base' ] // Include modules you're using
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.base','javafx.media' ] // Include modules you're using
 }
 
 sourceSets.main.resources.srcDirs = ['src/main/resources']
