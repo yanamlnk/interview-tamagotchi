@@ -26,10 +26,10 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
     // TestFX Core for headless and UI interaction testing
-    testImplementation 'org.testfx:testfx-core:4.0.16-alpha'
-    testImplementation 'org.testfx:testfx-junit5:4.0.16-alpha'
-    testImplementation 'org.openjfx:javafx-controls:17'
-    testImplementation 'org.openjfx:javafx-fxml:17'
+    testImplementation "org.testfx:testfx-core:4.0.18"
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.13.2'
+    testImplementation group: 'org.testfx', name: 'testfx-junit5', version: '4.0.18'
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.1'
 
     // This dependency is used by the application.
     implementation libs.guava

@@ -23,10 +23,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
-    # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
     - name: Setup Gradle
-      uses: gradle/gradle-build-action@v2
+      uses: gradle/gradle-build-action@v2.5.0
       with:
         wrapper-cache-enabled: true
 
@@ -37,13 +35,13 @@ jobs:
       run: ./gradlew test
 
     - name: Upload Jacoco coverage report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3.1.2
       with:
         name: jacoco-coverage-report
         path: build/reports/jacoco/test/html  # This is where Jacoco stores HTML reports
 
     - name: Upload Test reports
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3.1.2
       with:
         name: test-reports
         path: build/reports/tests/test
