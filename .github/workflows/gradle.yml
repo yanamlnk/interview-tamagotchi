@@ -32,6 +32,8 @@ jobs:
       run: ./gradlew build
 
     - name: Run tests with Gradle (includes Jacoco report generation)
+      env:
+        TESTFX_HEADLESS: true
       run: ./gradlew test
 
     - name: Upload Jacoco coverage report

@@ -31,6 +31,10 @@ dependencies {
     testImplementation group: 'org.testfx', name: 'testfx-junit5', version: '4.0.18'
     testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.1'
 
+    testImplementation 'org.mockito:mockito-core:4.8.0'
+    testImplementation 'org.powermock:powermock-module-junit4:2.0.9'
+    testImplementation 'org.powermock:powermock-api-mockito2:2.0.9'
+
     // This dependency is used by the application.
     implementation libs.guava
 
@@ -74,7 +78,9 @@ test {
 
     jvmArgs = [
             '--module-path', classpath.asPath, // Ensure modules are found
-            '--add-modules', 'javafx.controls,javafx.fxml,javafx.base'
+            '--add-modules', 'javafx.controls,javafx.fxml,javafx.base',
+            '--add-opens=javafx.graphics/com.sun.javafx.application=ALL-UNNAMED',
+            '--add-opens=javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED'
     ]
 }
 

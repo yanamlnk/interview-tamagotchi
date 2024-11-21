@@ -180,6 +180,8 @@ public class MenuScreen extends Application {
 
             petButton.setStyle(buttonStyle);
 
+            petButton.setId(tamagotchi);
+
 
             petButton.hoverProperty().addListener((obs, wasHovered, isHovered) -> {
                 if (isHovered && !petButton.isSelected()) {
@@ -225,6 +227,8 @@ public class MenuScreen extends Application {
             langButton.setFont(customFont);
 
             langButton.setStyle(buttonStyle);
+
+            langButton.setId(language.toLowerCase());
 
 
             langButton.hoverProperty().addListener((obs, wasHovered, isHovered) -> {
