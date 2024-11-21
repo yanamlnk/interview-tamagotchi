@@ -14,4 +14,14 @@ public class Gradle extends Pet{
     public void eat(Food food) {
         super.eat(food.getHealth() + 10);
     }
+
+    @Override
+    public void eat(float health) {
+        super.eat(health + 10);
+    }
+
+    @Override
+    public String sayHello() {
+        return "Let’s build your knowledge together, one task at a time!";
+    }
 }

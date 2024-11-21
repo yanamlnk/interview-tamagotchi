@@ -35,7 +35,7 @@ public class LevelController {
             case 6 -> 340;
             case 7 -> 440;
             case 8 -> 550;
-            case 9 -> 670;
+            case 9, 10 -> 670;
             default -> 0;
         };
     }

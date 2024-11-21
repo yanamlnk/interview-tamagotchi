@@ -1,0 +1,102 @@
+[
+  {
+    "question": "What is Java?",
+    "answers": ["A coffee brand", "A programming language", "An island"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is Docker?",
+    "answers": ["A ship", "A containerization platform", "A whale"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which is not a programming language?",
+    "answers": ["Python", "Java", "HTML"],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What does CSS stand for?",
+    "answers": ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style Sheets"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is Git?",
+    "answers": ["A version control system", "A programming language", "A development framework"],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is Gradle used for?",
+    "answers": ["Containerization", "Build automation", "Code editing"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which is not a web development framework?",
+    "answers": ["Django", "React", "MySQL"],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the default port for HTTP?",
+    "answers": ["22", "80", "443"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which language is used for iOS app development?",
+    "answers": ["Java", "Swift", "Kotlin"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What does SQL stand for?",
+    "answers": ["Structured Query Language", "Simple Query Language", "Sequential Query Language"],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the main purpose of an API?",
+    "answers": ["To build websites", "To create a database", "To enable communication between software systems"],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What does JVM stand for?",
+    "answers": ["Java Virtual Machine", "Java Visual Module", "Java Verification Mechanism"],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which company created Python?",
+    "answers": ["Guido van Rossum", "Google", "Microsoft"],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the purpose of Kubernetes?",
+    "answers": ["Build automation", "Container orchestration", "Cloud storage"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the use of the 'let' keyword in JavaScript?",
+    "answers": ["To define a constant", "To declare a block-scoped variable", "To create a function"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which is a NoSQL database?",
+    "answers": ["PostgreSQL", "MySQL", "MongoDB"],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is REST?",
+    "answers": ["A database type", "An architectural style for APIs", "A Java framework"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which is not a cloud service provider?",
+    "answers": ["AWS", "Azure", "GitHub"],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the default branch in Git?",
+    "answers": ["default", "main", "master"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which is not an OOP principle?",
+    "answers": ["Polymorphism", "Encapsulation", "Inheritance"],
+    "correctAnswer": 2
+  }
+]

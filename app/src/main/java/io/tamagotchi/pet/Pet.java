@@ -27,6 +27,8 @@ public abstract class Pet implements Tamagotchi {
         this.winner = false;
     }
 
+    public abstract String sayHello();
+
     public float getHealth() {
         return health;
     }
@@ -107,10 +109,14 @@ public abstract class Pet implements Tamagotchi {
         this.totalXp += xp;
         this.currentXp += xp;
         this.setLevel();
-        maxXpForThisLevel = LevelController.getXpForThisLevel(this.level);
         if (currentXp >= maxXpForThisLevel) {
-            currentXp = 0;
+            if (this.level == 10) {
+                currentXp = 0;
+            } else {
+                currentXp = totalXp - LevelController.getXpForThisLevel(this.level - 1);
+            }
         }
+        maxXpForThisLevel = LevelController.getXpForThisLevel(this.level) - LevelController.getXpForThisLevel(this.level - 1);
     }
 
     @Override

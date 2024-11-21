@@ -56,7 +56,7 @@ Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
         this.language = language;
     }
 
-    private void playBackgroundMusic() {
+    void playBackgroundMusic() {
         try {
             URL musicURL = getClass().getResource("/music/Music.mp3");
             if (musicURL == null) {

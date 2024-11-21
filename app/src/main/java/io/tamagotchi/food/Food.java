@@ -6,15 +6,12 @@ public abstract class Food {
 
     protected String imageUrl;
 
-    public Food() {
-        this.price = 0;
-        this.health = 0;
-    }
-
     public Food(int price, int health) {
         this.price = price;
         this.health = health;
     }
+
+    abstract String message();
 
     public int getPrice() {
         return price;
