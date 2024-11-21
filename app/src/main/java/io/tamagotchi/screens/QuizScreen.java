@@ -21,22 +21,85 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents the quiz screen in the Tamagotchi game.
+ * Allows the user to answer questions and tracks the score.
+ */
 public class QuizScreen extends Application {
+
+    /**
+     * The pet selected by the user.
+     */
     private final Pet pet;
+
+    /**
+     * The language selected by the user.
+     */
     private final String language;
+
+    /**
+     * The mode selected by the user.
+     */
     private final String mode;
+
+    /**
+     * The list of questions for the quiz.
+     */
     private final List<Question> questions;
+
+    /**
+     * The index of the current question.
+     */
     private int currentQuestionIndex = 0;
+
+    /**
+     * The number of correct answers given by the user.
+     */
     private int correctAnswers = 0;
+
+    /**
+     * The custom font used in the quiz screen.
+     */
     private Font customFont;
 
+    /**
+     * The style for buttons in their default state.
+     */
     private String buttonStyle;
+
+    /**
+     * The style for buttons when hovered over.
+     */
     private String buttonStyleHover;
+
+    /**
+     * The style for buttons when selected.
+     */
     private String buttonStyleSelected;
+
+    /**
+     * The style for the submit button in its default state.
+     */
     private String submitButtonStyle;
+
+    /**
+     * The style for the submit button when active.
+     */
     private String submitButtonStyleActive;
+
+    /**
+     * The style for the submit button when hovered over.
+     */
     private String submitButtonStyleHover;
 
+    /**
+     * Constructs a new QuizScreen with the specified pet, language, mode, and font.
+     *
+     * @param pet the selected pet
+     * @param language the selected language
+     * @param mode the selected mode
+     * @param font the custom font used in the quiz screen
+     */
     public QuizScreen(Pet pet, String language, String mode, Font font) {
         this.pet = pet;
         this.language = language;
@@ -87,11 +150,21 @@ public class QuizScreen extends Application {
                 "-fx-text-alignment: center;";
     }
 
+    /**
+     * Starts the application and displays the first question.
+     *
+     * @param primaryStage the primary stage for this application
+     */
     @Override
     public void start(Stage primaryStage) {
         showNextQuestion(primaryStage);
     }
 
+    /**
+     * Displays the next question in the quiz.
+     *
+     * @param primaryStage the primary stage for this application
+     */
     private void showNextQuestion(Stage primaryStage) {
         if (currentQuestionIndex >= questions.size()) {
             showSummary(primaryStage);
@@ -272,6 +345,11 @@ public class QuizScreen extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Displays the summary of the quiz.
+     *
+     * @param primaryStage the primary stage for this application
+     */
     private void showSummary(Stage primaryStage) {
         VBox root = new VBox(20);
         root.setPadding(new Insets(20));

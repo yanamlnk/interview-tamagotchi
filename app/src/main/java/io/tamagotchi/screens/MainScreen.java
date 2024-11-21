@@ -41,21 +41,56 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+/**
+ * Represents the main screen in the Tamagotchi game.
+ * Displays the pet and allows the user to interact with it.
+ */
 public class MainScreen extends Application {
+
+    /**
+     * The background music player.
+     */
     private MediaPlayer backgroundMusic;
+
+    /**
+     * The pet selected by the user.
+     */
     private final Pet pet;
+
+    /**
+     * The language selected by the user.
+     */
     private final String language;
+
+    /**
+     * The root layout for the main screen.
+     */
     private HBox root;
+
+    /**
+     * The navigation bar for the main screen.
+     */
     private HBox navBar;
 
-    Font font =     
-Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
+    /**
+     * The custom font used in the main screen.
+     */
+    Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
 
+    /**
+     * Constructs a new MainScreen with the specified pet and language.
+     *
+     * @param pet the selected pet
+     * @param language the selected language
+     */
     public MainScreen(Pet pet, String language) {
         this.pet = pet;
         this.language = language;
     }
 
+    /**
+     * Plays the background music for the main screen.
+     */
     void playBackgroundMusic() {
         try {
             URL musicURL = getClass().getResource("/music/Music.mp3");
@@ -74,6 +109,11 @@ Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
         }
     }
 
+    /**
+     * Starts the application and displays the main screen.
+     *
+     * @param primaryStage the primary stage for this application
+     */
     @Override
     public void start(Stage primaryStage) {
         playBackgroundMusic();
@@ -331,8 +371,11 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         primaryStage.show();
     }
 
-    
-
+    /**
+     * Displays a popup window with the game rules.
+     *
+     * @param owner the owner stage of the popup
+     */
     private void showRulesPopup(Stage owner) {
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
@@ -366,7 +409,14 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         popup.showAndWait();
     }
 
-    private void showCustomizePopup(Stage owner,HBox root, HBox navBar) {
+    /**
+     * Displays a popup window for customizing the game settings.
+     *
+     * @param owner the owner stage of the popup
+     * @param root the root layout of the main screen
+     * @param navBar the navigation bar of the main screen
+     */
+    private void showCustomizePopup(Stage owner, HBox root, HBox navBar) {
     Stage popup = new Stage();
     popup.initModality(Modality.APPLICATION_MODAL);
     popup.initOwner(owner);
@@ -458,6 +508,12 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
     popup.showAndWait();
 }
 
+    /**
+     * Creates a speech bubble with the specified text.
+     *
+     * @param text the text to display in the speech bubble
+     * @return a VBox containing the speech bubble
+     */
     private VBox createSpeechBubble(String text) {
         // Create the text first to determine its size
         Text bubbleText = new Text(text);
@@ -499,6 +555,11 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         return speechBubble;
     }
 
+    /**
+     * Displays a popup window for feeding the pet.
+     *
+     * @param owner the owner stage of the popup
+     */
     private void showFeedPopup(Stage owner) {
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
@@ -542,6 +603,12 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         popup.showAndWait();
     }
 
+    /**
+     * Creates a button for a specific type of food.
+     *
+     * @param foodName the name of the food
+     * @return a Button configured for the specified food
+     */
     private Button createFoodButton(String foodName) {
     try {
         Food food = FoodFactory.create(foodName);
@@ -658,6 +725,12 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         return new Button("Error Loading Food");
     }
 }
+
+    /**
+     * Displays a popup window indicating that the game is over.
+     *
+     * @param owner the owner stage of the popup
+     */
     private void showGameOverPopup(Stage owner) {
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
@@ -686,6 +759,11 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         popup.showAndWait();
     }
 
+    /**
+     * Displays a popup window indicating that the user has won the game.
+     *
+     * @param owner the owner stage of the popup
+     */
     private void showWinPopup(Stage owner) {
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
