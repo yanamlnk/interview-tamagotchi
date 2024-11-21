@@ -23,26 +23,67 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * Represents the menu screen in the Tamagotchi game.
+ * Allows the user to select a pet and a language for the game.
+ */
 public class MenuScreen extends Application {
+
+    /**
+     * The selected pet.
+     */
     private Pet selectedPet = null;
+
+    /**
+     * The selected language.
+     */
     private String selectedLanguage = null;
+
+    /**
+     * The custom font used in the menu screen.
+     */
     private Font customFont;
+
+    /**
+     * The style for buttons in their default state.
+     */
     private String buttonStyle = "-fx-background-color: transparent; " +
                                     "-fx-border-color: black; " +
                                     "-fx-border-width: 2px;";
+
+    /**
+     * The style for buttons when hovered over.
+     */
     private String buttonStyleHover = "-fx-background-color: #C2ECF4; " +
                                         "-fx-border-color: black; " +
                                         "-fx-border-width: 2px;";
+
+    /**
+     * The style for buttons when selected.
+     */
     private String buttonStyleSelected = "-fx-background-color: #94CED8; " +
                                         "-fx-border-color: black; " +
                                         "-fx-border-width: 2px;";
+
+    /**
+     * The style for the start button when active.
+     */
     private String startButtonStyleActive = "-fx-background-color: #A0DF95; " +
                                             "-fx-border-color: black; " +
                                             "-fx-border-width: 2px;";
+
+    /**
+     * The style for the start button when hovered over.
+     */
     private String startButtonStyleHover = "-fx-background-color: #8AC380; " +
                                             "-fx-border-color: black; " +
                                             "-fx-border-width: 2px;";
 
+    /**
+     * Starts the application and sets up the menu screen.
+     *
+     * @param primaryStage the primary stage for this application
+     */
     @Override
     public void start(Stage primaryStage) {
         // Main layout
@@ -130,6 +171,12 @@ public class MenuScreen extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Creates the pet selection buttons.
+     *
+     * @param petGroup the toggle group for the pet buttons
+     * @return an HBox containing the pet selection buttons
+     */
     private HBox createPetButtons(ToggleGroup petGroup) {
         HBox petSelection = new HBox(20);
         petSelection.setAlignment(Pos.CENTER);
@@ -148,6 +195,13 @@ public class MenuScreen extends Application {
         return petSelection;
     }
 
+    /**
+     * Creates a pet selection button.
+     *
+     * @param tamagotchi the name of the tamagotchi pet
+     * @param petGroup the toggle group for the pet buttons
+     * @return a ToggleButton for the specified pet
+     */
     private ToggleButton createPetButton(String tamagotchi, ToggleGroup petGroup) {
         try {
             Pet pet = PetFactory.create(tamagotchi);
@@ -207,6 +261,12 @@ public class MenuScreen extends Application {
         return null;
     }
 
+    /**
+     * Creates the language selection buttons.
+     *
+     * @param languageGroup the toggle group for the language buttons
+     * @return an HBox containing the language selection buttons
+     */
     private HBox createLanguageButtons(ToggleGroup languageGroup) {
         HBox languageSelection = new HBox(20);
         languageSelection.setAlignment(Pos.CENTER);
@@ -253,6 +313,13 @@ public class MenuScreen extends Application {
         return languageSelection;
     }
 
+    /**
+     * Checks if both pet and language selections are made and enables the start button if true.
+     *
+     * @param startButton the start button
+     * @param petGroup the toggle group for the pet buttons
+     * @param languageGroup the toggle group for the language buttons
+     */
     private void checkSelections(Button startButton, ToggleGroup petGroup, ToggleGroup languageGroup) {
         boolean isPetSelected = petGroup.getSelectedToggle() != null;
         boolean isLanguageSelected = languageGroup.getSelectedToggle() != null;
@@ -266,6 +333,11 @@ public class MenuScreen extends Application {
         }
     }
 
+    /**
+     * The main method to launch the application.
+     *
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         launch(args);
     }

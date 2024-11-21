@@ -88,4 +88,8 @@ jacocoTestReport {
     dependsOn test // tests are required to run before generating the report
 }
 
+javadoc {
+    options.addStringOption('private', '-private')
+}
+
 sourceSets.main.resources.srcDirs = ['src/main/resources']

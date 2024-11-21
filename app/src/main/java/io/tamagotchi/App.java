@@ -3,8 +3,17 @@
  */
 package io.tamagotchi;
 
+/**
+ * The main application class for the Tamagotchi game.
+ * This class serves as the entry point for the application.
+ */
 public class App {
 
+    /**
+     * The main method to launch the application.
+     *
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         io.tamagotchi.screens.MenuScreen.main(args);
     }

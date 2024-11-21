@@ -1,6 +1,16 @@
 package io.tamagotchi.pet;
 
+/**
+ * Utility class for managing levels and experience points (XP) in the Tamagotchi game.
+ */
 public class LevelController {
+
+    /**
+     * Returns the level corresponding to the given experience points (XP).
+     *
+     * @param xp the experience points
+     * @return the level corresponding to the given experience points
+     */
     static int getLevel(float xp) {
         if (xp < 30) {
             return 1;
@@ -25,6 +35,12 @@ public class LevelController {
         }
     }
 
+    /**
+     * Returns the maximum experience points (XP) of the given level.
+     *
+     * @param level the level
+     * @return the experience points required for the given level
+     */
     static float getXpForThisLevel(int level) {
         return switch (level) {
             case 1 -> 30;
