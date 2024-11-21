@@ -15,6 +15,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -26,6 +27,11 @@ import java.util.List;
  * Allows the user to answer questions and tracks the score.
  */
 public class QuizScreen extends Application {
+
+    /**
+     * The background music player.
+     */
+    private MediaPlayer backgroundMusic;
 
     /**
      * The pet selected by the user.
@@ -99,11 +105,13 @@ public class QuizScreen extends Application {
      * @param language the selected language
      * @param mode the selected mode
      * @param font the custom font used in the quiz screen
+     * @param backgroundMusic the background music player
      */
-    public QuizScreen(Pet pet, String language, String mode, Font font) {
+    public QuizScreen(Pet pet, String language, String mode, Font font, MediaPlayer backgroundMusic) {
         this.pet = pet;
         this.language = language;
         this.mode = mode;
+        this.backgroundMusic = backgroundMusic;
 
         QuestionsController controller = new QuestionsController();
         String filePath = controller.generateFileName(language, mode);
@@ -376,7 +384,7 @@ public class QuizScreen extends Application {
 
         // Return to Main Screen button
         Button returnButton = new Button("Return to Main Screen");
-        returnButton.setOnAction(event -> new MainScreen(pet, language).start(primaryStage));
+        returnButton.setOnAction(event -> new MainScreen(pet, language, backgroundMusic).start(primaryStage));
 
         returnButton.setStyle(submitButtonStyleActive);
 

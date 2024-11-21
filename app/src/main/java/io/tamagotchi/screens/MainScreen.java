@@ -82,31 +82,12 @@ public class MainScreen extends Application {
      *
      * @param pet the selected pet
      * @param language the selected language
+     * @param backgroundMusic the background music player
      */
-    public MainScreen(Pet pet, String language) {
+    public MainScreen(Pet pet, String language, MediaPlayer backgroundMusic) {
         this.pet = pet;
         this.language = language;
-    }
-
-    /**
-     * Plays the background music for the main screen.
-     */
-    void playBackgroundMusic() {
-        try {
-            URL musicURL = getClass().getResource("/music/Music.mp3");
-            if (musicURL == null) {
-                System.out.println("Music file not found!");
-                return;
-            }
-            String musicFile = musicURL.toExternalForm();
-            
-            Media sound = new Media(musicFile);
-            backgroundMusic = new MediaPlayer(sound);
-            backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
-            backgroundMusic.play();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        this.backgroundMusic = backgroundMusic;
     }
 
     /**
@@ -116,7 +97,7 @@ public class MainScreen extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        playBackgroundMusic();
+
         if (pet.isWinner()) {
             showWinPopup(primaryStage);
         }
@@ -328,7 +309,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         playButton.setScaleX(1.0));
         playButton.setOnMouseReleased(e -> 
         playButton.setScaleY(1.0));
-        playButton.setOnAction(event -> new QuizScreen(pet, language, "play", font).start(primaryStage));
+        playButton.setOnAction(event -> new QuizScreen(pet, language, "play", font, backgroundMusic).start(primaryStage));
 
         HBox actionButtons = new HBox(10, feedButton, playButton);
         actionButtons.setAlignment(Pos.CENTER);
@@ -352,7 +333,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         workButton.setScaleX(1.0));
         workButton.setOnMouseReleased(e -> 
         workButton.setScaleY(1.0));
-        workButton.setOnAction(event -> new QuizScreen(pet, language, "work", font).start(primaryStage));
+        workButton.setOnAction(event -> new QuizScreen(pet, language, "work", font, backgroundMusic).start(primaryStage));
 
         // Add elements to right pane
         rightPane.getChildren().addAll(healthLabel, healthBar, xpLabel, xpBar, levelLabel, moneyRow, actionButtons, workButton);
@@ -489,6 +470,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
             "-fx-pref-height: 10px;"
         );
     });
+
     if (backgroundMusic != null) {
         volumeSlider.setValue(backgroundMusic.getVolume() * 100);
     }
