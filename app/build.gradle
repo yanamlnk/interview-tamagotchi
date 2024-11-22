@@ -71,7 +71,7 @@ javadoc {
 }
 
 jar {
-    archiveBaseName.set("PrepPal")
+    archiveBaseName.set("PrepPal-light")
 
     manifest {
         attributes(
