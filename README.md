@@ -16,7 +16,7 @@
 - [Installation](#installation)
 
 > [!TIP]
-> To play immediately, download jar file [here]() and run it with `java -jar path/to/file/PrepPal.jar`
+> To play immediately, download jar file [here](./game-jar/PrepPal.jar) and run it with `java -jar path/to/file/PrepPal.jar`
 
 ### Description of the Game
 PrepPal is a Tamagotchi pet that will help you to prepare for your technical interview! You will need to feed, play, and study with your PrepPal to make sure it is ready for the big day.
@@ -163,18 +163,22 @@ To check Java version: `java -version`
 > [!NOTE]
 > If you don't want to install JavaFX, scroll down to `Jar` task.
 
-To test:
+**To test**:
 1. run `./gradlew test` to run all tests. Results of the tests are logged into console, but you can also find them in `build/reports/tests/test/index.html`
 2. if just coverage report is needed, run `./gradlew test jacocoTestReport`. Result you can find in `build/reports/jacoco/test/html/index.html`
 > [!NOTE]
 > Coverage report is already included into `test` task 
 
-Javadoc:
+**Javadoc**:
 1. run `./gradlew javadoc` to generate docs. You can find them in `build/docs/javadoc/index.html`
 
-Jar:
-1. run `./gradlew jar` to create a jar file. You can find it in `build/libs/PrepPal.jar`
-2. run `java -jar build/libs/PrepPal.jar` to start the game (will work if you have JavaFX installed)
-3. 
+**Jar**:
+*JavaFX installed:*
+1. run `./gradlew jar` to create a jar file. You can find it in `build/libs/PrepPal.jar` 
+2. jar file will not include JavFX dependencies, so to run, you need to use `--module-path` and `--add-modules` - options: `java --module-path /path/to/javafx-sdk-17.0.0/lib --add-modules javafx.controls,javafx.fxml -jar /path/to/PrepPal.jar`
 
-**If you don't want to clone the repository, you can download the jar [here]() and run it as explained in Jar step 2.**
+*JavaFX not installed:*
+1. run `./gradlew shadowJar`. You can find jar file in `build/libs/PrepPal.jar`
+2. run file with `java -jar /path/to/PrepPal.jar`
+
+**If you don't want to clone the repository, you can download the jar [here](./game-jar/PrepPal.jar) and run it as explained in Jar step 2.**

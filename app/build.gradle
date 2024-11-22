@@ -4,6 +4,7 @@ plugins {
     id 'java'
     id 'org.openjfx.javafxplugin' version '0.0.13'
     id 'jacoco'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 repositories {
@@ -72,6 +73,16 @@ javadoc {
 jar {
     archiveBaseName.set("PrepPal")
 
+    manifest {
+        attributes(
+                'Main-Class': 'io.tamagotchi.App'
+        )
+    }
+}
+
+shadowJar {
+    archiveBaseName.set("PrepPal")
+    archiveClassifier.set("")
     manifest {
         attributes(
                 'Main-Class': 'io.tamagotchi.App'
