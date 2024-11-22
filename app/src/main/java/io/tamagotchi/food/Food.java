@@ -35,7 +35,7 @@ public abstract class Food {
      *
      * @return a message specific to the type of food
      */
-    abstract String message();
+    public abstract String message();
 
     /**
      * Returns the price of the food.

@@ -1,5 +1,6 @@
 package io.tamagotchi.screens;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +20,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -28,6 +31,11 @@ import javafx.stage.Stage;
  * Allows the user to select a pet and a language for the game.
  */
 public class MenuScreen extends Application {
+
+    /**
+     * The background music player.
+     */
+    private MediaPlayer backgroundMusic;
 
     /**
      * The selected pet.
@@ -86,6 +94,7 @@ public class MenuScreen extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
+        playBackgroundMusic();
         // Main layout
         VBox root = new VBox(20);
         root.setPadding(new Insets(20));
@@ -153,7 +162,7 @@ public class MenuScreen extends Application {
 
         startButton.setOnAction(event -> {
             // Pass selectedPet and selectedLanguage to MainScreen
-            MainScreen mainScreen = new MainScreen(selectedPet, selectedLanguage);
+            MainScreen mainScreen = new MainScreen(selectedPet, selectedLanguage, backgroundMusic, "#D6EEF2");
             try {
                 mainScreen.start(primaryStage); // Open MainScreen
             } catch (Exception e) {
@@ -330,6 +339,27 @@ public class MenuScreen extends Application {
         } else {
             startButton.setDisable(true);
             startButton.setStyle(buttonStyle);
+        }
+    }
+
+    /**
+     * Plays the background music for the main screen.
+     */
+    void playBackgroundMusic() {
+        try {
+            URL musicURL = getClass().getResource("/music/Music.mp3");
+            if (musicURL == null) {
+                System.out.println("Music file not found!");
+                return;
+            }
+            String musicFile = musicURL.toExternalForm();
+
+            Media sound = new Media(musicFile);
+            backgroundMusic = new MediaPlayer(sound);
+            backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
+            backgroundMusic.play();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

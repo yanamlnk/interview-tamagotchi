@@ -20,7 +20,7 @@ public class Burger extends Food {
      * @return a message indicating the Burger is enjoyable but should be eaten in moderation
      */
     @Override
-    String message() {
+    public String message() {
         return "I love burgers! Just don't eat too many of them!";
     }
 }

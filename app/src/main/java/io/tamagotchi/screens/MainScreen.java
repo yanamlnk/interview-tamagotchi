@@ -1,7 +1,5 @@
 package io.tamagotchi.screens;
 
-import java.net.URL;
-
 import io.tamagotchi.TamagotchiException;
 import io.tamagotchi.food.Food;
 import io.tamagotchi.food.FoodFactory;
@@ -15,6 +13,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -22,7 +21,6 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -30,7 +28,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -78,35 +75,23 @@ public class MainScreen extends Application {
     Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
 
     /**
+     * The background color of the main screen.
+     */
+    String backgroundColor;
+
+    /**
      * Constructs a new MainScreen with the specified pet and language.
      *
      * @param pet the selected pet
      * @param language the selected language
+     * @param backgroundMusic the background music player
+     * @param backgroundColor the background color of the main screen
      */
-    public MainScreen(Pet pet, String language) {
+    public MainScreen(Pet pet, String language, MediaPlayer backgroundMusic, String backgroundColor) {
         this.pet = pet;
         this.language = language;
-    }
-
-    /**
-     * Plays the background music for the main screen.
-     */
-    void playBackgroundMusic() {
-        try {
-            URL musicURL = getClass().getResource("/music/Music.mp3");
-            if (musicURL == null) {
-                System.out.println("Music file not found!");
-                return;
-            }
-            String musicFile = musicURL.toExternalForm();
-            
-            Media sound = new Media(musicFile);
-            backgroundMusic = new MediaPlayer(sound);
-            backgroundMusic.setCycleCount(MediaPlayer.INDEFINITE);
-            backgroundMusic.play();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        this.backgroundMusic = backgroundMusic;
+        this.backgroundColor = backgroundColor;
     }
 
     /**
@@ -116,10 +101,6 @@ public class MainScreen extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-        playBackgroundMusic();
-        if (pet.isWinner()) {
-            showWinPopup(primaryStage);
-        }
 
         primaryStage.getIcons().add(new Image("logo.gif"));
 
@@ -128,7 +109,7 @@ public class MainScreen extends Application {
         navBar.setAlignment(Pos.CENTER);
         navBar.setMinWidth(600);
         navBar.setPadding(new Insets(10));
-        navBar.setStyle("-fx-background-color: #D6EEF2;");
+        navBar.setStyle("-fx-background-color: " + this.backgroundColor + ";");
 
         Button rulesButton = new Button("Rules");
         rulesButton.setFont(font);
@@ -175,7 +156,7 @@ public class MainScreen extends Application {
         // Root layout divided into left and right
         root = new HBox(1);
         root.setPadding(new Insets(20));
-        root.setStyle("-fx-background-color: #D6EEF2;");
+        root.setStyle("-fx-background-color: " + this.backgroundColor + ";");
         root.setAlignment(Pos.CENTER); 
         HBox.setHgrow(root, Priority.ALWAYS);
 
@@ -187,28 +168,32 @@ public class MainScreen extends Application {
         leftPane.setMinHeight(700); 
 
         ImageView petImage = new ImageView(new Image(pet.getImageUrl()));
-        petImage.setFitWidth(300);
+        petImage.setFitWidth(400);
         petImage.setPreserveRatio(true);
 
         //Speech bubble
-        VBox speechBubble = createSpeechBubble("Permission granted to execute your potential! Ready to learn?");
+        VBox speechBubble = createSpeechBubble(pet.sayHello());
 
         StackPane petWithSpeechBubble = new StackPane();
 petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         StackPane.setAlignment(speechBubble, Pos.TOP_CENTER);
-        StackPane.setMargin(speechBubble, new Insets(-100, 50, 0, 50));
+        StackPane.setMargin(speechBubble, new Insets(-50, 50, 0, 50));
         
-        Label petInfo = new Label("Name:  "+ pet.getName());
+        Label petInfo = new Label("Name: "+ pet.getName());
         petInfo.setFont(font);
 
         // Superpower info
         Label superPower = new Label("Superpower:  " + pet.getDescription());
+        superPower.setWrapText(true);
+        superPower.setPrefWidth(300);
         superPower.setFont(font);
+        superPower.setAlignment(Pos.CENTER);
+        superPower.setStyle("-fx-text-alignment: center;");
 
-        Label languageText = new Label("Let's review " + language + "!");
+        Label languageText = new Label("Let's learn " + language + "!");
         languageText.setFont(font);
         ImageView languageImage = new ImageView(new Image(language.toLowerCase() + ".png"));
-        languageImage.setFitWidth(50);
+        languageImage.setFitWidth(100);
         languageImage.setPreserveRatio(true);
 
         TranslateTransition animation = new TranslateTransition(Duration.seconds(1), languageImage);
@@ -240,21 +225,17 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         KeyValue(healthBar.progressProperty(), newHealthValue))
         );
         timeline.play();
+        healthBar.setStyle("-fx-accent: #4CAF50;");
 
 
         Label healthLabel = new Label("Health: " + (int)
         pet.getHealth() + "/100");
         healthLabel.setFont(font);
 
-        if (pet.isDead()) {
-            showGameOverPopup(primaryStage);
-        }
-
         ProgressBar xpBar = new ProgressBar(pet.getCurrentXp() /
         pet.getMaxXpForThisLevel());
         xpBar.setPrefWidth(300);
         xpBar.setPrefHeight(30);
-        xpBar.setStyle("-fx-accent: #4CAF50;");
 
         double oldXpValue = xpBar.getProgress();
         double newXpValue = pet.getCurrentXp()/
@@ -328,7 +309,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         playButton.setScaleX(1.0));
         playButton.setOnMouseReleased(e -> 
         playButton.setScaleY(1.0));
-        playButton.setOnAction(event -> new QuizScreen(pet, language, "play", font).start(primaryStage));
+        playButton.setOnAction(event -> new QuizScreen(pet, language, "play", font, backgroundMusic, backgroundColor).start(primaryStage));
 
         HBox actionButtons = new HBox(10, feedButton, playButton);
         actionButtons.setAlignment(Pos.CENTER);
@@ -352,7 +333,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         workButton.setScaleX(1.0));
         workButton.setOnMouseReleased(e -> 
         workButton.setScaleY(1.0));
-        workButton.setOnAction(event -> new QuizScreen(pet, language, "work", font).start(primaryStage));
+        workButton.setOnAction(event -> new QuizScreen(pet, language, "work", font, backgroundMusic, backgroundColor).start(primaryStage));
 
         // Add elements to right pane
         rightPane.getChildren().addAll(healthLabel, healthBar, xpLabel, xpBar, levelLabel, moneyRow, actionButtons, workButton);
@@ -361,7 +342,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         root.getChildren().addAll(leftPane, rightPane);
 
         VBox mainLayout = new VBox();
-        mainLayout.setStyle("-fx-background-color: #D6EEF2;");
+        mainLayout.setStyle("-fx-background-color: " + this.backgroundColor + ";");
         mainLayout.getChildren().addAll(navBar, root);
 
         // Show the scene
@@ -444,8 +425,9 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         circle.setFill(Color.web(color));
         circle.setStroke(Color.BLACK);
         circle.setOnMouseClicked(e -> {
-            root.setStyle("-fx-background-color: " + color + ";");
-            navBar.setStyle("-fx-background-color: " + color + ";");
+            this.backgroundColor = color;
+            root.setStyle("-fx-background-color: " + this.backgroundColor + ";");
+            navBar.setStyle("-fx-background-color: " + this.backgroundColor + ";");
             popup.close();
         });
         colorCircles.getChildren().add(circle);
@@ -469,26 +451,35 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
     );
 
     Platform.runLater(() -> {
-        volumeSlider.lookup(".thumb").setStyle(
-            "-fx-background-color: linear-gradient(to bottom, #FF69B4, #FF1493);" +
-            "-fx-background-radius: 20px;" +
-            "-fx-pref-height: 30px;" +
-            "-fx-pref-width: 30px;" +
-            "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);"
-        );
+        Node thumb = volumeSlider.lookup(".thumb");
+        if (thumb != null) {
+            thumb.setStyle(
+                    "-fx-background-color: linear-gradient(to bottom, #FF69B4, #FF1493);" +
+                            "-fx-background-radius: 20px;" +
+                            "-fx-pref-height: 30px;" +
+                            "-fx-pref-width: 30px;" +
+                            "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);"
+            );
+        }
+        Node track = volumeSlider.lookup(".track");
+        if (track != null) {
+            track.setStyle(
+                    "-fx-background-color: linear-gradient(to right, #FFC0CB, #FF69B4);" +
+                            "-fx-background-radius: 15px;" +
+                            "-fx-pref-height: 20px;"
+            );
+        }
 
-        volumeSlider.lookup(".track").setStyle(
-            "-fx-background-color: linear-gradient(to right, #FFC0CB, #FF69B4);" +
-            "-fx-background-radius: 15px;" +
-            "-fx-pref-height: 20px;"
-        );
-
-        volumeSlider.lookup(".track-background").setStyle(
-            "-fx-background-color: #FFE4E1;" +
-            "-fx-background-radius: 15px;" +
-            "-fx-pref-height: 10px;"
-        );
+        Node trackBackground = volumeSlider.lookup(".track-background");
+        if (trackBackground != null) {
+            trackBackground.setStyle(
+                    "-fx-background-color: #FFE4E1;" +
+                            "-fx-background-radius: 15px;" +
+                            "-fx-pref-height: 10px;"
+            );
+        }
     });
+
     if (backgroundMusic != null) {
         volumeSlider.setValue(backgroundMusic.getVolume() * 100);
     }
@@ -519,7 +510,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         Text bubbleText = new Text(text);
         bubbleText.setFont(font);
         bubbleText.setTextAlignment(TextAlignment.CENTER);
-        bubbleText.setWrappingWidth(200);
+        bubbleText.setWrappingWidth(300);
     
         // Calculate the bubble size based on the text
         double textWidth = bubbleText.getLayoutBounds().getWidth();
@@ -535,14 +526,14 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         bubble.setArcWidth(5);
         bubble.setArcHeight(5);
 
-        DropShadow dropShadow = new DropShadow();
-        dropShadow.setColor(Color.GRAY); // Set shadow color
-        dropShadow.setOffsetX(5); // Horizontal shadow offset
-        dropShadow.setOffsetY(5); // Vertical shadow offset
-        dropShadow.setRadius(10); // Shadow blur radius
-
-    // Apply the shadow effect to the bubble
-        bubble.setEffect(dropShadow);
+//        DropShadow dropShadow = new DropShadow();
+//        dropShadow.setColor(Color.GRAY); // Set shadow color
+//        dropShadow.setOffsetX(5); // Horizontal shadow offset
+//        dropShadow.setOffsetY(5); // Vertical shadow offset
+//        dropShadow.setRadius(10); // Shadow blur radius
+//
+//    // Apply the shadow effect to the bubble
+//        bubble.setEffect(dropShadow);
 
     
         // Combine bubble, pointer, and text
@@ -671,6 +662,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
             scaleTransition.play();
         });
 
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 16);
         // Button action
         foodButton.setOnAction(e -> {
             try {
@@ -679,12 +671,16 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Success");
                 alert.setHeaderText(null);
-                alert.setContentText("You fed your pet with " + foodName + "!");
-                 DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.setStyle("-fx-background-color: #d4f1c5; " +
+                alert.setContentText(food.message());
+                DialogPane dialogPane = alert.getDialogPane();
+                dialogPane.setStyle("-fx-background-color: #d4f1c5; " +
                             "-fx-border-color: #4CAF50; " + 
                             "-fx-border-width: 2px;");
-        dialogPane.lookup(".content.label").setStyle("-fx-font-size: 14px; -fx-text-fill: #333;"); // Font customization
+                Label contentLabel = (Label) dialogPane.lookup(".content.label");
+                if (contentLabel != null) {
+                    contentLabel.setFont(customFont);
+                    contentLabel.setStyle("-fx-font-family:'"+ customFont.getFamily() + "';");
+                }
 
         
         alert.showAndWait();
@@ -694,7 +690,6 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         alert.setHeaderText(null);
         alert.setContentText("You don't have enough money, answer some interview questions!");
 
-        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 16);
         if (customFont == null) {
             System.out.println("Failed to load font!");
         }
@@ -725,70 +720,4 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         return new Button("Error Loading Food");
     }
 }
-
-    /**
-     * Displays a popup window indicating that the game is over.
-     *
-     * @param owner the owner stage of the popup
-     */
-    private void showGameOverPopup(Stage owner) {
-        Stage popup = new Stage();
-        popup.initModality(Modality.APPLICATION_MODAL);
-        popup.initOwner(owner);
-
-        VBox layout = new VBox(20);
-        layout.setAlignment(Pos.CENTER);
-        layout.setPadding(new Insets(20));
-        layout.setStyle("-fx-background-color: #FFFFFF;");
-
-        Label gameOverLabel = new Label("Game Over\nPlease start over and next time don't forget to feed your pet!");
-        gameOverLabel.setFont(font);
-        gameOverLabel.setWrapText(true);
-        gameOverLabel.setTextAlignment(TextAlignment.CENTER);
-
-        Button startOverButton = new Button("Start Over");
-        startOverButton.setOnAction(e -> {
-            new MenuScreen().start(owner);
-            popup.close();
-        });
-
-        layout.getChildren().addAll(gameOverLabel, startOverButton);
-
-        Scene popupScene = new Scene(layout, 500, 400);
-        popup.setScene(popupScene);
-        popup.showAndWait();
-    }
-
-    /**
-     * Displays a popup window indicating that the user has won the game.
-     *
-     * @param owner the owner stage of the popup
-     */
-    private void showWinPopup(Stage owner) {
-        Stage popup = new Stage();
-        popup.initModality(Modality.APPLICATION_MODAL);
-        popup.initOwner(owner);
-
-        VBox layout = new VBox(20);
-        layout.setAlignment(Pos.CENTER);
-        layout.setPadding(new Insets(20));
-        layout.setStyle("-fx-background-color: #FFFFFF;");
-
-        Label winLabel = new Label("Congratulations!\nYou Win!");
-        winLabel.setFont(font);
-        winLabel.setWrapText(true);
-        winLabel.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-
-        Button exitButton = new Button("Exit");
-        exitButton.setOnAction(e -> {
-            popup.close();
-            owner.close();
-        });
-
-        layout.getChildren().addAll(winLabel, exitButton);
-
-        Scene popupScene = new Scene(layout, 500, 400);
-        popup.setScene(popupScene);
-        popup.showAndWait();
-    }
 }

@@ -15,6 +15,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -26,6 +27,11 @@ import java.util.List;
  * Allows the user to answer questions and tracks the score.
  */
 public class QuizScreen extends Application {
+
+    /**
+     * The background music player.
+     */
+    private MediaPlayer backgroundMusic;
 
     /**
      * The pet selected by the user.
@@ -93,17 +99,26 @@ public class QuizScreen extends Application {
     private String submitButtonStyleHover;
 
     /**
-     * Constructs a new QuizScreen with the specified pet, language, mode, and font.
+     * The background color of the screen.
+     */
+    private String backgroundColor;
+
+    /**
+     * Constructs a new QuizScreen with the specified pet, language, mode, font, and background color.
      *
      * @param pet the selected pet
      * @param language the selected language
      * @param mode the selected mode
      * @param font the custom font used in the quiz screen
+     * @param backgroundMusic the background music player
+     * @param backgroundColor the background color of the screen
      */
-    public QuizScreen(Pet pet, String language, String mode, Font font) {
+    public QuizScreen(Pet pet, String language, String mode, Font font, MediaPlayer backgroundMusic, String backgroundColor) {
         this.pet = pet;
         this.language = language;
         this.mode = mode;
+        this.backgroundMusic = backgroundMusic;
+        this.backgroundColor = backgroundColor;
 
         QuestionsController controller = new QuestionsController();
         String filePath = controller.generateFileName(language, mode);
@@ -376,7 +391,15 @@ public class QuizScreen extends Application {
 
         // Return to Main Screen button
         Button returnButton = new Button("Return to Main Screen");
-        returnButton.setOnAction(event -> new MainScreen(pet, language).start(primaryStage));
+        returnButton.setOnAction(event -> {
+            if (pet.isDead()) {
+                new EndGameScreen(pet, language, "loser", customFont).start(primaryStage);
+            } else if (pet.isWinner()) {
+                new EndGameScreen(pet, language, "winner", customFont).start(primaryStage);
+            } else {
+                new MainScreen(pet, language, backgroundMusic, backgroundColor).start(primaryStage);
+            }
+        });
 
         returnButton.setStyle(submitButtonStyleActive);
 
