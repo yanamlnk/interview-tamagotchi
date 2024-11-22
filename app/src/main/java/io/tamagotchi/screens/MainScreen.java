@@ -13,6 +13,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -450,25 +451,33 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
     );
 
     Platform.runLater(() -> {
-        volumeSlider.lookup(".thumb").setStyle(
-            "-fx-background-color: linear-gradient(to bottom, #FF69B4, #FF1493);" +
-            "-fx-background-radius: 20px;" +
-            "-fx-pref-height: 30px;" +
-            "-fx-pref-width: 30px;" +
-            "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);"
-        );
+        Node thumb = volumeSlider.lookup(".thumb");
+        if (thumb != null) {
+            thumb.setStyle(
+                    "-fx-background-color: linear-gradient(to bottom, #FF69B4, #FF1493);" +
+                            "-fx-background-radius: 20px;" +
+                            "-fx-pref-height: 30px;" +
+                            "-fx-pref-width: 30px;" +
+                            "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);"
+            );
+        }
+        Node track = volumeSlider.lookup(".track");
+        if (track != null) {
+            track.setStyle(
+                    "-fx-background-color: linear-gradient(to right, #FFC0CB, #FF69B4);" +
+                            "-fx-background-radius: 15px;" +
+                            "-fx-pref-height: 20px;"
+            );
+        }
 
-        volumeSlider.lookup(".track").setStyle(
-            "-fx-background-color: linear-gradient(to right, #FFC0CB, #FF69B4);" +
-            "-fx-background-radius: 15px;" +
-            "-fx-pref-height: 20px;"
-        );
-
-        volumeSlider.lookup(".track-background").setStyle(
-            "-fx-background-color: #FFE4E1;" +
-            "-fx-background-radius: 15px;" +
-            "-fx-pref-height: 10px;"
-        );
+        Node trackBackground = volumeSlider.lookup(".track-background");
+        if (trackBackground != null) {
+            trackBackground.setStyle(
+                    "-fx-background-color: #FFE4E1;" +
+                            "-fx-background-radius: 15px;" +
+                            "-fx-pref-height: 10px;"
+            );
+        }
     });
 
     if (backgroundMusic != null) {
