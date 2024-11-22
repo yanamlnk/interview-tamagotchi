@@ -69,4 +69,14 @@ javadoc {
     options.addStringOption('private', '-private')
 }
 
+jar {
+    archiveBaseName.set("PrepPal")
+
+    manifest {
+        attributes(
+                'Main-Class': 'io.tamagotchi.App'
+        )
+    }
+}
+
 sourceSets.main.resources.srcDirs = ['src/main/resources']
