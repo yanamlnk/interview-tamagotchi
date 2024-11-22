@@ -162,7 +162,7 @@ public class MenuScreen extends Application {
 
         startButton.setOnAction(event -> {
             // Pass selectedPet and selectedLanguage to MainScreen
-            MainScreen mainScreen = new MainScreen(selectedPet, selectedLanguage, backgroundMusic);
+            MainScreen mainScreen = new MainScreen(selectedPet, selectedLanguage, backgroundMusic, "#D6EEF2");
             try {
                 mainScreen.start(primaryStage); // Open MainScreen
             } catch (Exception e) {

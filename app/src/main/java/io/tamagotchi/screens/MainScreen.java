@@ -74,16 +74,23 @@ public class MainScreen extends Application {
     Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 20);
 
     /**
+     * The background color of the main screen.
+     */
+    String backgroundColor;
+
+    /**
      * Constructs a new MainScreen with the specified pet and language.
      *
      * @param pet the selected pet
      * @param language the selected language
      * @param backgroundMusic the background music player
+     * @param backgroundColor the background color of the main screen
      */
-    public MainScreen(Pet pet, String language, MediaPlayer backgroundMusic) {
+    public MainScreen(Pet pet, String language, MediaPlayer backgroundMusic, String backgroundColor) {
         this.pet = pet;
         this.language = language;
         this.backgroundMusic = backgroundMusic;
+        this.backgroundColor = backgroundColor;
     }
 
     /**
@@ -101,7 +108,7 @@ public class MainScreen extends Application {
         navBar.setAlignment(Pos.CENTER);
         navBar.setMinWidth(600);
         navBar.setPadding(new Insets(10));
-        navBar.setStyle("-fx-background-color: #D6EEF2;");
+        navBar.setStyle("-fx-background-color: " + this.backgroundColor + ";");
 
         Button rulesButton = new Button("Rules");
         rulesButton.setFont(font);
@@ -148,7 +155,7 @@ public class MainScreen extends Application {
         // Root layout divided into left and right
         root = new HBox(1);
         root.setPadding(new Insets(20));
-        root.setStyle("-fx-background-color: #D6EEF2;");
+        root.setStyle("-fx-background-color: " + this.backgroundColor + ";");
         root.setAlignment(Pos.CENTER); 
         HBox.setHgrow(root, Priority.ALWAYS);
 
@@ -301,7 +308,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         playButton.setScaleX(1.0));
         playButton.setOnMouseReleased(e -> 
         playButton.setScaleY(1.0));
-        playButton.setOnAction(event -> new QuizScreen(pet, language, "play", font, backgroundMusic).start(primaryStage));
+        playButton.setOnAction(event -> new QuizScreen(pet, language, "play", font, backgroundMusic, backgroundColor).start(primaryStage));
 
         HBox actionButtons = new HBox(10, feedButton, playButton);
         actionButtons.setAlignment(Pos.CENTER);
@@ -325,7 +332,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         workButton.setScaleX(1.0));
         workButton.setOnMouseReleased(e -> 
         workButton.setScaleY(1.0));
-        workButton.setOnAction(event -> new QuizScreen(pet, language, "work", font, backgroundMusic).start(primaryStage));
+        workButton.setOnAction(event -> new QuizScreen(pet, language, "work", font, backgroundMusic, backgroundColor).start(primaryStage));
 
         // Add elements to right pane
         rightPane.getChildren().addAll(healthLabel, healthBar, xpLabel, xpBar, levelLabel, moneyRow, actionButtons, workButton);
@@ -334,7 +341,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         root.getChildren().addAll(leftPane, rightPane);
 
         VBox mainLayout = new VBox();
-        mainLayout.setStyle("-fx-background-color: #D6EEF2;");
+        mainLayout.setStyle("-fx-background-color: " + this.backgroundColor + ";");
         mainLayout.getChildren().addAll(navBar, root);
 
         // Show the scene
@@ -417,8 +424,9 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         circle.setFill(Color.web(color));
         circle.setStroke(Color.BLACK);
         circle.setOnMouseClicked(e -> {
-            root.setStyle("-fx-background-color: " + color + ";");
-            navBar.setStyle("-fx-background-color: " + color + ";");
+            this.backgroundColor = color;
+            root.setStyle("-fx-background-color: " + this.backgroundColor + ";");
+            navBar.setStyle("-fx-background-color: " + this.backgroundColor + ";");
             popup.close();
         });
         colorCircles.getChildren().add(circle);
@@ -703,70 +711,4 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         return new Button("Error Loading Food");
     }
 }
-//
-//    /**
-//     * Displays a popup window indicating that the game is over.
-//     *
-//     * @param owner the owner stage of the popup
-//     */
-//    private void showGameOverPopup(Stage owner) {
-//        Stage popup = new Stage();
-//        popup.initModality(Modality.APPLICATION_MODAL);
-//        popup.initOwner(owner);
-//
-//        VBox layout = new VBox(20);
-//        layout.setAlignment(Pos.CENTER);
-//        layout.setPadding(new Insets(20));
-//        layout.setStyle("-fx-background-color: #FFFFFF;");
-//
-//        Label gameOverLabel = new Label("Game Over\nPlease start over and next time don't forget to feed your pet!");
-//        gameOverLabel.setFont(font);
-//        gameOverLabel.setWrapText(true);
-//        gameOverLabel.setTextAlignment(TextAlignment.CENTER);
-//
-//        Button startOverButton = new Button("Start Over");
-//        startOverButton.setOnAction(e -> {
-//            new MenuScreen().start(owner);
-//            popup.close();
-//        });
-//
-//        layout.getChildren().addAll(gameOverLabel, startOverButton);
-//
-//        Scene popupScene = new Scene(layout, 500, 400);
-//        popup.setScene(popupScene);
-//        popup.showAndWait();
-//    }
-//
-//    /**
-//     * Displays a popup window indicating that the user has won the game.
-//     *
-//     * @param owner the owner stage of the popup
-//     */
-//    private void showWinPopup(Stage owner) {
-//        Stage popup = new Stage();
-//        popup.initModality(Modality.APPLICATION_MODAL);
-//        popup.initOwner(owner);
-//
-//        VBox layout = new VBox(20);
-//        layout.setAlignment(Pos.CENTER);
-//        layout.setPadding(new Insets(20));
-//        layout.setStyle("-fx-background-color: #FFFFFF;");
-//
-//        Label winLabel = new Label("Congratulations!\nYou Win!");
-//        winLabel.setFont(font);
-//        winLabel.setWrapText(true);
-//        winLabel.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-//
-//        Button exitButton = new Button("Exit");
-//        exitButton.setOnAction(e -> {
-//            popup.close();
-//            owner.close();
-//        });
-//
-//        layout.getChildren().addAll(winLabel, exitButton);
-//
-//        Scene popupScene = new Scene(layout, 500, 400);
-//        popup.setScene(popupScene);
-//        popup.showAndWait();
-//    }
 }

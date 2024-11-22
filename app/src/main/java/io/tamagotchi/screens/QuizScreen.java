@@ -99,19 +99,26 @@ public class QuizScreen extends Application {
     private String submitButtonStyleHover;
 
     /**
-     * Constructs a new QuizScreen with the specified pet, language, mode, and font.
+     * The background color of the screen.
+     */
+    private String backgroundColor;
+
+    /**
+     * Constructs a new QuizScreen with the specified pet, language, mode, font, and background color.
      *
      * @param pet the selected pet
      * @param language the selected language
      * @param mode the selected mode
      * @param font the custom font used in the quiz screen
      * @param backgroundMusic the background music player
+     * @param backgroundColor the background color of the screen
      */
-    public QuizScreen(Pet pet, String language, String mode, Font font, MediaPlayer backgroundMusic) {
+    public QuizScreen(Pet pet, String language, String mode, Font font, MediaPlayer backgroundMusic, String backgroundColor) {
         this.pet = pet;
         this.language = language;
         this.mode = mode;
         this.backgroundMusic = backgroundMusic;
+        this.backgroundColor = backgroundColor;
 
         QuestionsController controller = new QuestionsController();
         String filePath = controller.generateFileName(language, mode);
@@ -390,7 +397,7 @@ public class QuizScreen extends Application {
             } else if (pet.isWinner()) {
                 new EndGameScreen(pet, language, "winner", customFont).start(primaryStage);
             } else {
-                new MainScreen(pet, language, backgroundMusic).start(primaryStage);
+                new MainScreen(pet, language, backgroundMusic, backgroundColor).start(primaryStage);
             }
         });
 
