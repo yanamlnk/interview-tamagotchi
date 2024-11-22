@@ -24,9 +24,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Setup Gradle
-      uses: gradle/gradle-build-action@v2.5.0
-      with:
-        wrapper-cache-enabled: true
+      uses: gradle/gradle-build-action@v3.0.0
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
@@ -35,13 +33,13 @@ jobs:
       run: ./gradlew test
 
     - name: Upload Jacoco coverage report
-      uses: actions/upload-artifact@v3.1.2
+      uses: actions/upload-artifact@v4
       with:
         name: jacoco-coverage-report
         path: app/build/reports/jacoco/test/html
 
     - name: Upload Test reports
-      uses: actions/upload-artifact@v3.1.2
+      uses: actions/upload-artifact@v4
       with:
         name: test-reports
         path: app/build/reports/tests/test
@@ -50,7 +48,7 @@ jobs:
       run: ./gradlew javadoc
 
     - name: Upload Javadoc Artifact
-      uses: actions/upload-artifact@v3.1.2
+      uses: actions/upload-artifact@v4
       with:
           name: javadoc
           path: app/build/docs/javadoc
