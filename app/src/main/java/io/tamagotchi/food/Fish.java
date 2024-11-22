@@ -20,7 +20,7 @@ public class Fish extends Food {
      * @return a message indicating the Fish is healthy and tasty
      */
     @Override
-    String message() {
+    public String message() {
         return "Healthy and tasty - yum!";
     }
 }

@@ -20,7 +20,7 @@ public class Potato extends Food {
      * @return a message indicating the Potato is not very tasty, but it does the job.
      */
     @Override
-    String message() {
+    public String message() {
         return "Potato is not very tasty, but it does the job!";
     }
 }

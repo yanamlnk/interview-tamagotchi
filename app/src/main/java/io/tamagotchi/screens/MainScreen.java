@@ -1,7 +1,5 @@
 package io.tamagotchi.screens;
 
-import java.net.URL;
-
 import io.tamagotchi.TamagotchiException;
 import io.tamagotchi.food.Food;
 import io.tamagotchi.food.FoodFactory;
@@ -30,7 +28,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -168,28 +165,32 @@ public class MainScreen extends Application {
         leftPane.setMinHeight(700); 
 
         ImageView petImage = new ImageView(new Image(pet.getImageUrl()));
-        petImage.setFitWidth(300);
+        petImage.setFitWidth(400);
         petImage.setPreserveRatio(true);
 
         //Speech bubble
-        VBox speechBubble = createSpeechBubble("Permission granted to execute your potential! Ready to learn?");
+        VBox speechBubble = createSpeechBubble(pet.sayHello());
 
         StackPane petWithSpeechBubble = new StackPane();
 petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         StackPane.setAlignment(speechBubble, Pos.TOP_CENTER);
-        StackPane.setMargin(speechBubble, new Insets(-100, 50, 0, 50));
+        StackPane.setMargin(speechBubble, new Insets(-50, 50, 0, 50));
         
-        Label petInfo = new Label("Name:  "+ pet.getName());
+        Label petInfo = new Label("Name: "+ pet.getName());
         petInfo.setFont(font);
 
         // Superpower info
         Label superPower = new Label("Superpower:  " + pet.getDescription());
+        superPower.setWrapText(true);
+        superPower.setPrefWidth(300);
         superPower.setFont(font);
+        superPower.setAlignment(Pos.CENTER);
+        superPower.setStyle("-fx-text-alignment: center;");
 
-        Label languageText = new Label("Let's review " + language + "!");
+        Label languageText = new Label("Let's learn " + language + "!");
         languageText.setFont(font);
         ImageView languageImage = new ImageView(new Image(language.toLowerCase() + ".png"));
-        languageImage.setFitWidth(50);
+        languageImage.setFitWidth(100);
         languageImage.setPreserveRatio(true);
 
         TranslateTransition animation = new TranslateTransition(Duration.seconds(1), languageImage);
@@ -221,6 +222,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         KeyValue(healthBar.progressProperty(), newHealthValue))
         );
         timeline.play();
+        healthBar.setStyle("-fx-accent: #4CAF50;");
 
 
         Label healthLabel = new Label("Health: " + (int)
@@ -235,7 +237,6 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         pet.getMaxXpForThisLevel());
         xpBar.setPrefWidth(300);
         xpBar.setPrefHeight(30);
-        xpBar.setStyle("-fx-accent: #4CAF50;");
 
         double oldXpValue = xpBar.getProgress();
         double newXpValue = pet.getCurrentXp()/
@@ -501,7 +502,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         Text bubbleText = new Text(text);
         bubbleText.setFont(font);
         bubbleText.setTextAlignment(TextAlignment.CENTER);
-        bubbleText.setWrappingWidth(200);
+        bubbleText.setWrappingWidth(300);
     
         // Calculate the bubble size based on the text
         double textWidth = bubbleText.getLayoutBounds().getWidth();
@@ -517,14 +518,14 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         bubble.setArcWidth(5);
         bubble.setArcHeight(5);
 
-        DropShadow dropShadow = new DropShadow();
-        dropShadow.setColor(Color.GRAY); // Set shadow color
-        dropShadow.setOffsetX(5); // Horizontal shadow offset
-        dropShadow.setOffsetY(5); // Vertical shadow offset
-        dropShadow.setRadius(10); // Shadow blur radius
-
-    // Apply the shadow effect to the bubble
-        bubble.setEffect(dropShadow);
+//        DropShadow dropShadow = new DropShadow();
+//        dropShadow.setColor(Color.GRAY); // Set shadow color
+//        dropShadow.setOffsetX(5); // Horizontal shadow offset
+//        dropShadow.setOffsetY(5); // Vertical shadow offset
+//        dropShadow.setRadius(10); // Shadow blur radius
+//
+//    // Apply the shadow effect to the bubble
+//        bubble.setEffect(dropShadow);
 
     
         // Combine bubble, pointer, and text
@@ -653,6 +654,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
             scaleTransition.play();
         });
 
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 16);
         // Button action
         foodButton.setOnAction(e -> {
             try {
@@ -661,12 +663,16 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Success");
                 alert.setHeaderText(null);
-                alert.setContentText("You fed your pet with " + foodName + "!");
-                 DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.setStyle("-fx-background-color: #d4f1c5; " +
+                alert.setContentText(food.message());
+                DialogPane dialogPane = alert.getDialogPane();
+                dialogPane.setStyle("-fx-background-color: #d4f1c5; " +
                             "-fx-border-color: #4CAF50; " + 
                             "-fx-border-width: 2px;");
-        dialogPane.lookup(".content.label").setStyle("-fx-font-size: 14px; -fx-text-fill: #333;"); // Font customization
+                Label contentLabel = (Label) dialogPane.lookup(".content.label");
+                if (contentLabel != null) {
+                    contentLabel.setFont(customFont);
+                    contentLabel.setStyle("-fx-font-family:'"+ customFont.getFamily() + "';");
+                }
 
         
         alert.showAndWait();
@@ -676,7 +682,6 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         alert.setHeaderText(null);
         alert.setContentText("You don't have enough money, answer some interview questions!");
 
-        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/upheavtt.ttf"), 16);
         if (customFont == null) {
             System.out.println("Failed to load font!");
         }
