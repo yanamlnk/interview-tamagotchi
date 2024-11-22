@@ -90,4 +90,21 @@ shadowJar {
     }
 }
 
+tasks.distZip {
+    dependsOn shadowJar
+}
+
+tasks.distTar {
+    dependsOn shadowJar
+}
+
+tasks.startScripts {
+    dependsOn shadowJar
+}
+
+tasks.startShadowScripts {
+    dependsOn shadowJar
+    dependsOn jar
+}
+
 sourceSets.main.resources.srcDirs = ['src/main/resources']
