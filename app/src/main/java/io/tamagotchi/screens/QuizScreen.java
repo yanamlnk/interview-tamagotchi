@@ -384,7 +384,15 @@ public class QuizScreen extends Application {
 
         // Return to Main Screen button
         Button returnButton = new Button("Return to Main Screen");
-        returnButton.setOnAction(event -> new MainScreen(pet, language, backgroundMusic).start(primaryStage));
+        returnButton.setOnAction(event -> {
+            if (pet.isDead()) {
+                new EndGameScreen(pet, language, "loser", customFont).start(primaryStage);
+            } else if (pet.isWinner()) {
+                new EndGameScreen(pet, language, "winner", customFont).start(primaryStage);
+            } else {
+                new MainScreen(pet, language, backgroundMusic).start(primaryStage);
+            }
+        });
 
         returnButton.setStyle(submitButtonStyleActive);
 

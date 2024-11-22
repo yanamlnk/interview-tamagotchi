@@ -20,7 +20,6 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -94,10 +93,6 @@ public class MainScreen extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
-
-        if (pet.isWinner()) {
-            showWinPopup(primaryStage);
-        }
 
         primaryStage.getIcons().add(new Image("logo.gif"));
 
@@ -228,10 +223,6 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         Label healthLabel = new Label("Health: " + (int)
         pet.getHealth() + "/100");
         healthLabel.setFont(font);
-
-        if (pet.isDead()) {
-            showGameOverPopup(primaryStage);
-        }
 
         ProgressBar xpBar = new ProgressBar(pet.getCurrentXp() /
         pet.getMaxXpForThisLevel());
@@ -712,70 +703,70 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         return new Button("Error Loading Food");
     }
 }
-
-    /**
-     * Displays a popup window indicating that the game is over.
-     *
-     * @param owner the owner stage of the popup
-     */
-    private void showGameOverPopup(Stage owner) {
-        Stage popup = new Stage();
-        popup.initModality(Modality.APPLICATION_MODAL);
-        popup.initOwner(owner);
-
-        VBox layout = new VBox(20);
-        layout.setAlignment(Pos.CENTER);
-        layout.setPadding(new Insets(20));
-        layout.setStyle("-fx-background-color: #FFFFFF;");
-
-        Label gameOverLabel = new Label("Game Over\nPlease start over and next time don't forget to feed your pet!");
-        gameOverLabel.setFont(font);
-        gameOverLabel.setWrapText(true);
-        gameOverLabel.setTextAlignment(TextAlignment.CENTER);
-
-        Button startOverButton = new Button("Start Over");
-        startOverButton.setOnAction(e -> {
-            new MenuScreen().start(owner);
-            popup.close();
-        });
-
-        layout.getChildren().addAll(gameOverLabel, startOverButton);
-
-        Scene popupScene = new Scene(layout, 500, 400);
-        popup.setScene(popupScene);
-        popup.showAndWait();
-    }
-
-    /**
-     * Displays a popup window indicating that the user has won the game.
-     *
-     * @param owner the owner stage of the popup
-     */
-    private void showWinPopup(Stage owner) {
-        Stage popup = new Stage();
-        popup.initModality(Modality.APPLICATION_MODAL);
-        popup.initOwner(owner);
-
-        VBox layout = new VBox(20);
-        layout.setAlignment(Pos.CENTER);
-        layout.setPadding(new Insets(20));
-        layout.setStyle("-fx-background-color: #FFFFFF;");
-
-        Label winLabel = new Label("Congratulations!\nYou Win!");
-        winLabel.setFont(font);
-        winLabel.setWrapText(true);
-        winLabel.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-
-        Button exitButton = new Button("Exit");
-        exitButton.setOnAction(e -> {
-            popup.close();
-            owner.close();
-        });
-
-        layout.getChildren().addAll(winLabel, exitButton);
-
-        Scene popupScene = new Scene(layout, 500, 400);
-        popup.setScene(popupScene);
-        popup.showAndWait();
-    }
+//
+//    /**
+//     * Displays a popup window indicating that the game is over.
+//     *
+//     * @param owner the owner stage of the popup
+//     */
+//    private void showGameOverPopup(Stage owner) {
+//        Stage popup = new Stage();
+//        popup.initModality(Modality.APPLICATION_MODAL);
+//        popup.initOwner(owner);
+//
+//        VBox layout = new VBox(20);
+//        layout.setAlignment(Pos.CENTER);
+//        layout.setPadding(new Insets(20));
+//        layout.setStyle("-fx-background-color: #FFFFFF;");
+//
+//        Label gameOverLabel = new Label("Game Over\nPlease start over and next time don't forget to feed your pet!");
+//        gameOverLabel.setFont(font);
+//        gameOverLabel.setWrapText(true);
+//        gameOverLabel.setTextAlignment(TextAlignment.CENTER);
+//
+//        Button startOverButton = new Button("Start Over");
+//        startOverButton.setOnAction(e -> {
+//            new MenuScreen().start(owner);
+//            popup.close();
+//        });
+//
+//        layout.getChildren().addAll(gameOverLabel, startOverButton);
+//
+//        Scene popupScene = new Scene(layout, 500, 400);
+//        popup.setScene(popupScene);
+//        popup.showAndWait();
+//    }
+//
+//    /**
+//     * Displays a popup window indicating that the user has won the game.
+//     *
+//     * @param owner the owner stage of the popup
+//     */
+//    private void showWinPopup(Stage owner) {
+//        Stage popup = new Stage();
+//        popup.initModality(Modality.APPLICATION_MODAL);
+//        popup.initOwner(owner);
+//
+//        VBox layout = new VBox(20);
+//        layout.setAlignment(Pos.CENTER);
+//        layout.setPadding(new Insets(20));
+//        layout.setStyle("-fx-background-color: #FFFFFF;");
+//
+//        Label winLabel = new Label("Congratulations!\nYou Win!");
+//        winLabel.setFont(font);
+//        winLabel.setWrapText(true);
+//        winLabel.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
+//
+//        Button exitButton = new Button("Exit");
+//        exitButton.setOnAction(e -> {
+//            popup.close();
+//            owner.close();
+//        });
+//
+//        layout.getChildren().addAll(winLabel, exitButton);
+//
+//        Scene popupScene = new Scene(layout, 500, 400);
+//        popup.setScene(popupScene);
+//        popup.showAndWait();
+//    }
 }
