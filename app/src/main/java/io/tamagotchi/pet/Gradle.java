@@ -49,6 +49,6 @@ public class Gradle extends Pet {
      */
     @Override
     public String sayHello() {
-        return "Let’s build your knowledge together, one task at a time!";
+        return "Let's build your knowledge together, one task at a time!";
     }
 }
