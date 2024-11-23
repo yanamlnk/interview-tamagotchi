@@ -209,23 +209,23 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         VBox rightPane = new VBox(20);
         rightPane.setAlignment(Pos.CENTER);
         rightPane.setPadding(new Insets(20));
-        rightPane.setMinWidth(300); 
+        rightPane.setMinWidth(300);
 
         ProgressBar healthBar = new ProgressBar(pet.getHealth() / 100.0);
         healthBar.setPrefWidth(300);
         healthBar.setPrefHeight(30);
 
-
-        double oldHealthValue = healthBar.getProgress();
-        double newHealthValue = pet.getHealth() / 100.0;
-        Timeline timeline = new Timeline(
-        new KeyFrame(Duration.ZERO, new
-        KeyValue(healthBar.progressProperty(), oldHealthValue)),
-        new KeyFrame(Duration.seconds(0.5), new
-        KeyValue(healthBar.progressProperty(), newHealthValue))
-        );
-        timeline.play();
-        healthBar.setStyle("-fx-accent: #4CAF50;");
+//
+//        double oldHealthValue = healthBar.getProgress();
+//        double newHealthValue = pet.getHealth() / 100.0;
+//        Timeline timeline = new Timeline(
+//        new KeyFrame(Duration.ZERO, new
+//        KeyValue(healthBar.progressProperty(), oldHealthValue)),
+//        new KeyFrame(Duration.seconds(0.5), new
+//        KeyValue(healthBar.progressProperty(), newHealthValue))
+//        );
+//        timeline.play();
+//        healthBar.setStyle("-fx-accent: #4CAF50;");
 
 
         Label healthLabel = new Label("Health: " + (int)
@@ -237,16 +237,16 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         xpBar.setPrefWidth(300);
         xpBar.setPrefHeight(30);
 
-        double oldXpValue = xpBar.getProgress();
-        double newXpValue = pet.getCurrentXp()/
-        pet.getMaxXpForThisLevel();
-        Timeline xpTimeline = new Timeline(
-        new KeyFrame(Duration.ZERO, new
-        KeyValue(xpBar.progressProperty(), oldXpValue)),
-        new KeyFrame(Duration.seconds(0.5), new
-        KeyValue(xpBar.progressProperty(), newXpValue))
-        );
-        xpTimeline.play();
+//        double oldXpValue = xpBar.getProgress();
+//        double newXpValue = pet.getCurrentXp()/
+//        pet.getMaxXpForThisLevel();
+//        Timeline xpTimeline = new Timeline(
+//        new KeyFrame(Duration.ZERO, new
+//        KeyValue(xpBar.progressProperty(), oldXpValue)),
+//        new KeyFrame(Duration.seconds(0.5), new
+//        KeyValue(xpBar.progressProperty(), newXpValue))
+//        );
+//        xpTimeline.play();
 
         Label xpLabel = new Label("XP: " 
         + (int)pet.getCurrentXp() + "/" 
@@ -288,7 +288,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         feedButton.setOnMouseReleased(e -> 
         feedButton.setScaleY(1.0));
 
-        feedButton.setOnAction(event -> showFeedPopup(primaryStage));
+        feedButton.setOnAction(event -> showFeedPopup(primaryStage, healthBar, healthLabel));
 
         Button playButton = new Button("Coding Game");
         playButton.setFont(font);
@@ -551,7 +551,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
      *
      * @param owner the owner stage of the popup
      */
-    private void showFeedPopup(Stage owner) {
+    private void showFeedPopup(Stage owner, ProgressBar healthBar, Label healthLabel) {
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
         popup.initOwner(owner);
@@ -567,9 +567,9 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
         feedLabel.setFont(font);
 
         // Create buttons for each type of food
-        Button burgerButton = createFoodButton("burger");
-        Button fishButton = createFoodButton("fish");
-        Button potatoButton = createFoodButton("potato");
+        Button burgerButton = createFoodButton("burger", healthBar, healthLabel);
+        Button fishButton = createFoodButton("fish", healthBar, healthLabel);
+        Button potatoButton = createFoodButton("potato", healthBar, healthLabel);
 
         HBox foods = new HBox(10, burgerButton, fishButton, potatoButton);
         foods.setAlignment(Pos.CENTER);
@@ -600,7 +600,7 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
      * @param foodName the name of the food
      * @return a Button configured for the specified food
      */
-    private Button createFoodButton(String foodName) {
+    private Button createFoodButton(String foodName, ProgressBar healthBar, Label healthLabel) {
     try {
         Food food = FoodFactory.create(foodName);
         VBox buttonContent = new VBox(5);
@@ -668,6 +668,10 @@ petWithSpeechBubble.getChildren().addAll(petImage,speechBubble);
             try {
                 pet.spendMoney(food.getPrice());
                 pet.eat(food);
+
+                healthBar.setProgress(pet.getHealth() / 100.0);
+                healthLabel.setText("Health: " + (int) pet.getHealth() + "/100");
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Success");
                 alert.setHeaderText(null);
