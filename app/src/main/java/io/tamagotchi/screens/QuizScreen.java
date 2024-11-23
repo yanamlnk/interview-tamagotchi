@@ -122,7 +122,7 @@ public class QuizScreen extends Application {
 
         QuestionsController controller = new QuestionsController();
         String filePath = controller.generateFileName(language, mode);
-        Questions loadedQuestions = controller.loadQuestionsFromFile(getClass().getResource(filePath).getPath());
+        Questions loadedQuestions = controller.loadQuestionsFromFile(filePath);
         this.questions = loadedQuestions.getRandomQuestions();
         this.customFont = font;
 
