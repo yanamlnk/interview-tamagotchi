@@ -127,10 +127,10 @@ public class PetTests {
         assertEquals("Permission granted to execute your potential! Ready to learn?", linux.sayHello());
 
         Pet gradle = new Gradle();
-        assertEquals("Let’s build your knowledge together, one task at a time!", gradle.sayHello());
+        assertEquals("Let's build your knowledge together, one task at a time!", gradle.sayHello());
 
         Pet docker = new Docker();
-        assertEquals("Let’s containerize your skills and deploy success!", docker.sayHello());
+        assertEquals("Let's containerize your skills and deploy success!", docker.sayHello());
 
         assertNotEquals(linux.getName(), gradle.getName(), "Linux and Gradle should have different names.");
         assertNotEquals(linux.getName(), docker.getName(), "Linux and Docker should have different names.");
