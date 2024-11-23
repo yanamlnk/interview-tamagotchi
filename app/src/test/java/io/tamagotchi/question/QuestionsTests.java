@@ -14,7 +14,7 @@ public class QuestionsTests {
     @BeforeEach
     void setUp() {
         QuestionsController controller = new QuestionsController();
-        String filePath = "src/test/resources/questions/test-questions.json";
+        String filePath = "/questions/test-questions.json";
         questions = controller.loadQuestionsFromFile(filePath);
     }
 

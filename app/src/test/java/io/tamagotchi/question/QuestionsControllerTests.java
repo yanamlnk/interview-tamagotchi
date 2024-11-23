@@ -20,7 +20,7 @@ public class QuestionsControllerTests {
     @Test
     @DisplayName("Test for loading questions correctly from a valid file.")
     void testLoadQuestionsFromValidFile() {
-        String filePath = "src/test/resources/questions/test-questions.json";
+        String filePath = "/questions/test-questions.json";
         Questions questions = controller.loadQuestionsFromFile(filePath);
 
         assertNotNull(questions, "With correct filepath object Questions must be returned.");

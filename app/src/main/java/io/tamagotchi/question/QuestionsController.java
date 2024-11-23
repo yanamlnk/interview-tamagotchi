@@ -3,8 +3,9 @@ package io.tamagotchi.question;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -22,11 +23,12 @@ public class QuestionsController {
      */
     public Questions loadQuestionsFromFile(String filePath) {
         List<Question> questions = null;
-        try (FileReader reader = new FileReader(filePath)) {
+        try (InputStream inputStream = getClass().getResourceAsStream(filePath);
+             InputStreamReader reader = new InputStreamReader(inputStream)) {
             Type questionListType = new TypeToken<List<Question>>() {}.getType();
             Gson gson = new Gson();
             questions = gson.fromJson(reader, questionListType);
-        } catch (IOException e) {
+        } catch (IOException | NullPointerException e) {
             System.out.println("No file found with this filepath: " + filePath);
         }
         return new Questions(questions);
